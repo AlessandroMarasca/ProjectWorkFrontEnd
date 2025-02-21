@@ -1,0 +1,52 @@
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Modak', cursive;
+}
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-box {
+    background: rgba(58, 32, 57, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 350px;
+}
+.btn-custom {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color:#FF746C !important;
+    transition: color 0.3s;
+}
+.btn-custom:hover {
+    color: #ffde7a;
+}
+.btn-warning {
+    background-color: #FFEAAE;
+    border: none;
+    color: #FF746C;
+    transition: color 0.3s;
+}
+.btn-danger {
+    background-color: #FFEAAE;
+    border: none;
+    color: black;
+    transition: color 0.3s;
+}
+.btn-danger:hover {
+    background-color: #ffde7a;
+}
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+}
