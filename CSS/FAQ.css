@@ -34,7 +34,7 @@ h1 {
     border-radius: 8px;
     border: 1px solid #ffeaae;
     transition: transform 0.2s ease-in-out;
-    font-family: 'nunito';
+    font-family: 'Nunito', sans-serif;
 }
 
 .faq-item:hover {
