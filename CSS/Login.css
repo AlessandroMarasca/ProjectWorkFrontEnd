@@ -2,6 +2,19 @@ body {
     background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Modak', cursive;
+   
+}
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('../img/landing_nologin_button.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+
 }
 .login-container {
     height: 100vh;
@@ -9,14 +22,17 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .login-box {
-    background: rgba(58, 32, 57, 0.9);
+    background: rgba(58, 32, 57, 0.7);
     padding: 30px;
     border-radius: 10px;
     text-align: center;
-    color: white;
+    color: #ffffff;
     width: 350px;
+   
 }
+
 .btn-custom {
     display: block;
     width: 100%;
@@ -42,11 +58,17 @@ body {
     transition: color 0.3s;
 }
 .btn-danger:hover {
-    background-color: #ffde7a;
+   background-color: #ffde7a !important;
 }
 .logo {
     position: absolute;
     top: 20px;
     left: 20px;
     width: 100px;
+}
+.register-section {
+    display: none;
+}
+.login-section {
+    display: none;
 }
