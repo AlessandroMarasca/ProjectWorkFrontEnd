@@ -1,0 +1,101 @@
+body {
+    background: #ffeaae;
+    background-repeat: no-repeat;
+}
+
+.modak-regular {
+    font-family: "Modak", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.nunito-testo {
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+
+.profile {
+    all: unset;
+    /* RESETTA TUTTI GLI STILI PREDEFINITI */
+    display: inline-flex;
+    /* Mantiene la grandezza dell'icona */
+    align-items: center;
+    cursor: pointer;
+    /* Mantiene il comportamento del bottone */
+}
+
+
+
+.profile svg {
+    width: 40px;
+    height: 40px;
+    color: #ff746c;
+}
+
+.profile svg {
+    width: 120px !important;
+    height: 120px !important;
+}
+
+.restaurant {
+    display: none;
+}
+
+.bi .bi-bag-heart-fill {
+    display: none;
+}
+
+/* Stile per il footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffeaae;
+    color: #ff746c;
+    padding-top: 0px;
+    padding-bottom: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+}
+
+.footer .footer-title {
+    font-family: 'Modak', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer .list-unstyled {
+    padding-left: 0;
+    color: #341539;
+}
+
+.footer .list-unstyled li {
+    margin-bottom: 10px;
+    color: #341539;
+}
+
+.footer .social-links a {
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+    color: #ff746c;
+}
+
+/* Responsività per il footer */
+@media (max-width: 768px) {
+    .footer .footer-title {
+        font-size: 1.2rem;
+    }
+
+    .footer .social-links {
+        justify-content: center;
+    }
+}
