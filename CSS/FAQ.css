@@ -1,0 +1,91 @@
+/* Impostazioni generali */
+body {
+    font-family: 'Modak', sans-serif;
+    background-color: #341539;
+    color: #ffeaae;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenitore principale */
+.faq-section {
+    background-color: #44204c;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 50px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Titolo principale */
+h1 {
+    text-align: center;
+    color: #ffeaae;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* Stile per ogni singolo blocco FAQ */
+.faq-item {
+    margin-bottom: 15px;
+    background-color: #341539;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ffeaae;
+    transition: transform 0.2s ease-in-out;
+    font-family: 'nunito';
+}
+
+.faq-item:hover {
+    transform: scale(1.02);
+}
+
+/* Stile per la domanda */
+details {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffeaae;
+    cursor: pointer;
+}
+
+summary {
+    padding: 10px;
+    background-color: #ff746c;
+    border-radius: 5px;
+    color: #341539;
+    list-style: none;
+    transition: background 0.3s ease-in-out;
+}
+
+summary:hover {
+    background-color: #d85b55;
+}
+
+/* Testo della risposta */
+details p {
+    font-size: 16px;
+    color: #ffeaae;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+/* Link */
+details a {
+    color: #ff746c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+details a:hover {
+    text-decoration: underline;
+}
+
+/* Stile della lista nei dettagli */
+details ul {
+    margin-left: 20px;
+}
+
+details ul li {
+    color: #ffeaae;
+}
