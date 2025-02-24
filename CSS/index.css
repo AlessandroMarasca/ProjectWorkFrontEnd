@@ -1,6 +1,28 @@
 body {
-    background: #ffeaae;
-    background-repeat: no-repeat;
+
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/img/background_nologo.png') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.6;
+    /* Cambia l'opacità a piacere */
+    z-index: -1;
+    /* Mette lo sfondo dietro tutto */
+}
+
+#page {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
 }
 
 .modak-regular {
@@ -28,7 +50,13 @@ body {
     /* Mantiene il comportamento del bottone */
 }
 
-
+nav {
+    background: #ffeaae;
+    /* Sfondo nero con trasparenza */
+    transition: background 0.3s ease-in-out;
+    box-shadow: var(--bs-box-shadow) !important;
+    padding-right: 1.5rem;
+}
 
 .profile svg {
     width: 40px;
@@ -49,53 +77,132 @@ body {
     display: none;
 }
 
-/* Stile per il footer */
-.footer {
+/*SEARCHBAR*/
+
+.search-container {
+    width: 40%;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    height: 30px;
+    background-color: #ff746c;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.157)), url('/img/sushi.png');
+    background-size: cover;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    padding: 150px;
+    box-shadow: var(--bs-box-shadow) !important;
+    flex-direction: column;
+}
+
+#text {
+    font-family: Modak, serif;
+    color: #341539;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#text1 {
+    font-family: Modak, serif;
+    color: #341539;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#searchbar {
+    box-shadow: var(--bs-box-shadow) !important;
+}
+
+#search-btn {
+    background-color: #ff746c;
+    border-color: #ff746c;
+    color: white;
+}
+
+#search-btn:hover {
+    background-color: #e6655c;
+    border-color: #e6655c;
+    color: white;
+}
+
+/*carosello*/
+
+#customCarousel.carousel.slide {
+    margin-bottom: 100px;
+    padding-bottom: 50px;
+    background-color: #ffeaae;
+
+
+}
+
+.custom-card {
+
+    background-color: #ff746c;
+    border: none;
+    color: white;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    box-shadow: -5px 5px 10px rgba(52, 1, 66, 0.243);
+    border-radius: 10px;
+}
+
+.custom-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    color: #ff746c;
+
+}
+
+.custom-btn {
+    background-color: #341539;
+    border-color: #341539;
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: #57245f;
+    border-color: #57245f;
+    color: white;
+}
+
+/*FOOTER*/
+
+.footer {
     background-color: #ffeaae;
-    color: #ff746c;
-    padding-top: 0px;
-    padding-bottom: 40px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 30%;
+    padding: 20px;
 }
 
-.footer .footer-title {
-    font-family: 'Modak', sans-serif;
+.footer h5 {
+    color: #ff746c;
+    /*titoli*/
+    font-family: Modak, serif;
+}
+
+.footer p,
+.footer a {
+    color: #341539;
+    /* Colore del testo e dei link */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #57245f;
+    /* Cambio colore al passaggio del mouse */
+}
+
+.social-link i {
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
-.footer .list-unstyled {
-    padding-left: 0;
-    color: #341539;
-}
-
-.footer .list-unstyled li {
-    margin-bottom: 10px;
-    color: #341539;
-}
-
-.footer .social-links a {
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
-
-.footer .social-links a:hover {
-    color: #ff746c;
-}
-
-/* Responsività per il footer */
-@media (max-width: 768px) {
-    .footer .footer-title {
-        font-size: 1.2rem;
-    }
-
-    .footer .social-links {
-        justify-content: center;
-    }
+.social-link:hover i {
+    color: #57245f;
+    /* Cambia colore al passaggio del mouse */
 }
