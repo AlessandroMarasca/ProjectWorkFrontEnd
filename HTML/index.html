@@ -19,21 +19,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg fixed-top mask-custom shadow custom-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand"><img src="/img/logo_noBg.png" alt="logo" style="height: 100px"></a>
-            <button class="navbar-toggler" type="button" data-mdb-collapse-init
-                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto d-flex gap-3">
-                    <!-- Icona Ristorante -->
+    <div class="container-fluid" id="page">
+
+        <nav class="row">
+            <div class="col-6" id="logo">
+                <a class="navbar-brand"><img src="/img/logo_noBg.png" alt="logo" style="height: 100px"></a>
+            </div>
+            <div class="col-6 d-flex align-items-center" id="icons">
+                <ul class="navbar-nav ms-auto d-flex flex-row justify-content-end gap-3">
+
                     <li class="nav-item">
                         <a href="#!" class="restaurant">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
@@ -43,8 +42,6 @@
                             </svg>
                         </a>
                     </li>
-
-                    <!-- Icona Profilo -->
                     <li class="nav-item">
                         <a href="#!" class="profile_login">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="40" height="40"
@@ -55,8 +52,6 @@
                             </svg>
                         </a>
                     </li>
-
-                    <!-- Icona Logout -->
                     <li class="nav-item">
                         <a href="#!" class="logout">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
@@ -68,8 +63,6 @@
                             </svg>
                         </a>
                     </li>
-
-                    <!-- Icona Carrello -->
                     <li class="nav-item">
                         <a href="#!" class="cart">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
@@ -81,49 +74,179 @@
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-    <!-- Navbar -->
+            <!-- <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+    </div> -->
+        </nav>
 
-    <div class="contenuto">
+        <!-- Navbar -->
 
-    </div>
+        <!--BARRA DI RICERCA-->
 
-    <!-- FOOTER -->
-    <footer class="footer py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="footer-title">GestEat</h5>
-                    <p>La tua soluzione digitale per la gestione dei menu ristorante.</p>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="footer-title">Contatti</h5>
-                    <ul class="contatti list-unstyled">
-                        <li><a href="mailto:info@gesteat.com" class="text-white">info@gesteat.com</a></li>
-                        <li><a href="tel:+123456789" class="text-white">+123 456 789</a></li>
-                        <li><a href="#" class="text-white">Indirizzo del ristorante</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <h5 class="footer-title">Seguici</h5>
-                    <ul class="social-links list-unstyled d-flex">
-                        <li><a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a></li>
-                        <li><a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a></li>
-                        <li><a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a></li>
-                    </ul>
+        <div class="container-fluid d-flex justify-content-center row mt-5">
+            <div class="search-container">
+                <p class="single-line" id="text">Di cosa hai voglia oggi?</p>
+                <div class="input-group" id="searchbar">
+                    <input type="text" class="form-control" placeholder="Ristorante, cibo...">
+                    <button class="btn custom-btn" type="submit" id="search-btn"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="25" height="25" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
+                            <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018" />
+                            <path
+                                d="M13 6.5a6.47 6.47 0 0 1-1.258 3.844q.06.044.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11" />
+                        </svg></button>
                 </div>
             </div>
-            <div class="text-center mt-3">
-                <p class="small">&copy; 2025 GestEat - Tutti i diritti riservati.</p>
-            </div>
         </div>
-    </footer>
+
+        <!--CAROSELLO-->
+        <div id="customCarousel" class="carousel slide" data-ride="carousel">
+            <p id="text1">I vostri preferiti!</p>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/sushi1.jpg" class="card-img-top" alt="Image 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Koi Sushi</h5>
+                                    <p class="card-text">Cucina Giapponese</p>
+                                    <a href="#" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/tartufo.jpg" class="card-img-top" alt="Image 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Il paradiso del tartufo</h5>
+                                    <p class="card-text">Cucina italiana</p>
+                                    <a href="#" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/hotpot.jpg" class="card-img-top" alt="Image 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hot Pot</h5>
+                                    <p class="card-text">Cucina cinese</p>
+                                    <a href="#" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/pizza.jpg" class="card-img-top" alt="Image 4">
+                                <div class="card-body">
+                                    <h5 class="card-title">La tana dei sapori</h5>
+                                    <p class="card-text">Ristorante Pizzeria</p>
+                                    <a href="#" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/sushi5.jpg" class="card-img-top" alt="Image 5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 5</h5>
+                                    <p class="card-text">Another customizable card with a description.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/sushi6.jpg" class="card-img-top" alt="Image 6">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 6</h5>
+                                    <p class="card-text">Another customizable card with a description.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/sushi7.jpg" class="card-img-top" alt="Image 7">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 7</h5>
+                                    <p class="card-text">Another customizable card with a description.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/sushi8.jpg" class="card-img-top" alt="Image 8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 8</h5>
+                                    <p class="card-text">Another customizable card with a description.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#customCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#customCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        <!--FOOTER-->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <!-- Sezione "Chi siamo" -->
+                    <div class="col-md-6">
+                        <h5>Chi siamo</h5>
+                        <p>GestEat ti aiuta a scoprire i migliori ristoranti vicino a te e a gestire i tuoi ordini con
+                            facilità.</p>
+                    </div>
+
+                    <!-- Sezione Contatti -->
+                    <div class="col-md-3">
+                        <h5>Contatti</h5>
+                        <p>Email: <a href="mailto:info@gesteat.com">info@gesteat.com</a></p>
+                        <p>Telefono: <a href="tel:+39123456789">+39 123 456 789</a></p>
+                    </div>
+
+                    <!-- Sezione Social -->
+                    <div class="col-md-3 text-md-end">
+                        <h5>Seguici su</h5>
+                        <a href="#" class="social-link me-3"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link me-3"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a> <!-- Icona X -->
+                    </div>
+                </div>
+                <hr>
+                <p class="text-center">&copy; 2024 GestEat. Tutti i diritti riservati.</p>
+            </div>
+        </footer>
+
+        <!-- Font Awesome per l'icona di X -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 
 </body>
 
