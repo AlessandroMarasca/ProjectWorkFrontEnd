@@ -1,0 +1,57 @@
+        body {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #341539;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            float: left;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+
+        .sidebar a:hover {
+            background: #fae9ae98;
+        }
+
+        .row {
+            box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        #fatturato {
+            color: white;
+            background-color: #ffeaae;
+        }
+
+        #fatturato:hover {
+            color: #ffeaae;
+            background-color: white;
+        }
+
+        #ordini {
+            background-color: #341539;
+            color: white;
+        }
+
+        #ordini:hover {
+            color: #341539;
+            background-color: white;
+        }
+
+        #clienti {
+            color: white;
+            background-color: #ff746c;
+        }
+
+        #clienti:hover {
+            color: #ff746c;
+            background-color: white;
+        }
