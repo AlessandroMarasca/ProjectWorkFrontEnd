@@ -25,13 +25,13 @@
     <div class="sidebar">
         <h4>Nome Ristorante</h4>
         <a href="#">🏠 Dashboard</a>
-        <a href="#">📜 Menu</a>
+        <a href="#gestioneMenu">📜 Menu</a>
         <a href="#">🛒 Ordini</a>
         <a href="#">📅 Prenotazioni</a>
         <a href="#">👥 Clienti</a>
     </div>
     <div class="container-fluid p-4">
-        <h2 class="mb-4">Dashboard</h2>
+        <h2 class="mb-4 dashboard">Dashboard</h2>
         <div class="row">
             <div class="col-md-4">
                 <div id="fatturato" class="card p-3">
@@ -53,25 +53,63 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-md-8">
-                <canvas id="salesChart"></canvas>
+
+            <div class="container-fluid col-md-8">
+                <div class="card-image d-flex"
+                    style="margin-top: 5%; flex-direction: column; justify-content: center; align-items:center;">
+                    <img src="../img/carbonara-scomposta-blog-1.webp" width="80%">
+                    <div class="card-body">
+                        <h5 class="card-title">Carbonara scomposta</h5>
+                        <p class="card-text">Ecco qui la migliore delle carbonare, direttamente dalle bio di tinder</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h4>Gestione Menu</h4>
-                <input type="text" id="menuItem" class="form-control mb-2" placeholder="Aggiungi piatto">
+            <div class="spazio">
+                <br><br>
+            </div>
+            <div class="container d-flex" style="flex-direction: column; align-content: center;">
+                <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
+
+                <!-- Selezione Categoria -->
+                <select id="menuCategory" class="form-control mb-2">
+                    <option value="antipasti">Antipasti</option>
+                    <option value="primi">Primi</option>
+                    <option value="secondi">Secondi</option>
+                    <option value="contorni">Contorni</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="bevande">Bevande</option>
+                </select>
+
+                <!-- Inserimento piatto -->
+                <input type="text" id="menuItem" class="form-control mb-2" placeholder="Nome del piatto">
                 <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
-                <input type="file" id="menuImage" class="form-control mb-2"
-                    placeholder="Scegli l'immagine del tuo piatto!">
+                <input type="file" id="menuImage" class="form-control mb-2">
+
                 <button class="btn btn-primary" onclick="addMenuItem()">Aggiungi</button>
-                <ul id="menuList" class="list-group mt-3">
-                    <li class="list-group-item">Menu Prova- €8.50 <button class="btn btn-danger btn-sm float-end"
-                            onclick="removeMenuItem(this)">X</button></li>
-                    <li class="list-group-item">Lasagna - €12.00 <button class="btn btn-danger btn-sm float-end"
-                            onclick="removeMenuItem(this)">X</button></li>
-                    <li class="list-group-item">Tiramisu - €6.00 <button class="btn btn-danger btn-sm float-end"
-                            onclick="removeMenuItem(this)">X</button></li>
-                </ul>
+
+                <!-- Sezioni Menu -->
+                <h3 class="mt-4">Menu</h3>
+                <div id="menuContainer">
+                    <h5>Antipasti</h5>
+                    <ul id="antipasti" class="list-group"></ul>
+
+                    <h5>Primi</h5>
+                    <ul id="primi" class="list-group"></ul>
+
+                    <h5>Secondi</h5>
+                    <ul id="secondi" class="list-group"></ul>
+
+                    <h5>Contorni</h5>
+                    <ul id="contorni" class="list-group"></ul>
+
+                    <h5>Dessert</h5>
+                    <ul id="dessert" class="list-group"></ul>
+
+                    <h5>Bevande</h5>
+                    <ul id="bevande" class="list-group"></ul>
+                </div>
             </div>
+
         </div>
     </div>
     <script src="../JS/dashboard_ristorante.js"></script>
