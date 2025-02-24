@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard Ristorante</title>
+    <link rel="stylesheet" href="../CSS/dashboard_ristorante.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Modak -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+    <!-- Font Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
-
+    <div class="sidebar">
+        <h4>Nome Ristorante</h4>
+        <a href="#">🏠 Dashboard</a>
+        <a href="#">📜 Menu</a>
+        <a href="#">🛒 Ordini</a>
+        <a href="#">📅 Prenotazioni</a>
+        <a href="#">👥 Clienti</a>
+    </div>
+    <div class="container-fluid p-4">
+        <h2 class="mb-4">Dashboard</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div id="fatturato" class="card p-3">
+                    <h5>Fatturato Mensile</h5>
+                    <h3>€12,450</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="ordini" class="card p-3">
+                    <h5>Ordini</h5>
+                    <h3>320</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="clienti" class="card p-3">
+                    <h5>Clienti</h5>
+                    <h3>150</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="col-md-4">
+                <h4>Gestione Menu</h4>
+                <input type="text" id="menuItem" class="form-control mb-2" placeholder="Aggiungi piatto">
+                <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
+                <input type="file" id="menuImage" class="form-control mb-2"
+                    placeholder="Scegli l'immagine del tuo piatto!">
+                <button class="btn btn-primary" onclick="addMenuItem()">Aggiungi</button>
+                <ul id="menuList" class="list-group mt-3">
+                    <li class="list-group-item">Menu Prova- €8.50 <button class="btn btn-danger btn-sm float-end"
+                            onclick="removeMenuItem(this)">X</button></li>
+                    <li class="list-group-item">Lasagna - €12.00 <button class="btn btn-danger btn-sm float-end"
+                            onclick="removeMenuItem(this)">X</button></li>
+                    <li class="list-group-item">Tiramisu - €6.00 <button class="btn btn-danger btn-sm float-end"
+                            onclick="removeMenuItem(this)">X</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/dashboard_ristorante.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
