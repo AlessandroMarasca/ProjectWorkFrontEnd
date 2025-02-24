@@ -15,7 +15,6 @@ body {
     max-width: 900px;
     margin: 50px auto;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    
 }
 
 /* Titolo principale */
@@ -34,28 +33,20 @@ h1 {
     border-radius: 8px;
     border: 1px solid #ffeaae;
     transition: transform 0.2s ease-in-out;
-    font-family: 'Nunito', sans-serif;
-}
-
-.faq-item:hover {
-    transform: scale(1.02);
 }
 
 /* Stile per la domanda */
-details {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffeaae;
-    cursor: pointer;
-}
-
 summary {
+    font-family: 'Nunito', sans-serif; 
+    font-size: 18px;
+    font-weight: 700;
     padding: 10px;
     background-color: #ff746c;
     border-radius: 5px;
     color: #341539;
     list-style: none;
     transition: background 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 summary:hover {
@@ -64,7 +55,9 @@ summary:hover {
 
 /* Testo della risposta */
 details p {
+    font-family: 'Nunito', sans-serif; 
     font-size: 16px;
+    font-weight: 400;
     color: #ffeaae;
     padding: 10px;
     line-height: 1.5;
