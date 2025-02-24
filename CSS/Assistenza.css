@@ -1,0 +1,126 @@
+/* Impostazioni generali */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #341539;
+    color: #ffeaae;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principale */
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #44204c; /* Leggermente più chiaro di #341539 */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Titoli */
+h2 {
+    color: #ffeaae;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Testo */
+p {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Sezione Contatti */
+.contact-info {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* Icone social */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #ffeaae;
+    font-size: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: #ff746c;
+}
+
+/* Form di contatto */
+.form-container {
+    text-align: center;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 16px;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ffeaae;
+    border-radius: 5px;
+    background-color: #341539;
+    color: #ffeaae;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #ff746c;
+}
+
+/* Checkbox privacy */
+.privacy-policy {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.privacy-policy a {
+    color: #ff746c;
+    text-decoration: none;
+}
+
+.privacy-policy a:hover {
+    text-decoration: underline;
+}
+
+/* Pulsante invia */
+button {
+    background-color: #ff746c;
+    color: #341539;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #d85b55;
+}
+
+
+
+
