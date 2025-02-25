@@ -2,11 +2,12 @@ body {
     background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Modak', cursive;
-   
+   height: 100%;
 }
+
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background: url('../img/landing_nologin_button.png');
@@ -35,6 +36,13 @@ nav {
     transition: background 0.3s ease-in-out;
     box-shadow: var(--bs-box-shadow) !important;
     padding-right: 1.5rem;
+}
+.restaurant {
+    display: none;
+}
+
+.bi .bi-bag-heart-fill {
+    display: none;
 }
 .login-container {
     height: 100vh;
@@ -86,11 +94,17 @@ nav {
     left: 20px;
     width: 100px;
 }
-.register-section {
+#login-section,
+#register-section {
     display: none;
 }
-.login-section {
-    display: none;
+
+.toggle-password {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
 }
 /*FOOTER*/
 
@@ -107,6 +121,7 @@ nav {
 
 .footer p,
 .footer a {
+    font-family: "Nunito", serif;
     color: #341539;
     /* Colore del testo e dei link */
     text-decoration: none;
