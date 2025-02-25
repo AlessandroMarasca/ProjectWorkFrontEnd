@@ -6,10 +6,26 @@ body {
     padding: 0;
     text-align: center;
 }
+.modak-regular {
+    font-family: "Modak", serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
-header {
-    background-color: #ffeaae;
-    padding: 20px;
+
+.nunito-testo {
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+nav {
+    background: #ffeaae;
+    /* Sfondo nero con trasparenza */
+    transition: background 0.3s ease-in-out;
+    box-shadow: var(--bs-box-shadow) !important;
+    padding-right: 1.5rem;
 }
 
 h1 {
@@ -77,4 +93,38 @@ h1 {
     background-color: #ff746c;
     color: #fff;
     transition: 0.3s;
+}
+/*FOOTER*/
+
+.footer {
+    background-color: #ffeaae;
+    padding: 20px;
+}
+
+.footer h5 {
+    color: #ff746c;
+    /*titoli*/
+    font-family: Modak, serif;
+}
+
+.footer p,
+.footer a {
+    color: #341539;
+    /* Colore del testo e dei link */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #57245f;
+    /* Cambio colore al passaggio del mouse */
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover i {
+    color: #57245f;
+    /* Cambia colore al passaggio del mouse */
 }
