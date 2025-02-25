@@ -1,0 +1,10 @@
+body {
+    background-color: #ffeaae;
+}
+
+.card-title {
+    font-family: 'Modak', serif;
+
+    outline-color: #341539;
+    color: #ffff;
+}
