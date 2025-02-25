@@ -18,104 +18,231 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
 
 </head>
 
 <body>
-    <div class="sidebar">
-        <h4>Nome Ristorante</h4>
-        <a href="#">🏠 Dashboard</a>
-        <a href="#gestioneMenu">📜 Menu</a>
-        <a href="#">🛒 Ordini</a>
-        <a href="#">📅 Prenotazioni</a>
-        <a href="#">👥 Clienti</a>
-    </div>
-    <div class="container-fluid p-4">
-        <h2 class="mb-4 dashboard">Dashboard</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div id="fatturato" class="card p-3">
-                    <h5>Fatturato Mensile</h5>
-                    <h3>€12,450</h3>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div id="ordini" class="card p-3">
-                    <h5>Ordini</h5>
-                    <h3>320</h3>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div id="clienti" class="card p-3">
-                    <h5>Clienti</h5>
-                    <h3>150</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
+    <!-- NAVBAR -->
+    <div class="container-fluid" id="page">
 
-            <div class="container-fluid col-md-8">
-                <div class="card-image d-flex"
-                    style="margin-top: 5%; flex-direction: column; justify-content: center; align-items:center;">
-                    <img src="../img/carbonara-scomposta-blog-1.webp" width="80%">
-                    <div class="card-body">
-                        <h5 class="card-title">Carbonara scomposta</h5>
-                        <p class="card-text">Ecco qui la migliore delle carbonare, direttamente dalle bio di tinder</p>
+        <nav class="row">
+            <div class="col-6" id="logo">
+                <a class="navbar-brand"><img src="/img/logo_noBg.png" alt="logo" style="height: 100px"></a>
+            </div>
+            <div class="col-6 d-flex align-items-center" id="icons">
+                <ul class="navbar-nav ms-auto d-flex flex-row justify-content-end gap-3">
+
+                    <li class="nav-item">
+                        <a href="#!" class="restaurant">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
+                                fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="profile_login">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="40" height="40"
+                                color="#ff746c" fill="currentColor" class="bi bi-person-circle">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="logout">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
+                                fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
+                                fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+    </div> -->
+        </nav>
+
+        <div class="sidebar">
+            <h4>Nome Ristorante</h4>
+            <a href="#">🏠 Dashboard</a>
+            <a href="#gestioneMenu">📜 Menu</a>
+            <a href="#">🛒 Ordini</a>
+            <a href="#calendar">📅 Prenotazioni</a>
+            <a href="#">👥 Clienti</a>
+        </div>
+        <div class="container-fluid p-4">
+            <h2 class="mb-4 dashboard">Dashboard</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="fatturato" class="card p-3">
+                        <h5>Fatturato Mensile</h5>
+                        <h3>€12,450</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="ordini" class="card p-3">
+                        <h5>Ordini</h5>
+                        <h3>320</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="clienti" class="card p-3">
+                        <h5>Clienti</h5>
+                        <h3>150</h3>
                     </div>
                 </div>
             </div>
-            <div class="spazio">
-                <br><br>
-            </div>
-            <div class="container d-flex" style="flex-direction: column; align-content: center;">
-                <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
+            <div class="row mt-4">
 
-                <!-- Selezione Categoria -->
-                <select id="menuCategory" class="form-control mb-2">
-                    <option value="antipasti">Antipasti</option>
-                    <option value="primi">Primi</option>
-                    <option value="secondi">Secondi</option>
-                    <option value="contorni">Contorni</option>
-                    <option value="dessert">Dessert</option>
-                    <option value="bevande">Bevande</option>
-                </select>
+                <div class="container-fluid col-md-8">
+                    <div class="card-image d-flex"
+                        style="margin-top: 5%; flex-direction: column; justify-content: center; align-items:center;">
+                        <img src="../img/carbonara-scomposta-blog-1.webp" width="80%">
+                        <div class="card-body">
+                            <h5 class="card-title">Carbonara scomposta</h5>
+                            <p class="card-text">Ecco qui la migliore delle carbonare, direttamente dalle bio di tinder
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spazio">
+                    <br><br>
+                </div>
+                <div class="container d-flex" style="flex-direction: column; align-content: center;">
+                    <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
 
-                <!-- Inserimento piatto -->
-                <input type="text" id="menuItem" class="form-control mb-2" placeholder="Nome del piatto">
-                <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
-                <input type="file" id="menuImage" class="form-control mb-2">
+                    <!-- Selezione Categoria -->
+                    <select id="menuCategory" class="form-control mb-2">
+                        <option value="antipasti">Antipasti</option>
+                        <option value="primi">Primi</option>
+                        <option value="secondi">Secondi</option>
+                        <option value="contorni">Contorni</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="bevande">Bevande</option>
+                    </select>
+                    <input type="text" id="nuova" class="form-control mb-2" placeholder="Nuova categoria">
 
-                <button class="btn btn-primary" onclick="addMenuItem()">Aggiungi</button>
+                    <!--CRUD categorie-->
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-success" onclick="addCategory()"> Aggiungi Categoria</button>
+                        <button class="btn btn-warning text-white" onclick="removeCategory()"> Rimuovi
+                            Categoria</button>
+                        <button class="btn btn-danger mt-2" onclick="clearCategories()"> Rimuovi Tutte le
+                            Categorie</button>
+                    </div>
 
-                <!-- Sezioni Menu -->
-                <h3 class="mt-4">Menu</h3>
-                <div id="menuContainer">
-                    <h5>Antipasti</h5>
-                    <ul id="antipasti" class="list-group"></ul>
+                    <!-- Inserimento piatto -->
+                    <input type="text" id="menuItem" class="form-control mb-2" placeholder="Nome del piatto">
 
-                    <h5>Primi</h5>
-                    <ul id="primi" class="list-group"></ul>
+                    <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
+                    <input type="text" id="menuDescrizione" class="form-control mb-2" maxlength="150"
+                        placeholder="Descrizione del piatto">
+                    <input type="file" id="menuImage" class="form-control mb-2">
 
-                    <h5>Secondi</h5>
-                    <ul id="secondi" class="list-group"></ul>
+                    <button class="btn btn-info" onclick="addMenuItem()">Aggiungi</button>
 
-                    <h5>Contorni</h5>
-                    <ul id="contorni" class="list-group"></ul>
+                    <!-- Sezioni Menu -->
+                    <h3 class="mt-4">Menu</h3>
+                    <div id="menuContainer">
+                        <h5>Antipasti</h5>
+                        <ul id="antipasti" class="list-group"></ul>
 
-                    <h5>Dessert</h5>
-                    <ul id="dessert" class="list-group"></ul>
+                        <h5>Primi</h5>
+                        <ul id="primi" class="list-group"></ul>
 
-                    <h5>Bevande</h5>
-                    <ul id="bevande" class="list-group"></ul>
+                        <h5>Secondi</h5>
+                        <ul id="secondi" class="list-group"></ul>
+
+                        <h5>Contorni</h5>
+                        <ul id="contorni" class="list-group"></ul>
+
+                        <h5>Dessert</h5>
+                        <ul id="dessert" class="list-group"></ul>
+
+                        <h5>Bevande</h5>
+                        <ul id="bevande" class="list-group"></ul>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-    <script src="../JS/dashboard_ristorante.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        <!-- Ordini -->
+        <br><br><br><br><br>
+        <!--Calendario-->
+        <div id="calendar" class="calendar-container">
+            <div class="calendar-header">
+                <button class="bg-transparent" onclick="prevMonth()"><svg xmlns="http://www.w3.org/2000/svg" width="26"
+                        height="26" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                    </svg></button>
+                <span id="calendar-title"></span>
+                <button class="bg-transparent" onclick="nextMonth()"><svg xmlns="http://www.w3.org/2000/svg" width="26"
+                        height="26" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                    </svg></button>
+            </div>
+            <div class="calendar-days" id="calendar-days"></div>
+        </div>
+        <br><br><br><br><br>
+        <!--FOOTER-->
+        <footer class="footer">
+            <div class="container2">
+                <div class="row">
+                    <!-- Sezione "Chi siamo" -->
+                    <div class="col-md-6">
+                        <h5>Chi siamo</h5>
+                        <p>GestEat ti aiuta a scoprire i migliori ristoranti vicino a te e a gestire i tuoi ordini con
+                            facilità.</p>
+                    </div>
+
+                    <!-- Sezione Contatti -->
+                    <div class="col-md-3">
+                        <h5>Contatti</h5>
+                        <p>Email: <a href="mailto:info@gesteat.com">info@gesteat.com</a></p>
+                        <p>Telefono: <a href="tel:+39123456789">+39 123 456 789</a></p>
+                    </div>
+
+                    <!-- Sezione Social -->
+                    <div class="col-md-3 text-md-end">
+                        <h5>Seguici su</h5>
+                        <a href="#" class="social-link me-3"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link me-3"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a> <!-- Icona X -->
+                    </div>
+                </div>
+                <hr>
+                <p class="text-center">&copy; 2024 GestEat. Tutti i diritti riservati.</p>
+            </div>
+        </footer>
+
+        <!-- Font Awesome per l'icona di X -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+        <script src="../JS/dashboard_ristorante.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
