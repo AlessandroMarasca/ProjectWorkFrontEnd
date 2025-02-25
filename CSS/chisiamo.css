@@ -1,0 +1,114 @@
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #341539;
+    height: 100vh;
+}
+
+#page {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+.modak-regular {
+    font-family: "Modak", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.nunito-testo {
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+nav {
+    background: #ffeaae;
+    /* Sfondo nero con trasparenza */
+    transition: background 0.3s ease-in-out;
+    box-shadow: var(--bs-box-shadow) !important;
+    padding-right: 1.5rem;
+}
+
+.restaurant {
+    display: none;
+}
+
+.bi .bi-bag-heart-fill {
+    display: none;
+}
+
+.row {
+    margin-left: 0;
+}
+
+/*inserire qui il resto*/
+
+#text {
+    font-family: Nunito, serif;
+    color: #ffeaae;
+    font-size: 100%;
+}
+
+#text1 {
+    font-family: Nunito, serif;
+    color: #ffeaae;
+    font-size: 100%;
+    text-align: justify;
+}
+
+#altro {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#logox {
+    height: 300px;
+    width: 300px;
+    margin-bottom: 50px;
+}
+
+
+
+/*FOOTER*/
+
+.footer {
+    background-color: #ffeaae;
+    padding: 20px;
+
+}
+
+.footer h5 {
+    color: #ff746c;
+    /*titoli*/
+    font-family: Modak, serif;
+}
+
+.footer p,
+.footer a {
+    color: #341539;
+    /* Colore del testo e dei link */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #57245f;
+    /* Cambio colore al passaggio del mouse */
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover i {
+    color: #57245f;
+    /* Cambia colore al passaggio del mouse */
+}
