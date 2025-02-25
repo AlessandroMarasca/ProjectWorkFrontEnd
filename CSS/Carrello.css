@@ -1,0 +1,130 @@
+body {
+    font-family: 'Nunito', sans-serif !important;
+    background-color: #341539;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.modak-regular {
+    font-family: "Modak", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.nunito-testo {
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+nav {
+    background: #ffeaae;
+    /* Sfondo nero con trasparenza */
+    transition: background 0.3s ease-in-out;
+    box-shadow: var(--bs-box-shadow) !important;
+    padding-right: 1.5rem;
+}
+
+h1 {
+    font-family: 'Modak', cursive !important;
+    color: #341539;
+}
+
+.cart {
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #ff746c;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #341539;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.item-info h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.remove {
+    background-color: #341539;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.total {
+    background-color: #ffeaae;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.checkout {
+    background-color: #341539;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.remove:hover, .checkout:hover {
+    background-color: #ff746c;
+    color: #fff;
+    transition: 0.3s;
+}
+/*FOOTER*/
+
+.footer {
+    background-color: #ffeaae;
+    padding: 20px;
+}
+
+.footer h5 {
+    color: #ff746c;
+    /*titoli*/
+    font-family: Modak, serif;
+}
+
+.footer p,
+.footer a {
+    color: #341539;
+    /* Colore del testo e dei link */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #57245f;
+    /* Cambio colore al passaggio del mouse */
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover i {
+    color: #57245f;
+    /* Cambia colore al passaggio del mouse */
+}
