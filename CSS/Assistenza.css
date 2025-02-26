@@ -1,9 +1,22 @@
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Nunito', sans-serif;
     background-color: #341539f2;
     color: #ffeaae;
     margin: 0;
     padding: 0;
+    height: 100vh;
+}
+
+#page {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
 }
 
 .modak-regular {
@@ -26,6 +39,18 @@ nav {
     transition: background 0.3s ease-in-out;
     box-shadow: var(--bs-box-shadow) !important;
     padding-right: 1.5rem;
+}
+
+.restaurant {
+    display: none;
+}
+
+.bi .bi-bag-heart-fill {
+    display: none;
+}
+
+.row {
+    margin-left: 0;
 }
 
 /* Container principale */
@@ -161,6 +186,11 @@ button:hover {
 .footer {
     background-color: #ffeaae;
     padding: 20px;
+
+}
+
+#desc {
+    text-align: start;
 }
 
 .footer h5 {
@@ -171,8 +201,7 @@ button:hover {
 
 .footer p,
 .footer a {
-    font-family: "Nunito", serif;
-    color: #ffeaae;
+    color: #341539;
     /* Colore del testo e dei link */
     text-decoration: none;
 }
