@@ -75,7 +75,7 @@
         
     </div> -->
         </nav>
-    <img src="../img/1-removebg-preview.png" alt="logo" class="logo">
+    
     <!-- Sezione "Chi sei-->
     <div class="container login-container">
         <div class="login-box">
@@ -101,6 +101,11 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
+                <div class="mb-3">
+                    
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <button type="button" class="toggle-password">🔒</button>
+                </div>
                 <button type="submit" class="btn btn-warning btn-custom">ACCEDI</button>
             </form>
             <br>
@@ -125,13 +130,21 @@
                 </div>
                 <!-- Telefono -->
                 <div class="mb-3">
-                    <label for="telefono" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                    <label for="numero carta" class="form-label">Numero Carta</label>
+                    <input type="tel" minlength="16" maxlength="16"  class="form-control" id="num-carta" name="numero carta" required>
                 </div>
                 <!-- Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                 <!-- Password -->
+                <div class="mb-3">
+                    <label for="reg-password" class="form-label">Password</label>
+                    <div class="password-container">
+                        <input type="password" class="form-control" id="reg-password" name="password" required>
+                        <button type="button" class="toggle-password">🔒</button>
+                    </div>
                 </div>
                 <!-- Indirizzo -->
                 <div class="mb-3">

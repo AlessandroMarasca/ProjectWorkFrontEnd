@@ -1,0 +1,30 @@
+body {
+    background-color: #ffeaae;
+    margin-left: 1%;
+}
+
+.card-title {
+    font-family: 'Modak', serif;
+    color: #ffff;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #ff746c, 1px 1px 0 #ff746c;
+
+}
+
+nav {
+    background: #ffeaae;
+    /* Sfondo nero con trasparenza */
+    transition: background 0.3s ease-in-out;
+    box-shadow: var(--bs-box-shadow) !important;
+    padding-right: 1.5rem;
+}
+
+.title {
+    background-color: rgb(255, 116, 108) !important;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -10%;
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.582);
+    filter: blur(50%);
+    border-radius: 20px 2px 20px;
+}
