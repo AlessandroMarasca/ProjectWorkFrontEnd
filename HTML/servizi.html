@@ -8,49 +8,171 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/servizi.css">
+
 </head>
 
 <body>
-    <div class="title text-center bg-success text-white">
-        <h1 class="titolo">I servizi per i professionisti</h1>
-        <h3 class="sottotitolo">Tecnologia al tuo fianco</h3>
-    </div>
-    <br><br><br><br><br><br><br><br><br><br>
-    <div class="card-group">
-        <div class="card">
-            <img src="../img/Calendar image.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h2 class="card-title">PRENOTAZIONI</h5>
-                    <p class="card-text">Monitora le tue prenotazioni con una semplicissima interfaccia grafica. Premi
-                        il
-                        bottone per la demo!</p>
-                    <button class="btn btn-info"><b>DEMO</b></button>
+    <!-- NAVBAR -->
+    <div class="container-fluid" id="page">
+
+        <nav class="row">
+            <div class="col-6" id="logo">
+                <a class="navbar-brand"><img src="/img/logo_noBg.png" alt="logo" style="height: 100px"></a>
             </div>
+            <div class="col-6 d-flex align-items-center" id="icons">
+                <ul class="navbar-nav ms-auto d-flex flex-row justify-content-end gap-3">
+
+                    <li class="nav-item">
+                        <a href="#!" class="restaurant">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
+                                fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="profile_login">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="40" height="40"
+                                color="#ff746c" fill="currentColor" class="bi bi-person-circle">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="logout">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
+                                fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!" class="cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
+                                fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+        </div> -->
+        </nav>
+        <div class="title text-center bg-success text-white">
+            <h1 class="titolo">I servizi per i professionisti</h1>
+            <h3 class="sottotitolo">Tecnologia al tuo fianco</h3>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br>
+        <div class="card-group">
+            <div class="card">
+                <img src="../img/Calendar image.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2 class="card-title">PRENOTAZIONI</h5>
+                        <p class="card-text">Monitora le tue prenotazioni con una semplicissima interfaccia grafica.
+                            Premi
+                            il
+                            bottone per la demo!</p>
+                        <button class="btn btn-info"><b>DEMO</b></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="../img/Menù.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2 class="card-title">GESTIONE MENù</h5>
+                        <p class="card-text">Ma quanto è semplice modificare il tuo menù aggiornandolo coi piatti del
+                            giorno? Un
+                            botto. Guarda.</p>
+                        <button class="btn btn-info"><b>GUARDA QUAAA</b></button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../img/debit_card.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h2 class="card-title">PAGAMENTI SMART</h5>
+                        <p class="card-text">I nostri pagamenti sono una bomba, nel senso che se provi a realizzare un
+                            pagamento
+                            esplode il server.</p>
+                        <button class="btn btn-info"><b>PAGARE</b></button>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </div>
+    <!--ESEMPIO CAROSELLO-->
+    <!-- Carousel wrapper -->
+    <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
 
-        <div class="card">
-            <img src="../img/Menù.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h2 class="card-title">GESTIONE MENù</h5>
-                    <p class="card-text">Ma quanto è semplice modificare il tuo menù aggiornandolo coi piatti del
-                        giorno? Un
-                        botto. Guarda.</p>
-                    <button class="btn btn-info"><b>GUARDA QUAAA</b></button>
+        <!-- Inner -->
+        <div class="carousel-inner">
+            <!-- Single item -->
+            <div class="carousel-item active">
+                <img src="../img/carbonara-scomposta-blog-1.webp" class="d-block w-100" alt="Sunset Over the City" />
+                <div class="carousel-caption d-md-block" width="200px">
+                    <h5>CHI SIAMO</h5>
+                    <p>COSA VOGLIAMO FARE CON QUESTA PIATTAFORMA</p>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img src="../img/debit_card.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h2 class="card-title">PAGAMENTI SMART</h5>
-                    <p class="card-text">I nostri pagamenti sono una bomba, nel senso che se provi a realizzare un
-                        pagamento
-                        esplode il server.</p>
-                    <button class="btn btn-info"><b>PAGARE</b></button>
-            </div>
-        </div>
-    </div>
-    <br><br><br>
 
+            <!-- Single item -->
+            <div class="carousel-item">
+                <img src="../img/candy_page.png" class="d-block w-100" alt="Canyon at Nigh" width="200px" />
+                <div class="carousel-caption e d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <!-- Single item -->
+            <div class="carousel-item">
+                <img src="../img/hotpot.jpg" class="d-block w-100" alt="Cliff Above a Stormy Sea" width="200px" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Inner -->
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample"
+            data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample"
+            data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Carousel wrapper -->
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 
 </body>
 

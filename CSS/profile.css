@@ -10,6 +10,14 @@ hr {
     color: #FFEAAE;
 }
 
+nav {
+    background: #ffeaae;
+    /* Sfondo nero con trasparenza */
+    transition: background 0.3s ease-in-out;
+    box-shadow: var(--bs-box-shadow) !important;
+    padding-right: 1.5rem;
+}
+
 .card {
     position: relative;
     display: flex;
