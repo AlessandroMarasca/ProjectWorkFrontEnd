@@ -1,8 +1,9 @@
 //PASSARE DA LOGIN A REGISTRAZIONE E VICEVERSA
+//CLIENTE E RISTORATORE BOTTONI???
 
 document.addEventListener("DOMContentLoaded", function () {
-    const registrati = document.getElementById("registrati");
-    const accedi = document.getElementById("accedi");
+    const registrati = document.getElementById("registrazione");
+    const accedi = document.getElementById("login");
     const loginForm = document.querySelector(".login-section");
     const registrazioneForm = document.querySelector(".register-section");
 
@@ -79,20 +80,64 @@ function addUser(nuovoUtente) {
             document.querySelector(".registrazioneform").style.display = "none";
             document.querySelector(".loginform").style.display = "block";
         })
-            //GESTIONE INVIO FORM REGISTRAZIONE
-            document.getElementById('aggiungiUtente').addEventListener('submit', function (event) {             // da prendere integralmente
-                event.preventDefault();
-                const nuovoUtente = {                       // const aggiornamento
-                    nome: document.getElementById('nome').value,
-                    email: document.getElementById('typeEmailX').value,
-                    cognome: document.getElementById('cognome').value,
-                    numerocarta: document.getElementById('pIva').value,
-                    password: document.getElementById('creapw').value
-                };
-                addUser(nuovoUtente);                       // update(aggiornamento)
-            });
+    //GESTIONE INVIO FORM REGISTRAZIONE
+    document.getElementById('registrati').addEventListener('submit', function (event) {             // da prendere integralmente
+        event.preventDefault();
+        const nuovoUtente = {                       // const aggiornamento
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            cognome: document.getElementById('cognome').value,
+            numerocarta: document.getElementById('num-carta').value,
+            password: document.getElementById('reg-password').value
+        };
+        addUser(nuovoUtente);                       // update(aggiornamento)
+    });
 
-        }
+}
+//LOGIN UTENTE
+function login(email, password) {
+    fetch("http://localhost:8080/api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: email, password: password })
+
+    })
+        .then(response => {
+            if (!response.ok) {
+                console.log("ciao");
+                throw new Error("Login fallito :( Controlla le credenziali!");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Login effettuato:", data);
+
+            if (data.token) {
+                localStorage.setItem("authToken", data.token);
+                document.getElementById("logoutButton").style.display = "block"; //ce lo abbiamo?
+                document.querySelector(".loginform").style.display = "none";
+                alert("Accesso effettuato con successo!");
+
+                window.location.replace("index.html"); //reindirizzamento 
+            }
+        })
+        .catch(error => {
+            console.error("Errore nel login:", error);
+            const loginError = document.getElementById("loginError");  //ce lo abbiamo??
+            loginError.textContent = error.message;
+            loginError.style.display = "block";
+            //alert(error.message);
+        });
+}
+    //GESTIONE INVIO FORM LOGIN
+document.getElementById("accedii").addEventListener("submit", function (event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    login(email, password);
+});
 
 
 
