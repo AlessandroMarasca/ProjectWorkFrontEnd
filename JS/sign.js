@@ -1,20 +1,23 @@
 //PASSARE DA LOGIN A REGISTRAZIONE E VICEVERSA
-//CLIENTE E RISTORATORE BOTTONI???
 
 document.addEventListener("DOMContentLoaded", function () {
     const registrati = document.getElementById("registrazione");
     const accedi = document.getElementById("login");
     const loginForm = document.querySelector(".login-section");
     const registrazioneForm = document.querySelector(".register-section");
+    const inizioForm = document.querySelector(".iniziale");
 
     //nascondi il form di registrazione all'inizio
     registrazioneForm.style.display = "none";
+    loginForm.style.display = "none";
 
     //gestione passaggio da login a registrazione
     registrati.addEventListener("click", function (event) {
+        console.log("ciao");
         event.preventDefault();
         loginForm.style.display = "none";
         registrazioneForm.style.display = "block";
+        inizioForm.style.display = "none";
     });
 
     //gestione passaggio da registrazione a login
@@ -22,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         registrazioneForm.style.display = "none";
         loginForm.style.display = "block";
+        inizioForm.style.display = "none";
     });
 });
 
