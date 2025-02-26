@@ -1,5 +1,9 @@
-body {
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
 
+body {
     height: 100vh;
 }
 
@@ -11,6 +15,7 @@ body::before {
     width: 100%;
     height: 100%;
     background: url('/img/background_nologo.png') no-repeat center center fixed;
+    background-;
     background-size: cover;
     opacity: 0.6;
     /* Cambia l'opacità a piacere */
@@ -39,17 +44,6 @@ body::before {
     font-style: normal;
 }
 
-
-.profile {
-    all: unset;
-    /* RESETTA TUTTI GLI STILI PREDEFINITI */
-    display: inline-flex;
-    /* Mantiene la grandezza dell'icona */
-    align-items: center;
-    cursor: pointer;
-    /* Mantiene il comportamento del bottone */
-}
-
 nav {
     background: #ffeaae;
     /* Sfondo nero con trasparenza */
@@ -58,23 +52,16 @@ nav {
     padding-right: 1.5rem;
 }
 
-.profile svg {
-    width: 40px;
-    height: 40px;
-    color: #ff746c;
-}
-
-.profile svg {
-    width: 120px !important;
-    height: 120px !important;
-}
-
 .restaurant {
     display: none;
 }
 
 .bi .bi-bag-heart-fill {
     display: none;
+}
+
+.row {
+    margin-left: 0;
 }
 
 /*SEARCHBAR*/
@@ -177,6 +164,10 @@ nav {
 .footer {
     background-color: #ffeaae;
     padding: 20px;
+}
+
+#desc {
+    text-align: start;
 }
 
 .footer h5 {

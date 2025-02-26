@@ -28,13 +28,14 @@
 
         <nav class="row">
             <div class="col-6" id="logo">
-                <a class="navbar-brand"><img src="/img/logo_noBg.png" alt="logo" style="height: 100px"></a>
+                <a class="navbar-brand" href="/HTML/index.html"><img src="/img/logo_noBg.png" alt="logo"
+                        style="height: 100px"></a>
             </div>
             <div class="col-6 d-flex align-items-center" id="icons">
                 <ul class="navbar-nav ms-auto d-flex flex-row justify-content-end gap-3">
 
                     <li class="nav-item">
-                        <a href="#!" class="restaurant">
+                        <a href="/HTML/dashboard_ristorante.html" class="restaurant">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
                                 fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
                                 <path
@@ -43,7 +44,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#!" class="profile_login">
+                        <a href="profile.html" class="profile_login">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="40" height="40"
                                 color="#ff746c" fill="currentColor" class="bi bi-person-circle">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -53,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#!" class="logout">
+                        <a href="Login.html" class="logout">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
                                 fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -64,7 +65,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#!" class="cart">
+                        <a href="Carrello.html" class="cart">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
                                 fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path
@@ -83,6 +84,7 @@
     </div> -->
         </nav>
 
+        <!-- Navbar -->
         <div class="sidebar">
             <h4>Nome Ristorante</h4>
             <a href="#">🏠 Dashboard</a>
@@ -129,6 +131,60 @@
                 <div class="spazio">
                     <br><br>
                 </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <label for="inputNome" class="col-sm-3 col-form-label"><b>Nome</b></label>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="email" class="form-control" id="inputNome">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputPiva" class="col-sm-3 col-form-label"><b>P.Iva</b></label>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" minlength="11" maxlength="11" class="form-control" id="inputCognome">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="email" class="form-control" id="inputEmail">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputTelefono" class="col-sm-3 col-form-label"><b>Telefono</b></label>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" id="inputTelefono">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputIndirizzo" class="col-sm-3 col-form-label"><b>Indirizzo</b></label>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" id="inputIndirizzo">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputCitta" class="col-sm-3 col-form-label"><b>Città</b></label>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" id="inputCitta">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputProvincia" class="col-sm-3 col-form-label"><b>Provincia</b></label>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" id="inputProvincia">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="button" class="btn btn-primary px-4" value="Salva">
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
                 <div class="container d-flex" style="flex-direction: column; align-content: center;">
                     <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
 
@@ -211,11 +267,10 @@
             <div class="container2">
                 <div class="row">
                     <!-- Sezione "Chi siamo" -->
-                    <div class="col-md-6">
-                        <h5>Chi siamo</h5>
-                        <p>GestEat ti aiuta a scoprire i migliori ristoranti vicino a te e a gestire i tuoi ordini con
-                            facilità.</p>
-                    </div>
+                     <div class="col-md-6">
+                        <h5><a href="chisiamo.html" class="text-decoration-none">Chi siamo</a></h5>
+                        <h5><a href="FAQ.html"class="text-decoration-none">FAQ</a></h5>
+                     </div>
 
                     <!-- Sezione Contatti -->
                     <div class="col-md-3">

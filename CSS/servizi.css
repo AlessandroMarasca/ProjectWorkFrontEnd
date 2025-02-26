@@ -1,10 +1,90 @@
 body {
     background-color: #ffeaae;
+    margin-left: 1%;
 }
 
 .card-title {
     font-family: 'Modak', serif;
-
-    outline-color: #341539;
     color: #ffff;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #ff746c, 1px 1px 0 #ff746c;
+
+}
+
+nav {
+    background: #ffeaae;
+    /* Sfondo nero con trasparenza */
+    transition: background 0.3s ease-in-out;
+    box-shadow: var(--bs-box-shadow) !important;
+    padding-right: 1.5rem;
+}
+
+.restaurant {
+    display: none;
+}
+
+.bi .bi-bag-heart-fill {
+    display: none;
+}
+
+.title {
+    background-color: rgb(255, 116, 108) !important;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -10%;
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.582);
+    filter: blur(50%);
+    border-radius: 20px 2px 20px;
+}
+
+.carousel-inner {
+    box-shadow: rgba(255, 116, 108, 1) 0px 30px 60px -12px, rgba(255, 116, 108, 0.9) 0px 18px 36px -18px;
+    border-color: #ff736c !important;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.carousel-inner:hover {
+    filter: grayscale(0);
+}
+
+.carousel-caption {
+    background: linear-gradient(to left, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+}
+
+.footer {
+    background-color: #ffeaae;
+    padding: 20px;
+}
+#desc {
+    text-align: start;
+}
+.footer h5 {
+    color: #ff746c;
+    /*titoli*/
+    font-family: Modak, serif;
+}
+
+.footer p,
+.footer a {
+    font-family: "Nunito", serif;
+    color: #341539;
+    /* Colore del testo e dei link */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #57245f;
+    /* Cambio colore al passaggio del mouse */
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover i {
+    color: #57245f;
+    /* Cambia colore al passaggio del mouse */
 }
