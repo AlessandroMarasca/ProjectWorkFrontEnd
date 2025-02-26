@@ -13,8 +13,12 @@ body {
     background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Modak', cursive;
+<<<<<<< HEAD
    height: 100 vh;
   
+=======
+    height: 100%;
+>>>>>>> 467c3044fa6e0862fcb0cf2e6b7a3e0a8d9bf8a9
 }
 
 body::before {
@@ -29,11 +33,15 @@ body::before {
     z-index: -1;
 
 }
+<<<<<<< HEAD
 #page{
     height:100%;
     margin:0;
     padding:0;
 }
+=======
+
+>>>>>>> 467c3044fa6e0862fcb0cf2e6b7a3e0a8d9bf8a9
 .modak-regular {
     font-family: "Modak", serif;
     font-weight: 400;
@@ -47,6 +55,7 @@ body::before {
     font-weight: 200;
     font-style: normal;
 }
+
 nav {
     background: #ffeaae;
     /* Sfondo nero con trasparenza */
@@ -54,6 +63,7 @@ nav {
     box-shadow: var(--bs-box-shadow) !important;
     padding-right: 1.5rem;
 }
+
 .restaurant {
     display: none;
 }
@@ -61,7 +71,12 @@ nav {
 .bi .bi-bag-heart-fill {
     display: none;
 }
+<<<<<<< HEAD
 .login-container{
+=======
+
+.login-container {
+>>>>>>> 467c3044fa6e0862fcb0cf2e6b7a3e0a8d9bf8a9
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -75,7 +90,21 @@ nav {
     text-align: center;
     color: #ffffff;
     width: 350px;
-   
+
+}
+
+#ciao {
+    text-shadow: 1px 4px #000000;
+}
+
+#oppure {
+    text-shadow: 1px 4px #000000;
+}
+
+.btn {
+    font-family: 'Nunito';
+    font-weight: 900;
+    text-shadow: 0px 1px #000000;
 }
 
 .btn-custom {
@@ -84,33 +113,39 @@ nav {
     margin: 10px 0;
     font-size: 18px;
     font-weight: bold;
-    color:#FF746C !important;
+    color: #FF746C !important;
     transition: color 0.3s;
 }
+
 .btn-custom:hover {
     color: #ffde7a;
 }
+
 .btn-warning {
     background-color: #FFEAAE;
     border: none;
     color: #FF746C;
     transition: color 0.3s;
 }
+
 .btn-danger {
     background-color: #FFEAAE;
     border: none;
     color: black;
     transition: color 0.3s;
 }
+
 .btn-danger:hover {
-   background-color: #ffde7a !important;
+    background-color: #ffde7a !important;
 }
+
 .logo {
     position: absolute;
     top: 20px;
     left: 20px;
     width: 100px;
 }
+<<<<<<< HEAD
 #sezione-login {
     
     display: flex ;
@@ -122,6 +157,12 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+=======
+
+#login-section,
+#register-section {
+    display: none;
+>>>>>>> 467c3044fa6e0862fcb0cf2e6b7a3e0a8d9bf8a9
 }
 
 .toggle-password {
@@ -131,10 +172,12 @@ nav {
     font-size: 1.2rem;
     padding: 5px;
 }
-/*FOOTER*/
+
+
 
 .footer {
     background-color: #ffeaae;
+<<<<<<< HEAD
     padding: 20px 0;
     width: 100%;
     box-sizing: border-box;
@@ -146,27 +189,32 @@ nav {
     margin-left: 0;
     margin-right: 0;
     box-sizing: border-box;
+=======
+    padding: 20px;
+
+>>>>>>> 467c3044fa6e0862fcb0cf2e6b7a3e0a8d9bf8a9
 }
+
 #desc {
     text-align: start;
 }
+
 .footer h5 {
     color: #ff746c;
-    /*titoli*/
-    font-family: Modak, serif;
+    font-family: 'Modak', serif;
 }
 
 .footer p,
 .footer a {
-    font-family: "Nunito", serif;
     color: #341539;
-    /* Colore del testo e dei link */
+    font-family: 'Nunito';
+    /* Colore del testo e dei link /
     text-decoration: none;
 }
 
 .footer a:hover {
     color: #57245f;
-    /* Cambio colore al passaggio del mouse */
+    / Cambio colore al passaggio del mouse /
 }
 
 .social-link i {
@@ -176,6 +224,7 @@ nav {
 
 .social-link:hover i {
     color: #57245f;
+<<<<<<< HEAD
     /* Cambia colore al passaggio del mouse */
 }
 /* Media query per schermi più piccoli */
@@ -192,4 +241,7 @@ nav {
     .footer .social-link {
         margin-right: 5px;
     }
+=======
+    / Cambia colore al passaggio del mouse */
+>>>>>>> 467c3044fa6e0862fcb0cf2e6b7a3e0a8d9bf8a9
 }

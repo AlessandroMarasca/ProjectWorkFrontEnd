@@ -53,22 +53,24 @@ nav {
     background: linear-gradient(to left, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
 }
 
-.footer {
+footer {
     background-color: #ffeaae;
     padding: 20px;
+
 }
+
 #desc {
     text-align: start;
 }
+
 .footer h5 {
     color: #ff746c;
-    /*titoli*/
+    /titoli/
     font-family: Modak, serif;
 }
 
 .footer p,
 .footer a {
-    font-family: "Nunito", serif;
     color: #341539;
     /* Colore del testo e dei link */
     text-decoration: none;
@@ -76,7 +78,7 @@ nav {
 
 .footer a:hover {
     color: #57245f;
-    /* Cambio colore al passaggio del mouse */
+    /*Cambio colore al passaggio del mouse */
 }
 
 .social-link i {
