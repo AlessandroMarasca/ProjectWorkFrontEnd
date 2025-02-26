@@ -11,11 +11,19 @@ body {
 }
 
 nav {
-    background: hwb(44 68% 0%);
+    background: #ffeaae;
     /* Sfondo nero con trasparenza */
     transition: background 0.3s ease-in-out;
     box-shadow: var(--bs-box-shadow) !important;
     padding-right: 1.5rem;
+}
+
+.restaurant {
+    display: none;
+}
+
+.bi .bi-bag-heart-fill {
+    display: none;
 }
 
 .title {
