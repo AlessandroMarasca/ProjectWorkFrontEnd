@@ -84,7 +84,9 @@ nav {
     padding: 20px;
 
 }
-
+#desc {
+    text-align: start;
+}
 .footer h5 {
     color: #ff746c;
     /*titoli*/
