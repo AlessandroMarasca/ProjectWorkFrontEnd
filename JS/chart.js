@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // aggiornare grafico
-    function aggiornaGrafico() {
+    /*function aggiornaGrafico() {
         fetch("/api/ordini") // 
             .then(response => response.json())
             .then(data => {
@@ -64,5 +64,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Esegui l'aggiornamento ogni 60 secondi
-    setInterval(aggiornaGrafico, 60000);
+    setInterval(aggiornaGrafico, 60000);*/
 });
