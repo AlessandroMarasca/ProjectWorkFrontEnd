@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const registrati = document.getElementById("register");
     const accedi = document.getElementById("login");
@@ -112,6 +114,7 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
 })
     
 // Funzione di login
+// Funzione di login
 function login(email, password) {
     fetch("http://127.0.0.1:8080/api/login", {
         method: "POST",
@@ -130,20 +133,39 @@ function login(email, password) {
         console.log("Login effettuato:", data);
 
         if (data.token) {
+            // Salva il token
             localStorage.setItem("authToken", data.token);
+
+            // Assicurati di salvare il ruolo nel localStorage, se il backend lo fornisce
+            localStorage.setItem("ruolo", data.ruolo);  // Assicurati che il backend restituisca il ruolo
+
             document.getElementById("logoutButton").style.display = "block"; // Mostra il bottone di logout
             document.querySelector(".loginform").style.display = "none"; // Nascondi il form di login
             alert("Accesso effettuato con successo!");
-            window.location.replace("../HTML/index.html"); // Reindirizza alla home page
+
+            // Reindirizza l'utente alla pagina giusta in base al ruolo
+            redirectUser(data.ruolo);
         }
     })
     .catch(error => {
         console.error("Errore nel login:", error);
-        const loginError = document.getElementById("loginError");  // Assicurati che questo elemento esista
+        const loginError = document.getElementById("loginError");  
         loginError.textContent = error.message;
-        loginError.style.display = "block";
+        loginError.style.display = "block"; // Show the error message on the UI
     });
 }
+
+// Metodo per reindirizzare l'utente in base al ruolo
+function redirectUser(ruolo) {
+    if (ruolo === "RISTORATORE") {
+        // Se il ruolo è "ristoratore", reindirizza alla pagina dashboard_ristoratore
+        window.location.href = "../HTML/dashboard_ristorante.html";
+    } else if (ruolo === "USER") {
+        // Se il ruolo è "user", reindirizza alla pagina utente
+        window.location.href = "../HTML/index.html";
+    }
+}
+
 
 // Gestione invio form login
 document.getElementById("accedi").addEventListener("submit", function (event) {
@@ -153,6 +175,61 @@ document.getElementById("accedi").addEventListener("submit", function (event) {
     login(email, password);
 
 });
+//metodo assegna ruolo
+function assegnaRuolo() {
+    // Otteniamo lo stato della checkbox
+    var checkbox = document.getElementById("attivitaCheckbox");
+    
+    // Verifichiamo se la checkbox è selezionata
+    if (checkbox.checked) {
+      // Se la checkbox è selezionata, il ruolo è "ristoratore" e il token viene settato su ristoratore
+      var ruolo = "RISTORATORE";
+      var token = "ristoratore-token";
+    } else {
+      // Se la checkbox non è selezionata, il ruolo è "user" e il token viene settato su user
+      var ruolo = "USER";
+      var token = "user-token";
+    }
+  
+    // Salviamo ruolo e token in localStorage
+    localStorage.setItem("ruolo", ruolo);
+    localStorage.setItem("token", token);
+    
+    // Conferma dell'assegnazione
+    console.log("Ruolo assegnato: " + ruolo);
+    console.log("Token: " + token);
 
+    window.onload = function() {
+        checkLogin();
+      }
+  }
+  
+  function redirectUser(ruolo) {
+    if (ruolo === "RISTORATORE") {
+        // Se il ruolo è "ristoratore", reindirizza alla pagina dashboard_ristoratore
+        window.location.href = "../HTML/dashboard_ristorante.html";
+    } else if (ruolo === "USER") {
+        // Se il ruolo è "user", reindirizza alla pagina utente
+        window.location.href = "../HTML/index.html";
+    }
+}
+
+  //metodo per indirizzare l'utente in base al ruolo
+  function checkLogin() {
+    // Ottieni il ruolo salvato in localStorage
+    var ruolo = localStorage.getItem("ruolo");
+
+    if (ruolo === "RISTORATORE") {
+        // Se il ruolo è "ristoratore", reindirizza alla pagina dashboard_ristoratore
+        window.location.href = "../HTML/dashboard_ristorante.html";
+    } else if (ruolo === "USER") {
+        // Se il ruolo è "user", reindirizza alla pagina utente
+        window.location.href = "../HTML/index.html";
+    } else {
+        // Se il ruolo non è presente (l'utente non ha mai effettuato login), reindirizza alla pagina di login
+        window.location.href = "login.html";
+    }
+}
+    
 
 
