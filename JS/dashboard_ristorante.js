@@ -119,3 +119,61 @@ function removeMenuItem(categoria, nome, button) {
         .then(() => button.parentElement.remove()) // Rimuove dalla UI
         .catch(error => console.error("Errore nella rimozione del piatto:", error));
 }
+
+
+
+document.getElementById("crea_ristorante").addEventListener("submit", function (e) {
+    e.preventDefault(); // Previene il comportamento predefinito del form
+
+    const fileInput = document.getElementById("fileInput");
+    const file = fileInput.files[0];
+    if (!file) {
+        alert("Seleziona un file!");
+        return;
+    }
+
+    const nomeRistoranteInput = document.getElementById('inputNome').value;
+    const partitaIvaInput = document.getElementById('inputPIva').value;
+    const emailInput = document.getElementById('inputEmail').value;
+    const telefonoInput = document.getElementById('inputTelefono').value;
+    const indirizzoInput = document.getElementById('inputIndirizzo').value;
+    const cittaInput = document.getElementById("inputCitta").value;
+    const provinciaInput = document.getElementById("inputProvincia").value;
+    const categoriaInput = document.getElementById("ristoranteCategory").value;
+    const testoInput = document.getElementById("testo").value;
+    
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("nome", nomeRistoranteInput);
+    formData.append("partitaIva", partitaIvaInput);
+    formData.append("email", emailInput);
+    formData.append("numeroTelefono", telefonoInput);
+    formData.append("indirizzo", indirizzoInput);
+    formData.append("citta", cittaInput);
+    formData.append("provincia", provinciaInput);
+    formData.append("tipo", categoriaInput);
+    formData.append("descrizione", testoInput);
+
+    // Chiamata all'endpoint POST per caricare l'immagine
+    fetch("http://localhost:8080/api/ristorante", {
+        method: "POST",
+        mode: 'cors',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Caricamento fallito");
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Visualizza l'ID dell'immagine appena salvata
+        console.log('Ristorante registrato:', formData);
+        alert("Ristorante registrato! Ora puoi creare un menù.");
+        window.location.replace("../HTML/index.html");
+      })
+      .catch(error => {
+        document.getElementById("crea_ristorante").innerHTML = "Errore: " + error.message;
+      });
+});
