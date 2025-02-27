@@ -214,6 +214,13 @@
                 <div class="container d-flex" style="flex-direction: column; align-content: center;">
                     <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
 
+                    <!--CRUD Menù-->
+                    <div class="d-flex gap-2">
+                        <input type="text" class="menuText" placeholder="Nome Menù">
+                        <button class="btn btn-success" onclick="addMenu()"> Aggiungi Menù</button>
+                        <button class="btn btn-warning text-white" onclick="removeMenu()"> Rimuovi Menù</button>
+                    </div>
+
                     <!-- Selezione Categoria -->
                     <select id="menuCategory" class="form-control mb-2">
                         <option value="antipasti">Antipasti</option>

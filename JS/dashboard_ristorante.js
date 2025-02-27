@@ -20,6 +20,39 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Errore nel caricamento delle categorie:", error));
 }*/
+function addMenu() {
+    let newMenu = document.getElementById("nuova").value.trim();
+    if (newMenu === "") {
+        alert("Inserisci un nome per il menù!");
+        return;
+    }
+
+    fetch("http://localhost:8080/api/menu/" + id + "nuovo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ categoria: newMenu })
+    })
+        .then(response => response.json())
+        .then(() => {
+            caricaMenu(); // Ricarica il select
+            document.getElementById("nuova").value = ""; // Pulisce il campo
+        })
+        .catch(error => console.error("Errore nell'aggiunta del menù:", error));
+}
+
+// ** Fetch per Rimuovere un Menu
+function removeMenu() {
+    let selectedMenu = document.getElementById("menuCategory").value;
+    if (!selectedMenu) {
+        alert("Seleziona un menù da rimuovere!");
+        return;
+    }
+
+    fetch(`http://localhost:8080/api/menu/" + id + "nuovo",${selectedCategory}`, { method: "DELETE" })
+        .then(response => response.json())
+        .then(() => caricaMenu()) // Ricarica il select
+        .catch(error => console.error("Errore nella rimozione della categoria:", error));
+}
 
 // ** Fetch per Aggiungere una Categoria nel Backend **
 function addCategory() {
