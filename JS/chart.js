@@ -1,50 +1,68 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Seleziona il canvas
-    let ctx = document.getElementById("menuChart").getContext("2d");
+    let canvas = document.getElementById("menuChart");
 
-    // Dati dinamici del menu (puoi caricarli da un'API)
-    let menuData = {
-        labels: ["Pizza", "Pasta", "Insalata", "Dolci", "Bevande"],
-        datasets: [{
-            label: "Numero di Ordini",
-            data: [50, 30, 20, 40, 35], // Dati statici per ora, puoi renderli dinamici
-            backgroundColor: [
-                "rgba(255, 99, 132, 0.6)",
-                "rgba(54, 162, 235, 0.6)",
-                "rgba(255, 206, 86, 0.6)",
-                "rgba(75, 192, 192, 0.6)",
-                "rgba(153, 102, 255, 0.6)"
-            ],
-            borderColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)"
-            ],
-            borderWidth: 1
-        }]
-    };
+    if (!canvas) {
+        console.error("Errore: Canvas 'menuChart' non trovato!");
+        return;
+    }
 
-    // Creazione del grafico
+    let ctx = canvas.getContext("2d");
+
+    // Creiamo un grafico vuoto (senza dati iniziali)
     let menuChart = new Chart(ctx, {
         type: "bar",
-        data: menuData,
+        data: {
+            labels: [], // Vuoto all'inizio, verrà riempito con i nomi dei piatti
+            datasets: [{
+                label: "Numero di Ordini",
+                data: [],
+                backgroundColor: [],
+                borderColor: [],
+                borderWidth: 1
+            }]
+        },
         options: {
             responsive: true,
             scales: {
-                y: {
-                    beginAtZero: true
-                }
+                y: { beginAtZero: true }
             }
         }
     });
+
+    // colori casuali
+    function generaColoreCasuale() {
+        let r = Math.floor(Math.random() * 255);
+        let g = Math.floor(Math.random() * 255);
+        let b = Math.floor(Math.random() * 255);
+        return `rgba(${r}, ${g}, ${b}, 0.6)`;
+    }
+
+    // aggiornare grafico
+    function aggiornaGrafico() {
+        fetch("/api/ordini") // 
+            .then(response => response.json())
+            .then(data => {
+                console.log("Dati aggiornati:", data);
+
+                let piatti = Object.keys(data); // piatti
+                let ordini = Object.values(data); // ordinati
+
+                // colori casuali per ogni piatto
+                let coloriSfondo = piatti.map(() => generaColoreCasuale());
+                let coloriBordo = coloriSfondo.map(colore => colore.replace("0.6", "1"));
+
+                // Aggiornare il grafico
+                menuChart.data.labels = piatti;
+                menuChart.data.datasets[0].data = ordini;
+                menuChart.data.datasets[0].backgroundColor = coloriSfondo;
+                menuChart.data.datasets[0].borderColor = coloriBordo;
+
+                menuChart.update(); // Aggiorna il grafico con i nuovi dati
+            })
+            .catch(error => console.error("Errore nel recupero dei dati:", error));
+    }
+
+    // Esegui l'aggiornamento ogni 60 secondi
+    setInterval(aggiornaGrafico, 60000);
 });
-fetch('/api/ordini')
-    .then(response => response.json())
-    .then(data => {
-        menuChart.data.datasets[0].data = data.valori; // Supponiamo che l'API restituisca { valori: [70, 45, 33, 60, 50] }
-        menuChart.update(); // Aggiorna il grafico con i nuovi dati
-    })
-    .catch(error => console.error("Errore nel caricamento dati:", error));
