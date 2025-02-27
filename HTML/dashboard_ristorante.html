@@ -138,6 +138,7 @@
                 </div>
                 <div class="card mb-3">
                     <div class="card-body">
+                    <form id="crea_ristorante">
                         <div class="row mb-3">
                             <label for="inputNome" class="col-sm-3 col-form-label"><b>Nome</b></label>
                             <div class="col-sm-9 text-secondary">
@@ -147,7 +148,7 @@
                         <div class="row mb-3">
                             <label for="inputPiva" class="col-sm-3 col-form-label"><b>P.Iva</b></label>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" minlength="11" maxlength="11" class="form-control" id="inputCognome">
+                                <input type="text" minlength="11" maxlength="11" class="form-control" id="inputPIva">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -189,10 +190,10 @@
                             </select>
                         </div>
                         <div class="row mb-3">
-                            <textarea placeholder="Descrivi la tua attività!"></textarea>
+                            <textarea placeholder="Descrivi la tua attività!" id="testo"></textarea>
                         </div>
                         <div class="row mb-3">
-                            <input type="file" id="ristoranteImage" class="form-control mb-2">
+                            <input type="file" id="ristoranteImage" class="form-control mb-2" id="fileInput">
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-3"></div>
@@ -200,6 +201,7 @@
                                 <input type="button" class="btn btn-primary px-4" value="CREA">
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
 

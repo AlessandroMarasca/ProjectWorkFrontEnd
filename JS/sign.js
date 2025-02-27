@@ -97,6 +97,7 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     // Invia i dati al backend
     fetch('http://127.0.0.1:8080/api/utente/aggiungi', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -140,16 +141,9 @@ function login(email, password) {
         if (data.token) {
             // Salva il token
             localStorage.setItem("authToken", data.token);
-
-            // Assicurati di salvare il ruolo nel localStorage, se il backend lo fornisce
-            localStorage.setItem("ruolo", data.ruolo);  // Assicurati che il backend restituisca il ruolo
-
             document.getElementById("logoutButton").style.display = "block"; // Mostra il bottone di logout
             document.querySelector(".loginform").style.display = "none"; // Nascondi il form di login
             alert("Accesso effettuato con successo!");
-
-            // Reindirizza l'utente alla pagina giusta in base al ruolo
-            redirectUser(data.ruolo);
         }
     })
     .catch(error => {
