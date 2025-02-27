@@ -1,3 +1,4 @@
+/* Impostazioni globali */
 * {
     max-width: 100%;
     box-sizing: border-box;
@@ -9,33 +10,35 @@ body {
     color: #ffeaae;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Wrapper della pagina */
 #page {
-    height: 100vh;
-    width: 100vw;
-    padding: 0;
-    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+/* Stili per i font */
 .modak-regular {
     font-family: "Modak", serif;
     font-weight: 400;
     font-style: normal;
 }
 
-
 .nunito-testo {
     font-family: "Nunito", serif;
-    font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal;
 }
 
+/* Navbar */
 nav {
     background: #ffeaae;
-    /* Sfondo nero con trasparenza */
     transition: background 0.3s ease-in-out;
     box-shadow: var(--bs-box-shadow) !important;
     padding-right: 1.5rem;
@@ -49,41 +52,24 @@ nav {
     display: none;
 }
 
-.row {
-    margin-left: 0;
-}
-
-/* Container principale */
+/* Contenitore principale */
 .container {
-    width: 80%;
+    width: 90%;
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     background-color: #44204c;
-    /* Leggermente più chiaro di #341539 */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.container-fluid {
-    width: 80%;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffeaae;
-    /* Leggermente più chiaro di #341539 */
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Titoli */
+/* Titoli e testo */
 h2 {
     color: #ffeaae;
     text-align: center;
     font-size: 24px;
 }
 
-/* Testo */
 p {
     font-size: 16px;
     text-align: center;
@@ -117,12 +103,14 @@ p {
 .form-container {
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 label {
@@ -131,14 +119,16 @@ label {
     align-self: flex-start;
 }
 
+/* Campi input e textarea */
 input,
 textarea {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ffeaae;
     border-radius: 5px;
+    transition: all 0.3s ease-in-out;
     background-color: #341539;
     color: #ffeaae;
 }
@@ -147,6 +137,7 @@ input:focus,
 textarea:focus {
     outline: none;
     border-color: #ff746c;
+    box-shadow: 0px 0px 8px rgba(255, 116, 108, 0.7);
 }
 
 /* Checkbox privacy */
@@ -181,12 +172,12 @@ button:hover {
     background-color: #d85b55;
 }
 
-/*FOOTER*/
-
+/* FOOTER */
 .footer {
     background-color: #ffeaae;
     padding: 20px;
-
+    text-align: center;
+    margin-top: auto; /* Assicura che il footer rimanga in basso */
 }
 
 #desc {
@@ -195,20 +186,17 @@ button:hover {
 
 .footer h5 {
     color: #ff746c;
-    /*titoli*/
     font-family: Modak, serif;
 }
 
 .footer p,
 .footer a {
     color: #341539;
-    /* Colore del testo e dei link */
     text-decoration: none;
 }
 
 .footer a:hover {
     color: #57245f;
-    /* Cambio colore al passaggio del mouse */
 }
 
 .social-link i {
@@ -218,5 +206,35 @@ button:hover {
 
 .social-link:hover i {
     color: #57245f;
-    /* Cambia colore al passaggio del mouse */
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .footer {
+        padding: 15px;
+        font-size: 14px;
+    }
 }
