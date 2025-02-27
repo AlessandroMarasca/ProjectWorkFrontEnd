@@ -1,6 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     // caricaCategorie(); // Carica le categorie all'avvio
     //caricaMenu(); // Carica i piatti all'avvio
+
+    const lista = document.getElementById('idUtente');
+
+    fetch('http://localhost:8080/api/ristorante')
+        .then(response => response.json())
+        .then(ristorante => {
+            const risto = ristorante.map(r => {
+                return `<option value="${r.id}">${r.nome}</option>`;
+            }).join('');
+            lista.innerHTML = risto;
+
+        })
+        .catch(error => console.error('errore: ', error));
+
 });
 
 // ** Fetch per Caricare le Categorie dal Backend **
@@ -53,6 +67,8 @@ function removeMenu() {
         .then(() => caricaMenu()) // Ricarica il select
         .catch(error => console.error("Errore nella rimozione della categoria:", error));
 }
+
+
 
 // ** Fetch per Aggiungere una Categoria nel Backend **
 function addCategory() {
@@ -238,3 +254,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
