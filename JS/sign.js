@@ -61,6 +61,7 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     const numeroCarta = document.getElementById('numero_carta').value;
     const passwordInput = document.getElementById('reg-password').value;
 
+
     // Ottieni lo stato della checkbox "Hai un'attività"
     const attivitaCheckbox = document.getElementById('attivitaCheckbox'); // Assicurati che l'ID sia corretto
     const attivitaSelezionata = attivitaCheckbox.checked;
@@ -90,6 +91,7 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     // Invia i dati al backend
     fetch('http://127.0.0.1:8080/api/utente/aggiungi', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
         },
