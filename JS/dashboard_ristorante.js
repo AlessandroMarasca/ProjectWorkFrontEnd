@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    caricaCategorie(); // Carica le categorie all'avvio
-    caricaMenu(); // Carica i piatti all'avvio
+   // caricaCategorie(); // Carica le categorie all'avvio
+    //caricaMenu(); // Carica i piatti all'avvio
 });
 
 // ** Fetch per Caricare le Categorie dal Backend **
-function caricaCategorie() {
+/*function caricaCategorie() {
     fetch("Http:localhost:8080/api/categorie")
         .then(response => response.json())
         .then(data => {
@@ -19,7 +19,7 @@ function caricaCategorie() {
             });
         })
         .catch(error => console.error("Errore nel caricamento delle categorie:", error));
-}
+}*/
 
 // ** Fetch per Aggiungere una Categoria nel Backend **
 function addCategory() {
@@ -139,9 +139,8 @@ document.getElementById("crea_ristorante").addEventListener("submit", function (
     const indirizzoInput = document.getElementById('inputIndirizzo').value;
     const cittaInput = document.getElementById("inputCitta").value;
     const provinciaInput = document.getElementById("inputProvincia").value;
-    const categoriaInput = document.getElementById("ristoranteCategory").value;
+    let categoriaInput = document.getElementById("ristoranteCategory").value;
     const testoInput = document.getElementById("testo").value;
-    
 
     const formData = new FormData();
     formData.append("file", file);
@@ -158,6 +157,9 @@ document.getElementById("crea_ristorante").addEventListener("submit", function (
     // Chiamata all'endpoint POST per caricare l'immagine
     fetch("http://localhost:8080/api/ristorante", {
         method: "POST",
+        headers : {
+            ...getAuthHeaders()
+        },
         mode: 'cors',
         body: formData
       })
@@ -177,3 +179,9 @@ document.getElementById("crea_ristorante").addEventListener("submit", function (
         document.getElementById("crea_ristorante").innerHTML = "Errore: " + error.message;
       });
 });
+
+
+function getAuthHeaders() {
+    const token = localStorage.getItem("authToken");
+    return token ? { "Authorization": "Bearer " + token } : {};
+}
