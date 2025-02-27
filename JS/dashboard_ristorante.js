@@ -1,173 +1,121 @@
-// Funzione per aggiungere una nuova categoria (es. "Zuppe", "Pizza")
+document.addEventListener("DOMContentLoaded", function () {
+    caricaCategorie(); // Carica le categorie all'avvio
+    caricaMenu(); // Carica i piatti all'avvio
+});
+
+// ** Fetch per Caricare le Categorie dal Backend **
+function caricaCategorie() {
+    fetch("Http:localhost:8080/api/categorie")
+        .then(response => response.json())
+        .then(data => {
+            let menuCategory = document.getElementById("menuCategory");
+            menuCategory.innerHTML = ""; // Svuota il select
+
+            data.forEach(categoria => {
+                let option = document.createElement("option");
+                option.value = categoria;
+                option.textContent = categoria;
+                menuCategory.appendChild(option);
+            });
+        })
+        .catch(error => console.error("Errore nel caricamento delle categorie:", error));
+}
+
+// ** Fetch per Aggiungere una Categoria nel Backend **
 function addCategory() {
     let newCategory = document.getElementById("nuova").value.trim();
-    let menuCategory = document.getElementById("menuCategory");
-    let menuContainer = document.getElementById("menuContainer");
-
     if (newCategory === "") {
         alert("Inserisci un nome per la nuova categoria!");
         return;
     }
 
-    // Verifica se la categoria esiste già
-    for (let i = 0; i < menuCategory.options.length; i++) {
-        if (menuCategory.options[i].value.toLowerCase() === newCategory.toLowerCase()) {
-            alert("Questa categoria esiste già!");
-            return;
-        }
-    }
-
-    // Aggiunge la categoria nel select
-    let option = document.createElement("option");
-    option.value = newCategory.toLowerCase();
-    option.textContent = newCategory;
-    menuCategory.appendChild(option);
-
-    // Crea la sezione della categoria nel menuContainer
-    let categorySection = document.createElement("div");
-    categorySection.id = newCategory.toLowerCase();
-    categorySection.innerHTML = `
-        <h5>${newCategory}</h5>
-        <ul class="list-group"></ul>
-    `;
-    menuContainer.appendChild(categorySection);
-
-    // Pulisce il campo input
-    document.getElementById("nuova").value = "";
+    fetch("/api/categorie", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ categoria: newCategory })
+    })
+        .then(response => response.json())
+        .then(() => {
+            caricaCategorie(); // Ricarica il select
+            document.getElementById("nuova").value = ""; // Pulisce il campo
+        })
+        .catch(error => console.error("Errore nell'aggiunta della categoria:", error));
 }
 
-
+// ** Fetch per Rimuovere una Categoria nel Backend **
 function removeCategory() {
-    let menuCategory = document.getElementById("menuCategory");
-    let selectedCategory = menuCategory.value;
-
+    let selectedCategory = document.getElementById("menuCategory").value;
     if (!selectedCategory) {
         alert("Seleziona una categoria da rimuovere!");
         return;
     }
 
-    // Rimuove la categoria dal select
-    for (let i = 0; i < menuCategory.options.length; i++) {
-        if (menuCategory.options[i].value === selectedCategory) {
-            menuCategory.remove(i);
-            break;
-        }
-    }
-
-    // Rimuove la categoria dal menuContainer
-    let categorySection = document.getElementById(selectedCategory);
-    if (categorySection) {
-        categorySection.remove();
-    }
+    fetch(`/api/categorie/${selectedCategory}`, { method: "DELETE" })
+        .then(response => response.json())
+        .then(() => caricaCategorie()) // Ricarica il select
+        .catch(error => console.error("Errore nella rimozione della categoria:", error));
 }
 
-
-// Funzione per rimuovere tutte le categorie
-function clearCategories() {
-    let menuCategory = document.getElementById("menuCategory");
-    let menuContainer = document.getElementById("menuContainer");
-
-    // Rimuove tutte le opzioni dal select
-    while (menuCategory.options.length > 0) {
-        menuCategory.remove(0);
-    }
-
-    // Svuota il contenitore del menu
-    menuContainer.innerHTML = "";
-}
-
-
-
-// Funzione per aggiungere un piatto
+// ** Fetch per Aggiungere un Piatto nel Backend **
 function addMenuItem() {
     let category = document.getElementById("menuCategory").value;
     let name = document.getElementById("menuItem").value.trim();
     let price = document.getElementById("menuPrice").value.trim();
     let description = document.getElementById("menuDescrizione").value.trim();
 
-    if (name === "" || price === "" || isNaN(price)) {
+    if (!category || name === "" || price === "" || isNaN(price)) {
         alert("Inserisci un nome valido e un prezzo numerico!");
         return;
     }
 
-    let categoryList = document.getElementById(category);
-    if (!categoryList) {
-        alert("Seleziona una categoria valida!");
-        return;
-    }
-
-    // Creare un nuovo elemento lista per il piatto
-    let listItem = document.createElement("li");
-    listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-
-    listItem.innerHTML = `
-        <span>
-            <strong>${name}</strong> - €${parseFloat(price).toFixed(2)}
-            <br><small>${description}</small>
-        </span>
-        <button class="btn btn-danger btn-sm" onclick="removeMenuItem(this)">❌</button>
-    `;
-
-    categoryList.appendChild(listItem);
-
-    // Pulisce i campi input
-    document.getElementById("menuItem").value = "";
-    document.getElementById("menuPrice").value = "";
-    document.getElementById("menuDescrizione").value = "";
+    fetch("/api/menu", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ categoria: category, nome: name, prezzo: parseFloat(price), descrizione: description })
+    })
+        .then(response => response.json())
+        .then(() => {
+            caricaMenu(); // Ricarica il menu
+            document.getElementById("menuItem").value = "";
+            document.getElementById("menuPrice").value = "";
+            document.getElementById("menuDescrizione").value = "";
+        })
+        .catch(error => console.error("Errore nell'aggiunta del piatto:", error));
 }
 
-// Funzione per rimuovere un piatto
-function removeMenuItem(button) {
-    button.parentElement.remove();
-}
-let currentDate = new Date();
+// ** Fetch per Caricare il Menu dal Backend **
+function caricaMenu() {
+    fetch("/api/menu")
+        .then(response => response.json())
+        .then(data => {
+            let menuContainer = document.getElementById("menuContainer");
+            menuContainer.innerHTML = ""; // Svuota il contenitore
 
-function renderCalendar() {
-    const calendarDays = document.getElementById("calendar-days");
-    const calendarTitle = document.getElementById("calendar-title");
-    calendarDays.innerHTML = "";
+            Object.keys(data).forEach(categoria => {
+                let categorySection = document.createElement("div");
+                categorySection.id = categoria;
+                categorySection.innerHTML = `<h5>${categoria}</h5><ul class="list-group"></ul>`;
 
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
+                data[categoria].forEach(piatto => {
+                    let listItem = document.createElement("li");
+                    listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                    listItem.innerHTML = `
+                        <span><strong>${piatto.nome}</strong> - €${piatto.prezzo.toFixed(2)}<br><small>${piatto.descrizione}</small></span>
+                        <button class="btn btn-danger btn-sm" onclick="removeMenuItem('${categoria}', '${piatto.nome}', this)">❌</button>
+                    `;
+                    categorySection.querySelector("ul").appendChild(listItem);
+                });
 
-    const firstDay = new Date(year, month, 1).getDay(); // Giorno della settimana del primo giorno
-    const lastDate = new Date(year, month + 1, 0).getDate(); // Ultimo giorno del mese
-
-    calendarTitle.textContent = currentDate.toLocaleDateString("it-IT", { month: "long", year: "numeric" });
-
-    // Riempie i giorni vuoti prima del 1° giorno del mese
-    for (let i = 0; i < firstDay; i++) {
-        let emptyDiv = document.createElement("div");
-        calendarDays.appendChild(emptyDiv);
-    }
-
-    // Riempie i giorni del mese
-    for (let day = 1; day <= lastDate; day++) {
-        let dayDiv = document.createElement("div");
-        dayDiv.textContent = day;
-        dayDiv.classList.add("day");
-
-        if (
-            day === new Date().getDate() &&
-            month === new Date().getMonth() &&
-            year === new Date().getFullYear()
-        ) {
-            dayDiv.classList.add("today");
-        }
-
-        dayDiv.onclick = () => alert(`Hai cliccato il ${day}/${month + 1}/${year}`);
-        calendarDays.appendChild(dayDiv);
-    }
+                menuContainer.appendChild(categorySection);
+            });
+        })
+        .catch(error => console.error("Errore nel caricamento del menu:", error));
 }
 
-function prevMonth() {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar();
+// ** Fetch per Rimuovere un Piatto nel Backend **
+function removeMenuItem(categoria, nome, button) {
+    fetch(`/api/menu/${categoria}/${nome}`, { method: "DELETE" })
+        .then(response => response.json())
+        .then(() => button.parentElement.remove()) // Rimuove dalla UI
+        .catch(error => console.error("Errore nella rimozione del piatto:", error));
 }
-
-function nextMonth() {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-}
-
-renderCalendar();
