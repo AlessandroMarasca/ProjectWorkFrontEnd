@@ -138,75 +138,88 @@
                 </div>
                 <div class="card mb-3">
                     <div class="card-body">
-                    <form id="crea_ristorante">
-                        <div class="row mb-3">
-                            <label for="inputNome" class="col-sm-3 col-form-label"><b>Nome</b></label>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" id="inputNome">
+                        <form id="crea_ristorante">
+                            <div class="row mb-3">
+                                <label for="inputNome" class="col-sm-3 col-form-label"><b>Nome</b></label>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" id="inputNome">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputPiva" class="col-sm-3 col-form-label"><b>P.Iva</b></label>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" minlength="11" maxlength="11" class="form-control" id="inputPIva">
+                            <div class="row mb-3">
+                                <label for="inputPiva" class="col-sm-3 col-form-label"><b>P.Iva</b></label>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" minlength="11" maxlength="11" class="form-control"
+                                        id="inputPIva">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="email" class="form-control" id="inputEmail">
+                            <div class="row mb-3">
+                                <label for="inputEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="email" class="form-control" id="inputEmail">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputTelefono" class="col-sm-3 col-form-label"><b>Telefono</b></label>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" id="inputTelefono">
+                            <div class="row mb-3">
+                                <label for="inputTelefono" class="col-sm-3 col-form-label"><b>Telefono</b></label>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" id="inputTelefono">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputIndirizzo" class="col-sm-3 col-form-label"><b>Indirizzo</b></label>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" id="inputIndirizzo">
+                            <div class="row mb-3">
+                                <label for="inputIndirizzo" class="col-sm-3 col-form-label"><b>Indirizzo</b></label>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" id="inputIndirizzo">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="inputCitta" class="col-sm-3 col-form-label"><b>Città</b></label>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" id="inputCitta">
+                            <div class="row mb-3">
+                                <label for="inputCitta" class="col-sm-3 col-form-label"><b>Città</b></label>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" id="inputCitta">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputProvincia" class="col-sm-3 col-form-label"><b>Provincia</b></label>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" id="inputProvincia">
+                            <div class="row mb-3">
+                                <label for="inputProvincia" class="col-sm-3 col-form-label"><b>Provincia</b></label>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" id="inputProvincia">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <select id="ristoranteCategory" class="form-control mb-2" placeholder="Seleziona categoria">
-                                <option value="RISTORANTE_PIZZERIA" selected>Ristorante/Pizzeria</option>
-                                <option value="TRATTORIA">Trattoria</option>
-                                <option value="STELLATO">Stellato</option>
-                            </select>
-                        </div>
-                        <div class="row mb-3">
-                            <textarea placeholder="Descrivi la tua attività!" id="testo"></textarea>
-                        </div>
-                        <div class="row mb-3">
-                            <input type="file" class="form-control mb-2" id="fileInput">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-9 text-secondary d-flex" style="justify-content: end;">
-                                <input type="submit" class="btn btn-primary px-4" value="CREA">
+                            <div class="row mb-3">
+                                <select id="ristoranteCategory" class="form-control mb-2"
+                                    placeholder="Seleziona categoria">
+                                    <option value="RISTORANTE_PIZZERIA" selected>Ristorante/Pizzeria</option>
+                                    <option value="TRATTORIA">Trattoria</option>
+                                    <option value="STELLATO">Stellato</option>
+                                </select>
                             </div>
-                        </div>
-                    </form>
+                            <div class="row mb-3">
+                                <textarea placeholder="Descrivi la tua attività!" id="testo"></textarea>
+                            </div>
+                            <div class="row mb-3">
+                                <input type="file" class="form-control mb-2" id="fileInput">
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9 text-secondary d-flex" style="justify-content: end;">
+                                    <input type="submit" class="btn btn-primary px-4" value="CREA">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+                <select id="idUtente" class="form-control mb-2">
+                    <option value="Id-Utente">Id Utente</option>
 
+                </select>
+                <br><br><br><br><br><br><br><br><br><br>
                 <div class="container d-flex" style="flex-direction: column; align-content: center;">
                     <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
+
+                    <!--CRUD Menù-->
+                    <div class="d-flex gap-2">
+                        <input type="text" class="menuText" placeholder="Nome Menù">
+                        <button class="btn btn-success" onclick="addMenu()"> Aggiungi Menù</button>
+                        <button class="btn btn-warning text-white" onclick="removeMenu()"> Rimuovi Menù</button>
+                    </div>
 
                     <!-- Selezione Categoria -->
                     <select id="menuCategory" class="form-control mb-2">
@@ -316,8 +329,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="../JS/dashboard_ristorante.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script src="../JS/chart.js"></script>
+    <script src="../" <script src="../JS/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

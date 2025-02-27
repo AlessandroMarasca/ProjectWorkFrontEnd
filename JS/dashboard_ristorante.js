@@ -1,6 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-   // caricaCategorie(); // Carica le categorie all'avvio
+    // caricaCategorie(); // Carica le categorie all'avvio
     //caricaMenu(); // Carica i piatti all'avvio
+
+    const lista = document.getElementById('idUtente');
+
+    fetch('http://localhost:8080/api/ristorante')
+        .then(response => response.json())
+        .then(ristorante => {
+            const risto = ristorante.map(r => {
+                return `<option value="${r.id}">${r.nome}</option>`;
+            }).join('');
+            lista.innerHTML = risto;
+
+        })
+        .catch(error => console.error('errore: ', error));
+
 });
 
 // ** Fetch per Caricare le Categorie dal Backend **
@@ -20,6 +34,41 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Errore nel caricamento delle categorie:", error));
 }*/
+function addMenu() {
+    let newMenu = document.getElementById("nuova").value.trim();
+    if (newMenu === "") {
+        alert("Inserisci un nome per il menù!");
+        return;
+    }
+
+    fetch("http://localhost:8080/api/menu/" + id + "nuovo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ categoria: newMenu })
+    })
+        .then(response => response.json())
+        .then(() => {
+            caricaMenu(); // Ricarica il select
+            document.getElementById("nuova").value = ""; // Pulisce il campo
+        })
+        .catch(error => console.error("Errore nell'aggiunta del menù:", error));
+}
+
+// ** Fetch per Rimuovere un Menu
+function removeMenu() {
+    let selectedMenu = document.getElementById("menuCategory").value;
+    if (!selectedMenu) {
+        alert("Seleziona un menù da rimuovere!");
+        return;
+    }
+
+    fetch(`http://localhost:8080/api/menu/" + id + "nuovo",${selectedCategory}`, { method: "DELETE" })
+        .then(response => response.json())
+        .then(() => caricaMenu()) // Ricarica il select
+        .catch(error => console.error("Errore nella rimozione della categoria:", error));
+}
+
+
 
 // ** Fetch per Aggiungere una Categoria nel Backend **
 function addCategory() {
@@ -157,27 +206,27 @@ document.getElementById("crea_ristorante").addEventListener("submit", function (
     // Chiamata all'endpoint POST per caricare l'immagine
     fetch("http://localhost:8080/api/ristorante", {
         method: "POST",
-        headers : {
+        headers: {
             ...getAuthHeaders()
         },
         mode: 'cors',
         body: formData
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Caricamento fallito");
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Visualizza l'ID dell'immagine appena salvata
-        console.log('Ristorante registrato:', formData);
-        alert("Ristorante registrato! Ora puoi creare un menù.");
-        window.location.replace("../HTML/index.html");
-      })
-      .catch(error => {
-        document.getElementById("crea_ristorante").innerHTML = "Errore: " + error.message;
-      });
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Caricamento fallito");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Visualizza l'ID dell'immagine appena salvata
+            console.log('Ristorante registrato:', formData);
+            alert("Ristorante registrato! Ora puoi creare un menù.");
+            window.location.replace("../HTML/index.html");
+        })
+        .catch(error => {
+            document.getElementById("crea_ristorante").innerHTML = "Errore: " + error.message;
+        });
 });
 
 
@@ -185,3 +234,24 @@ function getAuthHeaders() {
     const token = localStorage.getItem("authToken");
     return token ? { "Authorization": "Bearer " + token } : {};
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuLink = document.querySelector("a[href='#gestioneMenu']");
+    const dashboardTitle = document.querySelector(".dashboard");
+    const gestioneMenuSection = document.getElementById("gestioneMenu");
+
+    if (menuLink && dashboardTitle && gestioneMenuSection) {
+        menuLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            gestioneMenuSection.scrollIntoView({ behavior: "smooth" }); //
+        });
+    }
+    const dashboardLink = document.querySelector("a[href='#']");
+    if (dashboardLink && dashboardTitle) {
+        dashboardLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            dashboardTitle.scrollIntoView({ behavior: "smooth" });
+        });
+    }
+});
+
