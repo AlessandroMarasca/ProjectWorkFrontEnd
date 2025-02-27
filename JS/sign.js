@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.querySelector(".login-section");
     const registrazioneForm = document.querySelector(".register-section");
     const inizioForm = document.querySelector(".iniziale");
-    
+
 
     // Nascondi il form di registrazione e login all'inizio
     registrazioneForm.classList.remove("show");
@@ -63,14 +63,14 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     const numeroCarta = document.getElementById('numero_carta').value;
     const passwordInput = document.getElementById('reg-password').value;
     let ruoloInput = document.getElementById("attivitaCheckbox").value;
-    
+
     if (ruoloInput === 'check') {
         // Se la checkbox è selezionata, il ruolo è "ristoratore" e il token viene settato su ristoratore
-        ruoloInput = 0;
-      } else {
+        ruoloInput = "RISTORATORE";
+    } else {
         // Se la checkbox non è selezionata, il ruolo è "user" e il token viene settato su user
-        ruoloInput = 1;
-      }
+        ruoloInput = "USER";
+    }
     // Controlla se il numero della carta è valido
     if (numeroCarta === "") {
         alert("Il numero della carta è obbligatorio.");
@@ -103,22 +103,22 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
         },
         body: JSON.stringify(nuovoUtente)  // Invia i dati come JSON
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Errore durante la registrazione');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Utente registrato:', data);
-        alert("Registrazione completata! Ora puoi accedere.");
-        window.location.replace("../HTML/index.html");
-    })
-    .catch(error => {
-        console.error('Errore:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore durante la registrazione');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Utente registrato:', data);
+            alert("Registrazione completata! Ora puoi accedere.");
+            window.location.replace("../HTML/index.html");
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+        });
 })
-    
+
 // Funzione di login
 // Funzione di login
 function login(email, password) {
@@ -129,29 +129,29 @@ function login(email, password) {
         },
         body: JSON.stringify({ email: email, password: password })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Login fallito! Controlla le credenziali.");
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("Login effettuato:", data);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Login fallito! Controlla le credenziali.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Login effettuato:", data);
 
-        if (data.token) {
-            // Salva il token
-            localStorage.setItem("authToken", data.token);
-            document.getElementById("logoutButton").style.display = "block"; // Mostra il bottone di logout
-            document.querySelector(".loginform").style.display = "none"; // Nascondi il form di login
-            alert("Accesso effettuato con successo!");
-        }
-    })
-    .catch(error => {
-        console.error("Errore nel login:", error);
-        const loginError = document.getElementById("loginError");  
-        loginError.textContent = error.message;
-        loginError.style.display = "block"; // Show the error message on the UI
-    });
+            if (data.token) {
+                // Salva il token
+                localStorage.setItem("authToken", data.token);
+                document.getElementById("logoutButton").style.display = "block"; // Mostra il bottone di logout
+                document.querySelector(".loginform").style.display = "none"; // Nascondi il form di login
+                alert("Accesso effettuato con successo!");
+            }
+        })
+        .catch(error => {
+            console.error("Errore nel login:", error);
+            const loginError = document.getElementById("loginError");
+            loginError.textContent = error.message;
+            loginError.style.display = "block"; // Show the error message on the UI
+        });
 }
 
 // Metodo per reindirizzare l'utente in base al ruolo
@@ -176,8 +176,8 @@ document.getElementById("accedi").addEventListener("submit", function (event) {
 
 });
 
-  //metodo per indirizzare l'utente in base al ruolo
-  function checkLogin() {
+//metodo per indirizzare l'utente in base al ruolo
+function checkLogin() {
     // Ottieni il ruolo salvato in localStorage
     var ruolo = localStorage.getItem("ruolo");
 
@@ -192,6 +192,6 @@ document.getElementById("accedi").addEventListener("submit", function (event) {
         window.location.href = "login.html";
     }
 }
-    
+
 
 
