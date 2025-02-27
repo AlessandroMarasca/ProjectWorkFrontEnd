@@ -137,7 +137,6 @@ function login(email, password) {
     })
     .then(data => {
         console.log("Login effettuato:", data);
-
         if (data.token) {
             // Salva il token
             localStorage.setItem("authToken", data.token);
