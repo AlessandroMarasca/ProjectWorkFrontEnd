@@ -62,11 +62,15 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     const emailInput = document.getElementById('email').value;
     const numeroCarta = document.getElementById('numero_carta').value;
     const passwordInput = document.getElementById('reg-password').value;
-
-    // Ottieni lo stato della checkbox "Hai un'attività"
-    const attivitaCheckbox = document.getElementById('attivitaCheckbox'); // Assicurati che l'ID sia corretto
-    const attivitaSelezionata = attivitaCheckbox.checked;
-
+    let ruoloInput = document.getElementById("attivitaCheckbox").value;
+    
+    if (ruoloInput === 'check') {
+        // Se la checkbox è selezionata, il ruolo è "ristoratore" e il token viene settato su ristoratore
+        ruoloInput = 0;
+      } else {
+        // Se la checkbox non è selezionata, il ruolo è "user" e il token viene settato su user
+        ruoloInput = 1;
+      }
     // Controlla se il numero della carta è valido
     if (numeroCarta === "") {
         alert("Il numero della carta è obbligatorio.");
@@ -84,7 +88,8 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
         cognome: cognomeInput,
         email: emailInput,
         numeroCarta: numeroCarta,  // Assicurati che questo campo esista
-        password: passwordInput
+        password: passwordInput,
+        ruolo: ruoloInput
     };
 
     console.log("Nuovo utente:", nuovoUtente);
@@ -175,44 +180,6 @@ document.getElementById("accedi").addEventListener("submit", function (event) {
     login(email, password);
 
 });
-//metodo assegna ruolo
-function assegnaRuolo() {
-    // Otteniamo lo stato della checkbox
-    var checkbox = document.getElementById("attivitaCheckbox");
-    
-    // Verifichiamo se la checkbox è selezionata
-    if (checkbox.checked) {
-      // Se la checkbox è selezionata, il ruolo è "ristoratore" e il token viene settato su ristoratore
-      var ruolo = "RISTORATORE";
-      var token = "ristoratore-token";
-    } else {
-      // Se la checkbox non è selezionata, il ruolo è "user" e il token viene settato su user
-      var ruolo = "USER";
-      var token = "user-token";
-    }
-  
-    // Salviamo ruolo e token in localStorage
-    localStorage.setItem("ruolo", ruolo);
-    localStorage.setItem("token", token);
-    
-    // Conferma dell'assegnazione
-    console.log("Ruolo assegnato: " + ruolo);
-    console.log("Token: " + token);
-
-    window.onload = function() {
-        checkLogin();
-      }
-  }
-  
-  function redirectUser(ruolo) {
-    if (ruolo === "RISTORATORE") {
-        // Se il ruolo è "ristoratore", reindirizza alla pagina dashboard_ristoratore
-        window.location.href = "../HTML/dashboard_ristorante.html";
-    } else if (ruolo === "USER") {
-        // Se il ruolo è "user", reindirizza alla pagina utente
-        window.location.href = "../HTML/index.html";
-    }
-}
 
   //metodo per indirizzare l'utente in base al ruolo
   function checkLogin() {
