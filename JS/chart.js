@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Seleziona il canvas
+
     let ctx = document.getElementById("menuChart").getContext("2d");
 
     // Dati dinamici del menu (puoi caricarli da un'API)
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         labels: ["Pizza", "Pasta", "Insalata", "Dolci", "Bevande"],
         datasets: [{
             label: "Numero di Ordini",
-            data: [50, 30, 20, 40, 35], // Dati statici per ora, puoi renderli dinamici
+            data: [50, 30, 20, 40, 35],
             backgroundColor: [
                 "rgba(255, 99, 132, 0.6)",
                 "rgba(54, 162, 235, 0.6)",
