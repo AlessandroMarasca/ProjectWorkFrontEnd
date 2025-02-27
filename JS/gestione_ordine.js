@@ -65,3 +65,11 @@ function deleteOrder(id) {
     localStorage.setItem("orders", JSON.stringify(orders));
     loadOrders();
 }
+// Funzione per annullare un ordine
+function cancelOrder(id) {
+    orders = orders.map(order =>
+        order.id === id ? { ...order, status: "Annullato"} : order
+    );
+    localStorage.setItem("orders", JSON.stringify(orders));
+    loadOrders();      
+}
