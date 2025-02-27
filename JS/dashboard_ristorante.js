@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-   // caricaCategorie(); // Carica le categorie all'avvio
+    // caricaCategorie(); // Carica le categorie all'avvio
     //caricaMenu(); // Carica i piatti all'avvio
 });
 
@@ -157,27 +157,27 @@ document.getElementById("crea_ristorante").addEventListener("submit", function (
     // Chiamata all'endpoint POST per caricare l'immagine
     fetch("http://localhost:8080/api/ristorante", {
         method: "POST",
-        headers : {
+        headers: {
             ...getAuthHeaders()
         },
         mode: 'cors',
         body: formData
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Caricamento fallito");
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Visualizza l'ID dell'immagine appena salvata
-        console.log('Ristorante registrato:', formData);
-        alert("Ristorante registrato! Ora puoi creare un menù.");
-        window.location.replace("../HTML/index.html");
-      })
-      .catch(error => {
-        document.getElementById("crea_ristorante").innerHTML = "Errore: " + error.message;
-      });
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Caricamento fallito");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Visualizza l'ID dell'immagine appena salvata
+            console.log('Ristorante registrato:', formData);
+            alert("Ristorante registrato! Ora puoi creare un menù.");
+            window.location.replace("../HTML/index.html");
+        })
+        .catch(error => {
+            document.getElementById("crea_ristorante").innerHTML = "Errore: " + error.message;
+        });
 });
 
 
@@ -185,3 +185,23 @@ function getAuthHeaders() {
     const token = localStorage.getItem("authToken");
     return token ? { "Authorization": "Bearer " + token } : {};
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuLink = document.querySelector("a[href='#gestioneMenu']");
+    const dashboardTitle = document.querySelector(".dashboard");
+    const gestioneMenuSection = document.getElementById("gestioneMenu");
+
+    if (menuLink && dashboardTitle && gestioneMenuSection) {
+        menuLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            gestioneMenuSection.scrollIntoView({ behavior: "smooth" }); //
+        });
+    }
+    const dashboardLink = document.querySelector("a[href='#']");
+    if (dashboardLink && dashboardTitle) {
+        dashboardLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            dashboardTitle.scrollIntoView({ behavior: "smooth" });
+        });
+    }
+});
