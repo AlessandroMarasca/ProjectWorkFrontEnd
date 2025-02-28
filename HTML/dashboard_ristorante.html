@@ -46,8 +46,7 @@
                     <li class="nav-item">
                         <a href="profile.html" class="profile_login">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="40" height="40"
-                                color="#ff746c" fill="currentColor" class="bi bi-person-circle"
-                                >
+                                color="#ff746c" fill="currentColor" class="bi bi-person-circle">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                 <path fill-rule="evenodd"
                                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
@@ -57,8 +56,7 @@
                     <li class="nav-item">
                         <a href="Login.html" class="logout">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
-                                fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16"
-                                >
+                                fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
                                 <path fill-rule="evenodd"
@@ -69,8 +67,7 @@
                     <li class="nav-item">
                         <a href="Carrello.html" class="cart">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#ff746c"
-                                fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16"
-                                >
+                                fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
                             </svg>
@@ -209,14 +206,15 @@
 
                     <!--CRUD Menù-->
                     <form id="crea_menu" class="text-center">
-                        <select id="listaRistoranti" class="form-control mb-2" style="margin-top: 5%;" placeholder="seleziona ristorante">
-                            
+                        <select id="listaRistoranti" class="form-control mb-2" style="margin-top: 5%;"
+                            placeholder="seleziona ristorante">
+
                         </select>
                         <div class="row mt-3 justify-content-center">
                             <div class="col-md-4">
                                 <label for="nomeMenu"><b>Scegli Menù</b></label>
                                 <select id="nomeMenu" class="form-control mb-2" placeholder="seleziona menù">
-                                    
+
                                 </select>
                             </div>
                             <div class="col-md-4">
@@ -229,6 +227,8 @@
                                 </button>
                             </div>
                         </div>
+                    </form>
+                    <form id="crea_categoria">
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label for="inseriscicategoria"><b>Categoria</b></label>
@@ -241,6 +241,7 @@
                                     <option value="bevande">Bevande</option>
                                 </select>
                             </div>
+
                             <div class="col-md-6">
                                 <label for="sceglicategoria"><b>Nuova Categoria</b></label>
                                 <input type="text" id="nuova" class="form-control mb-2" placeholder="Nuova categoria">
@@ -248,17 +249,18 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12 d-flex gap-2">
-                                <button id="aggiungi" class="btn text-black" onclick="addCategory()"><i
-                                        class="fa-solid fa-plus" style="transform: rotate(10deg);"></i> Aggiungi
+                                <button type="submit" id="aggiungi" class="btn text-black"><i class="fa-solid fa-plus"
+                                        style="transform: rotate(10deg);"></i> Aggiungi
                                     Categoria</button>
-                                <button id="rimuovi" class="btn text-black" onclick="removeCategory()"><i
-                                        class="fa-solid fa-minus" style="transform: rotate(20deg);"></i> Rimuovi
+                                <button type="submit" id="rimuovi" class="btn text-black"><i class="fa-solid fa-minus"
+                                        style="transform: rotate(20deg);"></i> Rimuovi
                                     Categoria</button>
-                                <button id="rimuovi-tutte" class="btn" onclick="clearCategories()"><i
-                                        class="fa-solid fa-minus" style="transform: rotate(-20deg);"></i> Rimuovi
+                                <button type="submit" id="rimuovi-tutte" class="btn"><i class="fa-solid fa-minus"
+                                        style="transform: rotate(-20deg);"></i> Rimuovi
                                     Tutte le Categorie</button>
                             </div>
                         </div>
+                    </form>
                         <div class="row mt-3 justify-content-center">
                             <div class="col-md-4">
                                 <label for="listaPiatti"><b>Lista Piatti</b></label>
@@ -266,14 +268,14 @@
                                     <option value="lista"></option>
                                 </select>
                             </div>
-                            <div class="col-md-4" <label for="nomePiatto"><b>Nome Piatto</b></label>
-                                <input type="text" id="menuItem" class="form-control mb-2"
-                                    placeholder="Nome del piatto">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="prezzoPiatto"><b>Prezzo</b></label>
-                                <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
-                            </div>
+                    <form id="crea_piatti">
+                        <div class="col-md-4"> <label for="nomePiatto"><b>Nome Piatto</b></label>
+                            <input type="text" id="menuItem" class="form-control mb-2" placeholder="Nome del piatto">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="prezzoPiatto"><b>Prezzo</b></label>
+                            <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
+                        </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
@@ -287,11 +289,11 @@
                             </div>
                         </div>
                         <div class="col-md-12 d-flex justify-content-center align-items-center">
-                            <button class="aggiungi-fine btn text-black" onclick="addMenuItem()"><i
-                                    class="fa-solid fa-plus" style="transform: rotate(10deg);"></i>Aggiungi</button>
+                            <button type="submit" class="aggiungi-fine btn text-black"><i class="fa-solid fa-plus"
+                                    style="transform: rotate(10deg);"></i>Aggiungi</button>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
 
@@ -348,7 +350,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="../JS/dashboard_ristorante.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../" <script src="../JS/chart.js"></script>
+    <script src="../JS/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
