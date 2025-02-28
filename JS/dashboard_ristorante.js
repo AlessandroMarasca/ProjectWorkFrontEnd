@@ -4,13 +4,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const lista = document.getElementById('idUtente');
 
-    fetch('http://localhost:8080/api/ristorante')
+    const ristoratoreId = localStorage.getItem('id');
+
+    fetch(`http://localhost:8080/api/utente/${ristoratoreId}/ristoranti`, {
+        method: "GET",
+        headers: {
+            ...getAuthHeaders()
+        }
+    })
         .then(response => response.json())
         .then(ristorante => {
             const risto = ristorante.map(r => {
                 return `<option value="${r.id}">${r.nome}</option>`;
             }).join('');
             lista.innerHTML = risto;
+            if (lista.length < 1) {
+                lista.innerHTML = `<option value=\"nessuno\">Nessun ristorante registrato</option>`;
+                console.log("Nessun ristorante presente");
+            }
 
         })
         .catch(error => console.error('errore: ', error));
@@ -293,7 +304,6 @@ document.getElementById('crea_menu').addEventListener('submit', function (event)
     })
         .then(response => {
             if (!response.ok) {
-
                 throw new Error('Errore durante la creazione del menù');
             }
             return response.json();

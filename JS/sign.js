@@ -134,11 +134,9 @@ function login(email, password) {
     console.log("Ruolo dell'utente:", data.ruolo); // ✅ Mostra il ruolo
     localStorage.setItem("token", data.token); // ✅ Salva il token per le richieste future
         if (data.token) {
-         
             localStorage.setItem("authToken", data.token);
-          
             localStorage.setItem("ruolo", data.ruolo); 
-         
+            localStorage.setItem("id", data.id);
            // document.getElementById("logoutButton").style.display = "block"; 
             
             document.querySelector(".login-section").style.display = "none"; 
