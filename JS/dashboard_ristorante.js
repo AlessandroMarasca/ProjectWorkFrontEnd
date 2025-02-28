@@ -266,13 +266,13 @@ document.getElementById('crea_menu').addEventListener('submit', function (event)
     const nomeMenuInput = document.getElementById('nomeM').value;
     const ristorante = document.getElementById('idUtente').value;
     console.log(ristorante);
-  
+
     if (nomeMenuInput === "") {
         alert("Il nome del menù è obbligatorio.");
         return;  // Se il numero della carta è vuoto, fermiamo l'esecuzione
     }
 
-    
+
     // Crea l'oggetto utente con i dati della registrazione
     const nuovoMenu = {
         nome: nomeMenuInput
@@ -293,7 +293,7 @@ document.getElementById('crea_menu').addEventListener('submit', function (event)
     })
         .then(response => {
             if (!response.ok) {
-                
+
                 throw new Error('Errore durante la creazione del menù');
             }
             return response.json();
@@ -305,5 +305,5 @@ document.getElementById('crea_menu').addEventListener('submit', function (event)
         .catch(error => {
             console.error('Errore:', error);
         });
-        
+
 })
