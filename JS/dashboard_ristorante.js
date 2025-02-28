@@ -295,7 +295,7 @@ document.getElementById('crea_categoria').addEventListener('submit', function (e
     };
 
     console.log("Nuova categoria:", nuovaCategoria);
-    const URL = `http://localhost:8080/api/categoria/${menu}/nuovo`;
+    const URL = `http://localhost:8080/api/categoria/${menu}`;
     console.log(URL);
     fetch(URL, {
         method: 'POST',
@@ -318,5 +318,51 @@ document.getElementById('crea_categoria').addEventListener('submit', function (e
         })
         .catch(error => {
             console.error('Errore:', error);
+        });
+});
+
+document.getElementById('crea_piatti').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nomePiattoInput = document.getElementById('nomePiatto').value;
+    const prezzoPiattoInput = document.getElementById('prezzoPiatto').value;
+    const descrizionePiattoInput = document.getElementById('descrizionePiatto').value;
+    const fileInput = document.getElementById('fotoPiatto');
+    const fileFoto = fileInput.files[0];
+    if (!fileFoto) {
+        alert("Seleziona un file!");
+        return;
+    }
+    console.log(nomePiattoInput, prezzoPiattoInput, descrizionePiattoInput, fileFoto);
+    const formDataPiatto = new FormData();
+    formDataPiatto.append("files", fileFoto);
+    formDataPiatto.append("nome", nomePiattoInput);
+    formDataPiatto.append("costo", prezzoPiattoInput);
+    formDataPiatto.append("descrizione", descrizionePiattoInput);
+
+    console.log(formDataPiatto);
+    const categoria = document.getElementById('menuCategory').value;
+    const URL = `http://localhost:8080/api/piatto/2`;
+    console.log(URL);
+    
+    fetch(URL, {
+        method: 'POST',
+        headers: {
+            ...getAuthHeaders()
+        },
+        body: formDataPiatto
+    })
+        .then (response => {
+            if(!response.ok) {
+                throw new Error ("Caricamento fallito");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Piatto aggiunto: ", formDataPiatto);
+            alert("Piatto registrato!");
+        })
+        .catch(error => {
+            console.error("Error: ", error);
         });
 });
