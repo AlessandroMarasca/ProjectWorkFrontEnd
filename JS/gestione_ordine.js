@@ -1,75 +1,75 @@
-// Carica gli ordini salvati quando la pagina è caricata
-document.addEventListener("DOMContentLoaded", function (){
-     loadOrders();
+document.addEventListener("DOMContentLoaded", function () {
+    loadOrders();
 });
 
-// Recupera gli ordini dal localStorage o inizializza un array vuoto se non esistono
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+// Funzione per caricare gli ordini dal server
+function loadOrders() {
+    fetch("http://localhost:8080/orders")
+        .then(response => response.json())
+        .then(data => {
+            const orderList = document.getElementById("orderList");
+            orderList.innerHTML = "";
+            data.forEach(order => {
+                const orderItem = document.createElement("li");
+                orderItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                orderItem.innerHTML = `
+                    <span>${order.name} - €${order.price} - <span class="badge bg-warning text-dark">${order.status}</span></span>
+                    <button class="btn btn-success btn-sm" onclick="updateOrder(${order.id})">Completa</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteOrder(${order.id})">Rimuovi</button>
+                `;
+                orderList.appendChild(orderItem);
+            });
+        })
+        .catch(error => console.error("Errore nel recupero ordini:", error));
+}
 
 // Funzione per aggiungere un ordine
 function addOrder() {
-        const orderName = document.getElementById("orderName").value; // Ottiene il nome dell'ordine
-        const orderPrice = document.getElementById("orderPrice").value; // Ottiene il prezzo dell'ordine
-        const orderStatus = "In attesa";  // Stato iniziale dell'ordine
-    
-        // Controlla che i campi nome e prezzo non siano vuoti
-        if (orderName === "" || orderPrice === "") {
-          alert("Inserisci nome e prezzo dell'ordine.");
-          return;  
-        }
-    
-        // Crea un nuovo oggetto ordine
-        const order = {
-            id: new Date().getItem(),
-            name: orderName,
-            price: parseFloat(orderPrice).toFixed(2),
-            status: orderStatus
-        };
+    const orderName = document.getElementById("orderName").value;
+    const orderPrice = document.getElementById("orderPrice").value;
 
-        // Aggiunge l'ordine all'array e lo salva nel localStorage
-        order.push(order);
-        localStorage.setItem("orders", JSON.stringify(orders));
+    if (orderName === "" || orderPrice === "") {
+        alert("Inserisci nome e prezzo dell'ordine.");
+        return;
+    }
+
+    fetch("http://localhost:8080/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: orderName, price: parseFloat(orderPrice).toFixed(2) })
+    })
+    .then(response => response.json())
+    .then(() => {
         loadOrders();
+        document.getElementById("orderName").value = "";
+        document.getElementById("orderPrice").value = "";
+    })
+    .catch(error => console.error("Errore nell'aggiunta dell'ordine:", error));
 }
 
-// Funzione per caricare e visualizzare gli ordini
-function loadOrders() {
-    const orderList = document-getElementById("orderList");
-    orderList.innerHTML = "";
-
-       // Itera su ogni ordine e lo aggiunge alla lista
-        orders.forEach(order => {
-        const orderItem = document.createElement("li");
-        orderItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center")
-        orderItem.innerHTML = `
-         <span class="badge bg-warning text-dark">${order.status}</span>
-            <button class="btn btn-success btn-sm" onclick="updateOrder(${order.id})">Completa</button>
-            <button class="btn btn-danger btn-sm" onclick="deleteOrder(${order.id})">Rimuovi</button>
-        `;
-        orderList.appendChild(orderItem);
-    });
-}
-
-// Funzione per aggiornare lo stato di un ordine a "Completato"
+// Funzione per aggiornare lo stato di un ordine
 function updateOrder(id) {
-    orders = orders.map(order =>
-        order.id === id ? { ...order, status:"Completato" } : order
-    );
-    localStorage.setItem("orders", JSON.stringify(orders));
-    loadOrders(); 
+    fetch(`http://localhost:8080/orders/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "Completato" })
+    })
+    .then(() => loadOrders())
+    .catch(error => console.error("Errore nell'aggiornamento dell'ordine:", error));
 }
 
 // Funzione per eliminare un ordine
 function deleteOrder(id) {
-    orders = orders = orders.filter(order => order.id !== id);
-    localStorage.setItem("orders", JSON.stringify(orders));
-    loadOrders();
+    fetch(`http://localhost:8080/orders/${id}`, { method: "DELETE" })
+    .then(() => loadOrders())
+    .catch(error => console.error("Errore nella rimozione dell'ordine:", error));
 }
 // Funzione per annullare un ordine
 function cancelOrder(id) {
-    orders = orders.map(order =>
-        order.id === id ? { ...order, status: "Annullato"} : order
-    );
-    localStorage.setItem("orders", JSON.stringify(orders));
-    loadOrders();      
+    fetch(`http://localhost:8080/orders/cancel/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(() => loadOrders())
+    .catch(error => console.error("Errore nell'annullamento dell'ordine:", error));
 }
