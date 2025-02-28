@@ -6,7 +6,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.querySelector(".login-section");
     const registrazioneForm = document.querySelector(".register-section");
     const inizioForm = document.querySelector(".iniziale");
+    const profilo = document.getElementById("profilo"); //profilo
+    const carrello = document.querySelector(".cart"); //carrello
+    const ruolo = localStorage.getItem("ruolo"); //per prendere il ruolo
+    //per far vedere il carrello solo se si è loggati
+    if (ruolo === "RISTORATORE" || ruolo === "USER") {
+            
+        carrello.style.display = "block";
+    } else {
+        
+        carrello.style.display = "none";
+    }
+    
+    //funzione per vedere il carrello solo se si ha un ruolo
+   /* document.addEventListener("DOMContentLoaded", function() {
+       
+        var ruolo = localStorage.getItem("ruolo");
+        
+        if (ruolo === "RISTORATORE" || ruolo === "USER") {
+            
+            carrello.style.display = "block";
+        } else {
+            
+            carrello.style.display = "none";
+        }
+    });*/
 
+
+   //funzione per andare al profilo solo se si è loggati
+    profilo.addEventListener("click", function (event){
+        const ruolo = localStorage.getItem("ruolo");
+        if(ruolo === null){
+            window.location.href = "login.html";
+        }
+        else if (ruolo === "RISTORATORE") {
+            window.location.href = "profile.html"; // la tua pagina per i ristoratori
+        }
+        else if (ruolo === "USER") {
+            window.location.href = "profile.html"; // la tua pagina per gli utenti
+        } else {
+            window.location.href = "login.html";
+        }
+    });
 
     // Nascondi il form di registrazione e login all'inizio
     registrazioneForm.classList.remove("show");
@@ -180,7 +221,7 @@ document.getElementById("accedi").addEventListener("submit", function (event) {
     const email = document.getElementById("email-login").value;
     const password = document.getElementById("password-login").value;
     login(email, password);
-    alert("Accesso effettuato con successo!");
+    
 
 });
 
@@ -225,7 +266,9 @@ function logout() {
 // Gestione del pulsante di logout
 document.getElementById('logoutButton').addEventListener('click', function () {
     logout();
+    window.location.href = "index.html"
 });
+
 
 
 
