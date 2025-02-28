@@ -1,10 +1,10 @@
+const listaR = document.getElementById('listaRistoranti');
+// recupero il valore dell'id dal LocalStorage
+const ristoratoreId = localStorage.getItem('id');
+
 document.addEventListener("DOMContentLoaded", function () {
     // caricaCategorie(); // Carica le categorie all'avvio
     //caricaMenu(); // Carica i piatti all'avvio
-
-    const lista = document.getElementById('idUtente');
-
-    const ristoratoreId = localStorage.getItem('id');
 
     fetch(`http://localhost:8080/api/utente/${ristoratoreId}/ristoranti`, {
         method: "GET",
@@ -17,15 +17,47 @@ document.addEventListener("DOMContentLoaded", function () {
             const risto = ristorante.map(r => {
                 return `<option value="${r.id}">${r.nome}</option>`;
             }).join('');
-            lista.innerHTML = risto;
-            if (lista.length < 1) {
-                lista.innerHTML = `<option value=\"nessuno\">Nessun ristorante registrato</option>`;
+            listaR.innerHTML = risto;
+            if (listaR.length < 1) {
+                listaR.innerHTML = `<option value="nessuno">Nessun ristorante registrato</option>`;
                 console.log("Nessun ristorante presente");
             }
 
         })
         .catch(error => console.error('errore: ', error));
+});
 
+// funzione per aprire la lista dei menù
+listaR.addEventListener("click", function () {
+    // assegno il valore del <select> della lista dei ristoranti a ristoId
+    const ristoId = listaR.value;
+    // controllo il valore in console
+    console.log("Ristorante selezionato: " +ristoId);
+    // punto la lista <select> dei menù
+    const listaM = document.getElementById('nomeMenu');
+
+    // fetch per il recupero della lista dei menù
+    fetch(`http://localhost:8080/api/ristorante/${ristoId}/menu`, {
+        method: "GET",
+        headers: {
+            ...getAuthHeaders()
+        }
+    })
+        .then(response => response.json())
+        .then(menu => {
+            const menus = menu.map(m => {
+                return `<option value="${m.id}">${m.nome}</option>`;
+            }).join('');
+
+            listaM.innerHTML = menus;
+            // controllo listaM vuoto
+            if (listaM.length < 1) {
+                listaM.innerHTML = `<option value="nessuno">Nessun menù registrato</option>`;
+                console.log("Nessun menù presente");
+            }
+
+        })
+        .catch(error => console.error('errore: ', error));
 });
 
 // ** Fetch per Caricare le Categorie dal Backend **
