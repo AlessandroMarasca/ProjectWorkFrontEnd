@@ -233,7 +233,7 @@ document.getElementById("crea_ristorante").addEventListener("submit", function (
         });
 });
 
-
+//come recupero da console lo status dell'errore e come lo modifico da js?
 function getAuthHeaders() {
     const token = localStorage.getItem("authToken");
     return token ? { "Authorization": "Bearer " + token } : {};

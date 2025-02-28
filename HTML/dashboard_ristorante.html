@@ -200,30 +200,38 @@
                     </form>
                 </div>
             </div>
-            <form id="crea_menu">
-                <select id="idUtente" class="form-control mb-2">
-                    <option value="Id-Utente">Id Utente</option>
-                </select>
-                <div class="spazio">
-                    <br><br><br>
-                </div>
-                <div class="card-mb-3" id="gestione-menu">
-                    <div class="container d-flex"
-                        style="flex-direction: column; align-content: center;background: none;">
-                        <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
 
-                        <!--CRUD Menù-->
+            <br><br><br>
+            <h2 id="gestioneMenu" style="margin-top: 5%;" class="gestioneMenu text-center">Gestione Menu</h2>
+            <div class="card-mb-3 text-center" id="gestione-menu">
+                <div class="container d-flex"
+                    style="flex-direction: column; align-content: center;justify-content: center ;background: none;">
+
+                    <!--CRUD Menù-->
+                    <form id="crea_menu" class="text-center">
+                        <select id="idUtente" class="form-control mb-2" style="margin-top: 5%;">
+                            <option value="Id-Utente">Id Utente</option>
+                        </select>
                         <div class="row mt-3 justify-content-center">
-                            <div class="col-md-6">
-                                <input type="text" class="menuText form-control" placeholder="Nome Menù" id="nomeM">
+                            <div class="col-md-4">
+                                <label for="nomeMenu"><b>Scegli Menù</b></label>
+                                <select id="nomeMenu" class="form-control mb-2">
+                                    <option value="nome-menu"></option>
+                                </select>
                             </div>
-                            <div class="col-md-6">
-                                <button type="submit" class="btn text-black"><i class="fa-solid fa-plus"
-                                        style="transform: rotate(10deg);"></i> Aggiungi Menù</button>
+                            <div class="col-md-4">
+                                <label for="nomeM"><b>Nome Menù</b></label>
+                                <input type="text" class="menuText form-control" placeholder="Nuovo Menù" id="nomeM">
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="submit" class="btn text-black w-100">
+                                    <i class="fa-solid fa-plus" style="transform: rotate(10deg);"></i> Aggiungi Menù
+                                </button>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
+                                <label for="inseriscicategoria"><b>Categoria</b></label>
                                 <select id="menuCategory" class="form-control mb-2">
                                     <option value="antipasti">Antipasti</option>
                                     <option value="primi">Primi</option>
@@ -234,6 +242,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
+                                <label for="sceglicategoria"><b>Nuova Categoria</b></label>
                                 <input type="text" id="nuova" class="form-control mb-2" placeholder="Nuova categoria">
                             </div>
                         </div>
@@ -246,43 +255,45 @@
                                         class="fa-solid fa-minus" style="transform: rotate(20deg);"></i> Rimuovi
                                     Categoria</button>
                                 <button id="rimuovi-tutte" class="btn" onclick="clearCategories()"><i
-                                        class="fa-solid fa-minus" style="transform: rotate(-20deg);"></i> Rimuovi Tutte
-                                    le
-                                    Categorie</button>
+                                        class="fa-solid fa-minus" style="transform: rotate(-20deg);"></i> Rimuovi
+                                    Tutte le Categorie</button>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
+                                <label for="nomePiatto"><b>Nome Piatto</b></label>
                                 <input type="text" id="menuItem" class="form-control mb-2"
                                     placeholder="Nome del piatto">
                             </div>
                             <div class="col-md-6">
+                                <label for="prezzoPiatto"><b>Prezzo</b></label>
                                 <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
+                                <label for="descrizionePiatto"><b>Descrizione del piatto</b></label>
                                 <input type="text" id="menuDescrizione" class="form-control mb-2" maxlength="150"
                                     placeholder="Descrizione del piatto">
                             </div>
                             <div class="col-md-6">
+                                <label for="fotoPiatto"><b>Foto Piatto</b></label>
                                 <input type="file" id="menuImage" class="form-control mb-2">
                             </div>
-
                         </div>
                         <div class="col-md-12 d-flex justify-content-center align-items-center">
                             <button class="aggiungi-fine btn text-black" onclick="addMenuItem()"><i
                                     class="fa-solid fa-plus" style="transform: rotate(10deg);"></i>Aggiungi</button>
                         </div>
-                    </div>
-            </form>
+                </div>
+                </form>
+            </div>
         </div>
-    </div>
 
 
-    <!-- Ordini -->
-    <br><br><br><br><br>
-    <!--Calendario
+        <!-- Ordini -->
+        <br><br><br><br><br>
+        <!--Calendario
     <div id="calendar" class="calendar-container">
         <div class="calendar-header">
             <button class="bg-transparent" onclick="prevMonth()"><svg xmlns="http://www.w3.org/2000/svg" width="26"
@@ -301,32 +312,32 @@
     </div>
     <br><br><br><br><br>
 -->
-    <!--FOOTER-->
-    <footer class="footer row">
-        <!-- Sezione "Chi siamo" -->
-        <div class="col-md-4 text-md-center">
-            <h5>Chi siamo</h5>
-            <p><a href="chisiamo.html" class="text-decoration-none">la nostra mission</a></p>
-            <p><a href="FAQ.html" class="text-decoration-none">FAQ</a></p>
-        </div>
+        <!--FOOTER-->
+        <footer class="footer row">
+            <!-- Sezione "Chi siamo" -->
+            <div class="col-md-4 text-md-center">
+                <h5>Chi siamo</h5>
+                <p><a href="chisiamo.html" class="text-decoration-none">la nostra mission</a></p>
+                <p><a href="FAQ.html" class="text-decoration-none">FAQ</a></p>
+            </div>
 
-        <!-- Sezione Contatti -->
-        <div class="col-md-4 text-md-center">
-            <h5>Contatti</h5>
-            <p>Email: <a href="mailto:info@gesteat.com">info@gesteat.com</a></p>
-            <p>Telefono: <a href="tel:+39123456789">+39 123 456 789</a></p>
-        </div>
+            <!-- Sezione Contatti -->
+            <div class="col-md-4 text-md-center">
+                <h5>Contatti</h5>
+                <p>Email: <a href="mailto:info@gesteat.com">info@gesteat.com</a></p>
+                <p>Telefono: <a href="tel:+39123456789">+39 123 456 789</a></p>
+            </div>
 
-        <!-- Sezione Social -->
-        <div class="col-md-4 text-md-center">
-            <h5>Seguici su</h5>
-            <a href="#" class="social-link me-3"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#" class="social-link me-3"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a> <!-- Icona X -->
-        </div>
-        <hr>
-        <p class="text-center">&copy; 2024 GestEat. Tutti i diritti riservati.</p>
-    </footer>
+            <!-- Sezione Social -->
+            <div class="col-md-4 text-md-center">
+                <h5>Seguici su</h5>
+                <a href="#" class="social-link me-3"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="social-link me-3"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a> <!-- Icona X -->
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2024 GestEat. Tutti i diritti riservati.</p>
+        </footer>
     </div>
     <!-- Font Awesome per l'icona di X -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
