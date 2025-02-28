@@ -6,7 +6,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.querySelector(".login-section");
     const registrazioneForm = document.querySelector(".register-section");
     const inizioForm = document.querySelector(".iniziale");
+    const profilo = document.getElementById("profilo"); //profilo
+    const carrello = document.querySelector(".cart"); //carrello
+    const ruolo = localStorage.getItem("ruolo"); //per prendere il ruolo
+    const log = document.getElementById("login/logout");
+    //per far vedere il carrello solo se si è loggati
+    if (ruolo === "RISTORATORE" || ruolo === "USER") {
+            
+        carrello.style.display = "block";
+        profilo.style.display = "block";
+    } else {
+        profilo.style.display = "none";
+        carrello.style.display = "none";
+    }
+    
+    log.addEventListener("click", function (event){
+        const ruolo = localStorage.getItem("ruolo");
+        if(ruolo === null){
+            window.location.href = "login.html";
+        }
+         else {
+            logout();
+            window.location.href = "index.html"
+        }
+    });
 
+   //funzione per andare al profilo solo se si è loggati
+    profilo.addEventListener("click", function (event){
+        const ruolo = localStorage.getItem("ruolo");
+        if(ruolo === null){
+            window.location.href = "login.html";
+        }
+        else if (ruolo === "RISTORATORE") {
+            window.location.href = "profile.html"; // la tua pagina per i ristoratori
+        }
+        else if (ruolo === "USER") {
+            window.location.href = "profile.html"; // la tua pagina per gli utenti
+        } else {
+            window.location.href = "login.html";
+        }
+    });
 
     // Nascondi il form di registrazione e login all'inizio
     registrazioneForm.classList.remove("show");
@@ -178,7 +217,7 @@ document.getElementById("accedi").addEventListener("submit", function (event) {
     const email = document.getElementById("email-login").value;
     const password = document.getElementById("password-login").value;
     login(email, password);
-    alert("Accesso effettuato con successo!");
+    
 
 });
 
@@ -208,8 +247,6 @@ function logout() {
         // Rimuove il token dal localStorage
         localStorage.removeItem("authToken");
         localStorage.removeItem("ruolo"); // Rimuovi anche il ruolo
-        // Nasconde il pulsante Logout e mostra il form di login
-        //document.getElementById("logoutButton").style.display = "none";
         document.getElementById("loginForm").style.display = "block";
         window.location.replace("login.html"); // Reindirizza alla pagina di login
     })
@@ -218,12 +255,8 @@ function logout() {
     });
 }
 
-//LOGOUT UTENTE
 
-// Gestione del pulsante di logout
-document.getElementById('logoutButton').addEventListener('click', function () {
-    logout();
-});
+
 
 
 
