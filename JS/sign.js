@@ -105,7 +105,8 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     .then(data => {
         console.log('Utente registrato:', data);
         alert("Registrazione completata! Ora puoi accedere.");
-        window.location.replace("../HTML/index.html");
+        window.location.replace("login.html");
+        
     })
     .catch(error => {
         console.error('Errore:', error);
