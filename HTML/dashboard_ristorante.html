@@ -134,199 +134,199 @@
                     </div>
                 </div>
                 <div class="spazio">
-                    <br><br>
                 </div>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <form id="crea_ristorante">
-                            <div class="row mb-3">
-                                <label for="inputNome" class="col-sm-3 col-form-label"><b>Nome</b></label>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" id="inputNome">
-                                </div>
+                <br><br>
+            </div>
+            <div id="formRistorante" class="card mb-3 text-center">
+                <div class="card-body">
+                    <form id="crea_ristorante">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="inputNome" class="col-form-label"><b>Nome</b></label>
+                                <input type="text" class="form-control" id="inputNome">
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputPiva" class="col-sm-3 col-form-label"><b>P.Iva</b></label>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" minlength="11" maxlength="11" class="form-control"
-                                        id="inputPIva">
-                                </div>
+                            <div class="col-md-4">
+                                <label for="inputPiva" class="col-form-label"><b>P.Iva</b></label>
+                                <input type="text" minlength="11" maxlength="11" class="form-control" id="inputPIva">
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="email" class="form-control" id="inputEmail">
-                                </div>
+                            <div class="col-md-4">
+                                <label for="inputEmail" class="col-form-label"><b>Email</b></label>
+                                <input type="email" class="form-control" id="inputEmail">
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputTelefono" class="col-sm-3 col-form-label"><b>Telefono</b></label>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" id="inputTelefono">
-                                </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <label for="inputTelefono" class="col-form-label"><b>Telefono</b></label>
+                                <input type="text" class="form-control" id="inputTelefono">
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputIndirizzo" class="col-sm-3 col-form-label"><b>Indirizzo</b></label>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" id="inputIndirizzo">
-                                </div>
+                            <div class="col-md-4">
+                                <label for="inputIndirizzo" class="col-form-label"><b>Indirizzo</b></label>
+                                <input type="text" class="form-control" id="inputIndirizzo">
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="inputCitta" class="col-sm-3 col-form-label"><b>Città</b></label>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" id="inputCitta">
-                                </div>
+                            <div class="col-md-4">
+                                <label for="inputCitta" class="col-form-label"><b>Città</b></label>
+                                <input type="text" class="form-control" id="inputCitta">
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputProvincia" class="col-sm-3 col-form-label"><b>Provincia</b></label>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" id="inputProvincia">
-                                </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="inputProvincia" class="col-form-label"><b>Provincia</b></label>
+                                <input type="text" class="form-control" id="inputProvincia">
                             </div>
-                            <div class="row mb-3">
-                                <select id="ristoranteCategory" class="form-control mb-2"
-                                    placeholder="Seleziona categoria">
-                                    <option value="RISTORANTE_PIZZERIA" selected>Ristorante/Pizzeria</option>
+                            <div class="col-md-6">
+                                <label for="ristoranteCategory" class="col-form-label"><b>Categoria</b></label>
+                                <select id="ristoranteCategory" class="form-control">
+                                    <option value="RISTORANTE_PIZZERIA" selected>Ristorante/Pizzeria
+                                    </option>
                                     <option value="TRATTORIA">Trattoria</option>
                                     <option value="STELLATO">Stellato</option>
                                 </select>
                             </div>
-                            <div class="row mb-3">
-                                <textarea placeholder="Descrivi la tua attività!" id="testo"></textarea>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="descrizione-attivita" class="col-form-label"><b>Descrizione</b></label>
+                                <textarea class="form-control" placeholder="Descrivi la tua attività!"
+                                    id="testo"></textarea>
                             </div>
-                            <div class="row mb-3">
-                                <input type="file" class="form-control mb-2" id="fileInput">
+                            <div class="col-md-6 mt-3">
+                                <label for="logo" class="col-form-label"><b>Logo</b></label>
+                                <input type="file" class="form-control" id="fileInput">
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9 text-secondary d-flex" style="justify-content: end;">
-                                    <input type="submit" class="btn btn-primary px-4" value="CREA">
-                                </div>
+                            <div class="col-md-12 mt-3 d-flex justify-content-center">
+                                <button id="btn-crea" class="btn"><i class="fa-solid fa-store"></i> CREA</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-
-                <form id="crea_menu">
-                    <select id="idUtente" class="form-control mb-2">
-                        <option value="Id-Utente">Id Utente</option>
-
+            </div>
+            <form id="crea_menu">
+                <select id="idUtente" class="form-control mb-2">
+                    <option value="Id-Utente">Id Utente</option>
                 </select>
-                <br><br><br><br><br><br><br><br><br><br>
-                <div class="container d-flex" style="flex-direction: column; align-content: center;">
-                    
-                    <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
-
-                    <!--CRUD Menù-->
-                    <div class="d-flex gap-2">
-                        <input type="text" class="menuText" placeholder="Nome Menù" id="nomeM">
-                        <button type="submit" class="btn btn-success" > Aggiungi Menù</button>
-                        <!--<button class="btn btn-warning text-white" onclick="removeMenu()"> Rimuovi Menù</button>-->
-                    </div>
-                </form>
-                    <!-- Selezione Categoria -->
-                    <select id="menuCategory" class="form-control mb-2">
-                        <option value="antipasti">Antipasti</option>
-                        <option value="primi">Primi</option>
-                        <option value="secondi">Secondi</option>
-                        <option value="contorni">Contorni</option>
-                        <option value="dessert">Dessert</option>
-                        <option value="bevande">Bevande</option>
-                    </select>
-                    <input type="text" id="nuova" class="form-control mb-2" placeholder="Nuova categoria">
-
-                    <!--CRUD categorie-->
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-success" onclick="addCategory()"> Aggiungi Categoria</button>
-                        <button class="btn btn-warning text-white" onclick="removeCategory()"> Rimuovi
-                            Categoria</button>
-                        <button class="btn btn-danger mt-2" onclick="clearCategories()"> Rimuovi Tutte le
-                            Categorie</button>
-                    </div>
-
-                    <!-- Inserimento piatto -->
-                    <input type="text" id="menuItem" class="form-control mb-2" placeholder="Nome del piatto">
-
-                    <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
-                    <input type="text" id="menuDescrizione" class="form-control mb-2" maxlength="150"
-                        placeholder="Descrizione del piatto">
-                    <input type="file" id="menuImage" class="form-control mb-2">
-
-                    <button class="btn btn-info" onclick="addMenuItem()">Aggiungi</button>
-
-                    <!-- Sezioni Menu -->
-                    <h3 class="mt-4">Menu</h3>
-                    <div id="menuContainer">
-                        <h5>Antipasti</h5>
-                        <ul id="antipasti" class="list-group"></ul>
-
-                        <h5>Primi</h5>
-                        <ul id="primi" class="list-group"></ul>
-
-                        <h5>Secondi</h5>
-                        <ul id="secondi" class="list-group"></ul>
-
-                        <h5>Contorni</h5>
-                        <ul id="contorni" class="list-group"></ul>
-
-                        <h5>Dessert</h5>
-                        <ul id="dessert" class="list-group"></ul>
-
-                        <h5>Bevande</h5>
-                        <ul id="bevande" class="list-group"></ul>
-                    </div>
+                <div class="spazio">
+                    <br><br><br>
                 </div>
-            </div>
+                <div class="card-mb-3" id="gestione-menu">
+                    <div class="container d-flex"
+                        style="flex-direction: column; align-content: center;background: none;">
+                        <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
 
+                        <!--CRUD Menù-->
+                        <div class="row mt-3 justify-content-center">
+                            <div class="col-md-6">
+                                <input type="text" class="menuText form-control" placeholder="Nome Menù" id="nomeM">
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn text-black"><i class="fa-solid fa-plus"
+                                        style="transform: rotate(10deg);"></i> Aggiungi Menù</button>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <select id="menuCategory" class="form-control mb-2">
+                                    <option value="antipasti">Antipasti</option>
+                                    <option value="primi">Primi</option>
+                                    <option value="secondi">Secondi</option>
+                                    <option value="contorni">Contorni</option>
+                                    <option value="dessert">Dessert</option>
+                                    <option value="bevande">Bevande</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="nuova" class="form-control mb-2" placeholder="Nuova categoria">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12 d-flex gap-2">
+                                <button id="aggiungi" class="btn text-black" onclick="addCategory()"><i
+                                        class="fa-solid fa-plus" style="transform: rotate(10deg);"></i> Aggiungi
+                                    Categoria</button>
+                                <button id="rimuovi" class="btn text-black" onclick="removeCategory()"><i
+                                        class="fa-solid fa-minus" style="transform: rotate(20deg);"></i> Rimuovi
+                                    Categoria</button>
+                                <button id="rimuovi-tutte" class="btn" onclick="clearCategories()"><i
+                                        class="fa-solid fa-minus" style="transform: rotate(-20deg);"></i> Rimuovi Tutte
+                                    le
+                                    Categorie</button>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <input type="text" id="menuItem" class="form-control mb-2"
+                                    placeholder="Nome del piatto">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="menuPrice" class="form-control mb-2" placeholder="Prezzo (€)">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <input type="text" id="menuDescrizione" class="form-control mb-2" maxlength="150"
+                                    placeholder="Descrizione del piatto">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="file" id="menuImage" class="form-control mb-2">
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-center align-items-center">
+                            <button class="aggiungi-fine btn text-black" onclick="addMenuItem()"><i
+                                    class="fa-solid fa-plus" style="transform: rotate(10deg);"></i>Aggiungi</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Ordini -->
+    <br><br><br><br><br>
+    <!--Calendario
+    <div id="calendar" class="calendar-container">
+        <div class="calendar-header">
+            <button class="bg-transparent" onclick="prevMonth()"><svg xmlns="http://www.w3.org/2000/svg" width="26"
+                    height="26" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                </svg></button>
+            <span id="calendar-title"></span>
+            <button class="bg-transparent" onclick="nextMonth()"><svg xmlns="http://www.w3.org/2000/svg" width="26"
+                    height="26" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                </svg></button>
+        </div>
+        <div class="calendar-days" id="calendar-days"></div>
+    </div>
+    <br><br><br><br><br>
+-->
+    <!--FOOTER-->
+    <footer class="footer row">
+        <!-- Sezione "Chi siamo" -->
+        <div class="col-md-4 text-md-center">
+            <h5>Chi siamo</h5>
+            <p><a href="chisiamo.html" class="text-decoration-none">la nostra mission</a></p>
+            <p><a href="FAQ.html" class="text-decoration-none">FAQ</a></p>
         </div>
 
-        <!-- Ordini -->
-        <br><br><br><br><br>
-        <!--Calendario-->
-        <div id="calendar" class="calendar-container">
-            <div class="calendar-header">
-                <button class="bg-transparent" onclick="prevMonth()"><svg xmlns="http://www.w3.org/2000/svg" width="26"
-                        height="26" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
-                    </svg></button>
-                <span id="calendar-title"></span>
-                <button class="bg-transparent" onclick="nextMonth()"><svg xmlns="http://www.w3.org/2000/svg" width="26"
-                        height="26" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
-                    </svg></button>
-            </div>
-            <div class="calendar-days" id="calendar-days"></div>
+        <!-- Sezione Contatti -->
+        <div class="col-md-4 text-md-center">
+            <h5>Contatti</h5>
+            <p>Email: <a href="mailto:info@gesteat.com">info@gesteat.com</a></p>
+            <p>Telefono: <a href="tel:+39123456789">+39 123 456 789</a></p>
         </div>
-        <br><br><br><br><br>
 
-        <!--FOOTER-->
-        <footer class="footer row">
-            <!-- Sezione "Chi siamo" -->
-            <div class="col-md-4 text-md-center">
-                <h5>Chi siamo</h5>
-                <p><a href="chisiamo.html" class="text-decoration-none">la nostra mission</a></p>
-                <p><a href="FAQ.html" class="text-decoration-none">FAQ</a></p>
-            </div>
-
-            <!-- Sezione Contatti -->
-            <div class="col-md-4 text-md-center">
-                <h5>Contatti</h5>
-                <p>Email: <a href="mailto:info@gesteat.com">info@gesteat.com</a></p>
-                <p>Telefono: <a href="tel:+39123456789">+39 123 456 789</a></p>
-            </div>
-
-            <!-- Sezione Social -->
-            <div class="col-md-4 text-md-center">
-                <h5>Seguici su</h5>
-                <a href="#" class="social-link me-3"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="social-link me-3"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a> <!-- Icona X -->
-            </div>
-            <hr>
-            <p class="text-center">&copy; 2024 GestEat. Tutti i diritti riservati.</p>
-        </footer>
+        <!-- Sezione Social -->
+        <div class="col-md-4 text-md-center">
+            <h5>Seguici su</h5>
+            <a href="#" class="social-link me-3"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="social-link me-3"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a> <!-- Icona X -->
+        </div>
+        <hr>
+        <p class="text-center">&copy; 2024 GestEat. Tutti i diritti riservati.</p>
+    </footer>
     </div>
     <!-- Font Awesome per l'icona di X -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
