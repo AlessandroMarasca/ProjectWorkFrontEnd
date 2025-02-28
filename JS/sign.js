@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.querySelector(".login-section");
     const registrazioneForm = document.querySelector(".register-section");
     const inizioForm = document.querySelector(".iniziale");
-    
+
 
     // Nascondi il form di registrazione e login all'inizio
     registrazioneForm.classList.remove("show");
@@ -62,15 +62,8 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     const emailInput = document.getElementById('email').value;
     const numeroCarta = document.getElementById('numero_carta').value;
     const passwordInput = document.getElementById('reg-password').value;
-    let ruoloInput = document.getElementById("attivitaCheckbox").value;
+    let ruoloInput = document.getElementById("attivitaCheckbox").checked ? 1 : 0;
     
-    if (ruoloInput === 'check') {
-        // Se la checkbox è selezionata, il ruolo è "ristoratore" e il token viene settato su ristoratore
-        ruoloInput = 0;
-      } else {
-        // Se la checkbox non è selezionata, il ruolo è "user" e il token viene settato su user
-        ruoloInput = 1;
-      }
     // Controlla se il numero della carta è valido
     if (numeroCarta === "") {
         alert("Il numero della carta è obbligatorio.");
@@ -97,6 +90,7 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     // Invia i dati al backend
     fetch('http://127.0.0.1:8080/api/utente/aggiungi', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -111,15 +105,15 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     .then(data => {
         console.log('Utente registrato:', data);
         alert("Registrazione completata! Ora puoi accedere.");
-        window.location.replace("../HTML/index.html");
+        window.location.replace("login.html");
+        
     })
     .catch(error => {
         console.error('Errore:', error);
     });
 })
     
-// Funzione di login
-// Funzione di login
+
 function login(email, password) {
     fetch("http://127.0.0.1:8080/api/login", {
         method: "POST",
@@ -136,40 +130,48 @@ function login(email, password) {
     })
     .then(data => {
         console.log("Login effettuato:", data);
-
+       
+    console.log("Ruolo dell'utente:", data.ruolo); // ✅ Mostra il ruolo
+    localStorage.setItem("token", data.token); // ✅ Salva il token per le richieste future
         if (data.token) {
-            // Salva il token
+         
             localStorage.setItem("authToken", data.token);
-
-            // Assicurati di salvare il ruolo nel localStorage, se il backend lo fornisce
-            localStorage.setItem("ruolo", data.ruolo);  // Assicurati che il backend restituisca il ruolo
-
-            document.getElementById("logoutButton").style.display = "block"; // Mostra il bottone di logout
-            document.querySelector(".loginform").style.display = "none"; // Nascondi il form di login
+          
+            localStorage.setItem("ruolo", data.ruolo); 
+         
+           // document.getElementById("logoutButton").style.display = "block"; 
+            
+            document.querySelector(".login-section").style.display = "none"; 
             alert("Accesso effettuato con successo!");
-
-            // Reindirizza l'utente alla pagina giusta in base al ruolo
-            redirectUser(data.ruolo);
         }
+        console.log("Ruolo inviato al backend:", data.ruolo);
+        redirectUser(data.ruolo); 
     })
     .catch(error => {
         console.error("Errore nel login:", error);
         const loginError = document.getElementById("loginError");  
-        loginError.textContent = error.message;
-        loginError.style.display = "block"; // Show the error message on the UI
+        if (loginError) {
+            loginError.textContent = error.message;
+            loginError.style.display = "block";  
+        }
     });
 }
 
+
 // Metodo per reindirizzare l'utente in base al ruolo
 function redirectUser(ruolo) {
-    if (ruolo === "RISTORATORE") {
-        // Se il ruolo è "ristoratore", reindirizza alla pagina dashboard_ristoratore
+    if (ruolo === "RISTORATORE") ruolo = 1;
+    else if (ruolo === "USER") ruolo = 0;
+    
+    console.log("Ruolo dell'utente (convertito):", ruolo);
+
+    if (ruolo === 1) { 
         window.location.href = "../HTML/dashboard_ristorante.html";
-    } else if (ruolo === "USER") {
-        // Se il ruolo è "user", reindirizza alla pagina utente
+    } else if (ruolo === 0) { 
         window.location.href = "../HTML/index.html";
     }
 }
+
 
 
 // Gestione invio form login
@@ -178,25 +180,52 @@ document.getElementById("accedi").addEventListener("submit", function (event) {
     const email = document.getElementById("email-login").value;
     const password = document.getElementById("password-login").value;
     login(email, password);
+    alert("Accesso effettuato con successo!");
 
 });
 
-  //metodo per indirizzare l'utente in base al ruolo
-  function checkLogin() {
-    // Ottieni il ruolo salvato in localStorage
-    var ruolo = localStorage.getItem("ruolo");
-
-    if (ruolo === "RISTORATORE") {
-        // Se il ruolo è "ristoratore", reindirizza alla pagina dashboard_ristoratore
-        window.location.href = "../HTML/dashboard_ristorante.html";
-    } else if (ruolo === "USER") {
-        // Se il ruolo è "user", reindirizza alla pagina utente
-        window.location.href = "../HTML/index.html";
-    } else {
-        // Se il ruolo non è presente (l'utente non ha mai effettuato login), reindirizza alla pagina di login
-        window.location.href = "login.html";
+function logout() {
+    // Recupera il token dal localStorage
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+        console.error("Nessun token trovato nel localStorage");
+        return;
     }
+
+    fetch('http://localhost:8080/api/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Logout fallito');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Logout effettuato:', data);
+        // Rimuove il token dal localStorage
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("ruolo"); // Rimuovi anche il ruolo
+        // Nasconde il pulsante Logout e mostra il form di login
+        //document.getElementById("logoutButton").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+        window.location.replace("login.html"); // Reindirizza alla pagina di login
+    })
+    .catch(error => {
+        console.error('Errore durante il logout:', error);
+    });
 }
-    
+
+//LOGOUT UTENTE
+
+// Gestione del pulsante di logout
+document.getElementById('logoutButton').addEventListener('click', function () {
+    logout();
+});
+
 
 
