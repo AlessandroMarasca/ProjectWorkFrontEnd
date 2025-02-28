@@ -106,38 +106,42 @@ listaR.addEventListener("click", function () {
 });
 
 //fetch per il recupero delle categorie
-listaR.addEventListener("click", function () {
-    // assegno il valore del <select> della lista dei ristoranti a ristoId
-    const ristoId = listaR.value;
-    // controllo il valore in console
-    console.log("Ristorante selezionato: " + ristoId);
-    // punto la lista <select> dei menù
-    const listaM = document.getElementById('nomeMenu');
+document.addEventListener("DOMContentLoaded", function () {
 
+    const listaM = document.getElementById("nomeMenu");
+    const listaC = document.getElementById("menuCategory");
 
-    fetch(`http://localhost:8080/api/menu/${ristoId}/categorie`, {
-        method: "GET",
-        headers: {
-            ...getAuthHeaders()
+    listaR.addEventListener("click", function () {
+        const ristoId = listaM.value;
+        console.log("Ristorante selezionato: " + ristoId);
+
+        if (ristoId === 'nessuno') {
+            console.log("valore" + ristoId);
         }
-    })
-        .then(response => response.json())
-        .then(menu => {
-            const menus = menu.map(m => {
-                return `<option value="${m.id}">${m.nome}</option>`;
-            }).join('');
 
-            listaM.innerHTML = menus;
-            // controllo listaM vuoto
-            if (listaM.length < 1) {
-                listaM.innerHTML = `<option value="nessuno">Nessuna categoria registrata</option>`;
-                console.log("Nessuna categoria registrata");
+        fetch(`http://localhost:8080/api/menu/${ristoId}/categorie`, {
+            method: "GET",
+            headers: {
+                ...getAuthHeaders()
             }
-
         })
-        .catch(error => console.error('errore: ', error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Errore nel recupero delle categorie");
+                }
+                return response.json();
+            })
+            .then(menu => {
+                if (!menu.length) {
+                    listaC.innerHTML = `<option value="nessuno">Nessuna categoria registrata</option>`;
+                    console.log("Nessuna categoria registrata");
+                } else {
+                    listaC.innerHTML = menu.map(m => `<option value="${m.id}">${m.nome}</option>`).join('');
+                }
+            })
+            .catch(error => console.error("Errore:", error));
+    });
 });
-
 
 //aggiunta
 function getAuthHeaders() {
