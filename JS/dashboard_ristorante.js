@@ -34,7 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Errore nel caricamento delle categorie:", error));
 }*/
-function addMenu() {
+
+
+
+
+/*function addMenu() {
     let newMenu = document.getElementById("nuova").value.trim();
     if (newMenu === "") {
         alert("Inserisci un nome per il menù!");
@@ -52,7 +56,7 @@ function addMenu() {
             document.getElementById("nuova").value = ""; // Pulisce il campo
         })
         .catch(error => console.error("Errore nell'aggiunta del menù:", error));
-}
+}*/
 
 // ** Fetch per Rimuovere un Menu
 function removeMenu() {
@@ -255,3 +259,51 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+document.getElementById('crea_menu').addEventListener('submit', function (event) {
+    event.preventDefault(); // Preveniamo il comportamento di submit predefinito del form
+
+    // Ottieni i valori dai campi del form
+    const nomeMenuInput = document.getElementById('nomeM').value;
+    const ristorante = document.getElementById('idUtente').value;
+    console.log(ristorante);
+  
+    if (nomeMenuInput === "") {
+        alert("Il nome del menù è obbligatorio.");
+        return;  // Se il numero della carta è vuoto, fermiamo l'esecuzione
+    }
+
+    
+    // Crea l'oggetto utente con i dati della registrazione
+    const nuovoMenu = {
+        nome: nomeMenuInput
+    };
+
+    console.log("Nuovo menu:", nuovoMenu);
+    const URL = `http://localhost:8080/api/menu/4/nuovo`;
+    console.log(URL);
+    // Invia i dati al backend
+    fetch(URL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            ...getAuthHeaders()
+        },
+        body: JSON.stringify(nuovoMenu)  // Invia i dati come JSON
+    })
+        .then(response => {
+            if (!response.ok) {
+                
+                throw new Error('Errore durante la creazione del menù');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Menù registrato:', data);
+            alert("Creazione menù completata.");
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+        });
+        
+})

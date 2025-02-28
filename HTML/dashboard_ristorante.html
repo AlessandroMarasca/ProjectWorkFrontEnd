@@ -206,21 +206,24 @@
                         </form>
                     </div>
                 </div>
-                <select id="idUtente" class="form-control mb-2">
-                    <option value="Id-Utente">Id Utente</option>
+
+                <form id="crea_menu">
+                    <select id="idUtente" class="form-control mb-2">
+                        <option value="Id-Utente">Id Utente</option>
 
                 </select>
                 <br><br><br><br><br><br><br><br><br><br>
                 <div class="container d-flex" style="flex-direction: column; align-content: center;">
+                    
                     <h2 id="gestioneMenu" class="gestioneMenu">Gestione Menu</h2>
 
                     <!--CRUD Menù-->
                     <div class="d-flex gap-2">
-                        <input type="text" class="menuText" placeholder="Nome Menù">
-                        <button class="btn btn-success" onclick="addMenu()"> Aggiungi Menù</button>
-                        <button class="btn btn-warning text-white" onclick="removeMenu()"> Rimuovi Menù</button>
+                        <input type="text" class="menuText" placeholder="Nome Menù" id="nomeM">
+                        <button type="submit" class="btn btn-success" > Aggiungi Menù</button>
+                        <!--<button class="btn btn-warning text-white" onclick="removeMenu()"> Rimuovi Menù</button>-->
                     </div>
-
+                </form>
                     <!-- Selezione Categoria -->
                     <select id="menuCategory" class="form-control mb-2">
                         <option value="antipasti">Antipasti</option>

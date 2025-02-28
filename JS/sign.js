@@ -129,7 +129,6 @@ function login(email, password) {
         },
         body: JSON.stringify({ email: email, password: password })
     })
-<<<<<<< HEAD
     .then(response => {
         if (!response.ok) {
             throw new Error("Login fallito! Controlla le credenziali.");
@@ -152,31 +151,6 @@ function login(email, password) {
         loginError.textContent = error.message;
         loginError.style.display = "block"; // Show the error message on the UI
     });
-=======
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Login fallito! Controlla le credenziali.");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Login effettuato:", data);
-
-            if (data.token) {
-                // Salva il token
-                localStorage.setItem("authToken", data.token);
-                document.getElementById("logoutButton").style.display = "block"; // Mostra il bottone di logout
-                document.querySelector(".loginform").style.display = "none"; // Nascondi il form di login
-                alert("Accesso effettuato con successo!");
-            }
-        })
-        .catch(error => {
-            console.error("Errore nel login:", error);
-            const loginError = document.getElementById("loginError");
-            loginError.textContent = error.message;
-            loginError.style.display = "block"; // Show the error message on the UI
-        });
->>>>>>> af4a19952cd03cf31c6c9ce19c482685449aba03
 }
 
 // Metodo per reindirizzare l'utente in base al ruolo
