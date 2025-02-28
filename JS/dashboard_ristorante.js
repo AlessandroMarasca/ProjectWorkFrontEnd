@@ -279,7 +279,7 @@ document.getElementById('crea_menu').addEventListener('submit', function (event)
     };
 
     console.log("Nuovo menu:", nuovoMenu);
-    const URL = `http://localhost:8080/api/menu/4/nuovo`;
+    const URL = `http://localhost:8080/api/menu/${ristorante}/nuovo`;
     console.log(URL);
     // Invia i dati al backend
     fetch(URL, {
