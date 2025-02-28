@@ -26,6 +26,19 @@ nav {
     box-shadow: var(--bs-box-shadow) !important;
     padding-right: 1.5rem;
 }
+
+.restaurant {
+    display: none;
+}
+
+.bi .bi-bag-heart-fill {
+    display: none;
+}
+
+.row {
+    margin-left: 0;
+}
+
 /* Contenitore principale */
 .faq-section {
     background-color: #44204c;

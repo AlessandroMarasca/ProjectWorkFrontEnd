@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carrello.style.display = "block";
         profilo.style.display = "block";
     }
-    else if (ruolo === "USER"){
+    else if (ruolo === "USER") {
         carrello.style.display = "block";
         profilo.style.display = "block";
         ristoratore.style.display = "none";
@@ -23,19 +23,19 @@ document.addEventListener("DOMContentLoaded", function () {
         profilo.style.display = "none";
         carrello.style.display = "none";
     }
-    log.addEventListener("click", function (event){
+    log.addEventListener("click", function (event) {
         const ruolo = localStorage.getItem("ruolo");
-        if(ruolo === null){
+        if (ruolo === null) {
             window.location.href = "Login.html";
         }
-         else {
+        else {
             logout();
             window.location.href = "Login.html";
         }
     });
-    profilo.addEventListener("click", function (event){
+    profilo.addEventListener("click", function (event) {
         const ruolo = localStorage.getItem("ruolo");
-        if(ruolo === null){
+        if (ruolo === null) {
             window.location.href = "login.html";
         }
         else if (ruolo === "RISTORATORE") {
@@ -77,7 +77,7 @@ listaR.addEventListener("click", function () {
     // assegno il valore del <select> della lista dei ristoranti a ristoId
     const ristoId = listaR.value;
     // controllo il valore in console
-    console.log("Ristorante selezionato: " +ristoId);
+    console.log("Ristorante selezionato: " + ristoId);
     // punto la lista <select> dei menù
     const listaM = document.getElementById('nomeMenu');
 
@@ -104,26 +104,65 @@ listaR.addEventListener("click", function () {
         })
         .catch(error => console.error('errore: ', error));
 });
-    //aggiunta
-    function getAuthHeaders() {
-        const token = localStorage.getItem("authToken");
-        return token ? { "Authorization": "Bearer " + token } : {};
-    }
-    function logout() {
-        // Recupera il token dal localStorage
-        const token = localStorage.getItem("authToken");
-        if (!token) {
-            console.error("Nessun token trovato nel localStorage");
-            return;
+
+//fetch per il recupero delle categorie
+document.addEventListener("DOMContentLoaded", function () {
+
+    const listaM = document.getElementById("nomeMenu");
+    const listaC = document.getElementById("menuCategory");
+
+    listaR.addEventListener("click", function () {
+        const ristoId = listaM.value;
+        console.log("Ristorante selezionato: " + ristoId);
+
+        if (ristoId === 'nessuno') {
+            console.log("valore" + ristoId);
         }
-    
-        fetch('http://localhost:8080/api/logout', {
-            method: 'POST',
+
+        fetch(`http://localhost:8080/api/menu/${ristoId}/categorie`, {
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
+                ...getAuthHeaders()
             }
         })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Errore nel recupero delle categorie");
+                }
+                return response.json();
+            })
+            .then(menu => {
+                if (!menu.length) {
+                    listaC.innerHTML = `<option value="nessuno">Nessuna categoria registrata</option>`;
+                    console.log("Nessuna categoria registrata");
+                } else {
+                    listaC.innerHTML = menu.map(m => `<option value="${m.id}">${m.nome}</option>`).join('');
+                }
+            })
+            .catch(error => console.error("Errore:", error));
+    });
+});
+
+//aggiunta
+function getAuthHeaders() {
+    const token = localStorage.getItem("authToken");
+    return token ? { "Authorization": "Bearer " + token } : {};
+}
+function logout() {
+    // Recupera il token dal localStorage
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+        console.error("Nessun token trovato nel localStorage");
+        return;
+    }
+
+    fetch('http://localhost:8080/api/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Logout fallito');
@@ -141,7 +180,7 @@ listaR.addEventListener("click", function () {
         .catch(error => {
             console.error('Errore durante il logout:', error);
         });
-    }
+}
 
 document.getElementById("crea_ristorante").addEventListener("submit", function (e) {
     e.preventDefault(); // Previene il comportamento predefinito del form
