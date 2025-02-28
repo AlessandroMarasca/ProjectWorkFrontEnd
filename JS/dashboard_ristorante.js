@@ -305,5 +305,4 @@ document.getElementById('crea_menu').addEventListener('submit', function (event)
         .catch(error => {
             console.error('Errore:', error);
         });
-        
 })
