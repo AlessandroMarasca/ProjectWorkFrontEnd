@@ -9,29 +9,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const profilo = document.getElementById("profilo"); //profilo
     const carrello = document.querySelector(".cart"); //carrello
     const ruolo = localStorage.getItem("ruolo"); //per prendere il ruolo
+    const log = document.getElementById("login/logout");
     //per far vedere il carrello solo se si è loggati
     if (ruolo === "RISTORATORE" || ruolo === "USER") {
             
         carrello.style.display = "block";
+        profilo.style.display = "block";
     } else {
-        
+        profilo.style.display = "none";
         carrello.style.display = "none";
     }
     
-    //funzione per vedere il carrello solo se si ha un ruolo
-   /* document.addEventListener("DOMContentLoaded", function() {
-       
-        var ruolo = localStorage.getItem("ruolo");
-        
-        if (ruolo === "RISTORATORE" || ruolo === "USER") {
-            
-            carrello.style.display = "block";
-        } else {
-            
-            carrello.style.display = "none";
+    log.addEventListener("click", function (event){
+        const ruolo = localStorage.getItem("ruolo");
+        if(ruolo === null){
+            window.location.href = "login.html";
         }
-    });*/
-
+         else {
+            logout();
+            window.location.href = "index.html"
+        }
+    });
 
    //funzione per andare al profilo solo se si è loggati
     profilo.addEventListener("click", function (event){
@@ -251,8 +249,6 @@ function logout() {
         // Rimuove il token dal localStorage
         localStorage.removeItem("authToken");
         localStorage.removeItem("ruolo"); // Rimuovi anche il ruolo
-        // Nasconde il pulsante Logout e mostra il form di login
-        //document.getElementById("logoutButton").style.display = "none";
         document.getElementById("loginForm").style.display = "block";
         window.location.replace("login.html"); // Reindirizza alla pagina di login
     })
@@ -261,13 +257,7 @@ function logout() {
     });
 }
 
-//LOGOUT UTENTE
 
-// Gestione del pulsante di logout
-document.getElementById('logoutButton').addEventListener('click', function () {
-    logout();
-    window.location.href = "index.html"
-});
 
 
 
