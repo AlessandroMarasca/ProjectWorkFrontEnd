@@ -127,7 +127,7 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     console.log("Nuovo utente:", nuovoUtente);
 
     // Invia i dati al backend
-    fetch('http://127.0.0.1:8080/api/utente/aggiungi', {
+    fetch('http://localhost:8080/api/utente/aggiungi', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -154,7 +154,7 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     
 
 function login(email, password) {
-    fetch("http://127.0.0.1:8080/api/login", {
+    fetch("http://localhost:8080/api/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

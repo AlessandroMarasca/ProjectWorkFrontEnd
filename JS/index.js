@@ -60,10 +60,12 @@ function getAuthHeaders() {
     return token ? { "Authorization": "Bearer " + token } : {};
 }
 function logout() {
-    // Recupera il token dal localStorage
     const token = localStorage.getItem("authToken");
     if (!token) {
         console.error("Nessun token trovato nel localStorage");
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("ruolo");
+        window.location.replace("login.html");
         return;
     }
 
@@ -76,19 +78,21 @@ function logout() {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Logout fallito');
+            console.warn('Logout fallito, ma rimuovo comunque il token');
         }
-        return response.json();
+        return response.text(); // Usa text() invece di json() per evitare errori di parsing
     })
-    .then(data => {
-        console.log('Logout effettuato:', data);
-        // Rimuove il token dal localStorage
+    .then(() => {
+        console.log('Logout effettuato, rimuovo token');
         localStorage.removeItem("authToken");
-        localStorage.removeItem("ruolo"); // Rimuovi anche il ruolo
-        document.getElementById("loginForm").style.display = "block";
-        window.location.replace("login.html"); // Reindirizza alla pagina di login
+        localStorage.removeItem("ruolo");
+        window.location.replace("login.html"); 
     })
     .catch(error => {
         console.error('Errore durante il logout:', error);
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("ruolo");
+        window.location.replace("login.html");
     });
 }
+
