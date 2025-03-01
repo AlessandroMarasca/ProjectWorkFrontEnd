@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const ruolo = localStorage.getItem("ruolo"); //per prendere il ruolo
     const log = document.querySelector(".logout");
     const ristoratore = document.querySelector(".restaurant");
+    
+    
 
     //per far vedere il carrello solo se si è loggati
     if (ruolo === "RISTORATORE") {
@@ -22,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         profilo.style.display = "none";
         carrello.style.display = "none";
     }
+    
     log.addEventListener("click", function (event){
         const ruolo = localStorage.getItem("ruolo");
         if(ruolo === null){
@@ -96,3 +99,107 @@ function logout() {
     });
 }
 
+async function cercaRistoranti(query) {
+    try {
+        const response = await fetch(`http://localhost:8080/api/ristorante/ricerca?descrizione=${encodeURIComponent(query)}`);
+
+        const caroselloContainer = document.getElementById("ristorantiCarousel");
+        const caroselloInner = document.getElementById("ristorantiCarouselInner");
+
+        if (!caroselloInner) {
+            console.error("Elemento carosello non trovato!");
+            return;
+        }
+
+        caroselloInner.innerHTML = ""; // Pulisce il carosello prima di aggiungere nuovi risultati
+
+        if (response.status === 204) {
+            console.warn("Nessun ristorante trovato");
+            caroselloInner.innerHTML = `<div class="carousel-item active"><p class="text-center">Nessun ristorante trovato.</p></div>`;
+            caroselloContainer.classList.add("show");
+            return;
+        }
+
+        const ristoranti = await response.json();
+
+        if (ristoranti.length === 0) {
+            caroselloInner.innerHTML = `<div class="carousel-item active"><p class="text-center">Nessun ristorante trovato.</p></div>`;
+        } else {
+            ristoranti.forEach((ristorante, index) => {
+                const activeClass = index === 0 ? "active" : ""; // Il primo elemento deve avere "active"
+
+                // Controllo se l'immagine esiste, altrimenti uso un placeholder
+                const imgSrc = ristorante.immagine && ristorante.immagine.trim() !== "" ? ristorante.immagine : "/img/placeholder.jpg";
+
+                caroselloInner.innerHTML += `
+                    <div class="carousel-item ${activeClass}">
+                        <div class="d-flex justify-content-center">
+                            <div class="card custom-card" style="width: 18rem;">
+                                <img src="${imgSrc}" class="card-img-top restaurant-image" alt="${ristorante.nome}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${ristorante.nome}</h5>
+                                    <p class="card-text">${ristorante.descrizione}</p>
+                                    <a href="ristorante.html?id=${ristorante.id}" class="btn btn-custom">Scopri di più</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        caroselloContainer.classList.add("show"); // Mostra il carosello con animazione
+    } catch (error) {
+        console.error("Errore durante la ricerca:", error);
+    }
+}
+
+function aggiornaCarosello(ristoranti) {
+    const carosello = document.getElementById("ristorantiCarousel");
+    
+    // Svuota il carosello prima di aggiornare i risultati
+    carosello.innerHTML = "";
+
+    if (ristoranti.length === 0) {
+        carosello.innerHTML = "<p>Nessun ristorante trovato.</p>";
+        return;
+    }
+
+    ristoranti.forEach((ristorante, index) => {
+        const activeClass = index === 0 ? "active" : ""; // Il primo elemento deve avere la classe "active"
+        carosello.innerHTML += `
+            <div class="carousel-item ${activeClass}">
+                <div class="card" style="width: 18rem; margin: auto;">
+                    <img src="${ristorante.immagine || 'placeholder.jpg'}" class="card-img-top" alt="${ristorante.nome}">
+                    <div class="card-body">
+                        <h5 class="card-title">${ristorante.nome}</h5>
+                        <p class="card-text">${ristorante.descrizione}</p>
+                        <a href="ristorante.html?id=${ristorante.id}" class="btn btn-primary">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    // Mostra il carosello
+    carosello.style.display = "block";
+}
+
+    const barraRicerca = document.getElementById("cerca_ristoranti");
+    const inviaRicerca = document.getElementById("barraForm");
+    const caroselloRistoranti = document.getElementById("ristorantiCarousel");
+
+    
+    // Evento per la barra di ricerca
+document.getElementById("barraForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const query = document.getElementById("cerca_ristoranti").value.trim();
+
+    if (query) {
+        cercaRistoranti(query);
+    } else {
+        alert("Inserire parametri nella ricerca");
+    }
+});
+    
