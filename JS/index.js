@@ -129,16 +129,12 @@ async function cercaRistoranti(query) {
                 const activeClass = index === 0 ? "active" : ""; // Il primo elemento deve avere "active"
 
                 // Controllo se l'immagine esiste, altrimenti uso un placeholder
-                const imgSrc = ristorante.id 
-    ? `http://localhost:8080/ristorante/${ristorante.id}/foto` 
-    : "/img/placeholder.jpg";
-
+                const imgSrc = ristorante.immagine && ristorante.immagine.trim() !== "" ? ristorante.immagine : "/img/placeholder.jpg";
 
                 caroselloInner.innerHTML += `
                     <div class="carousel-item ${activeClass}">
                         <div class="d-flex justify-content-center">
                             <div class="card custom-card" style="width: 18rem;">
-                            
                                 <img src="${imgSrc}" class="card-img-top restaurant-image" alt="${ristorante.nome}">
                                 <div class="card-body">
                                     <h5 class="card-title">${ristorante.nome}</h5>
@@ -153,7 +149,6 @@ async function cercaRistoranti(query) {
         }
 
         caroselloContainer.classList.add("show"); // Mostra il carosello con animazione
-        console.log(ristoranti);
     } catch (error) {
         console.error("Errore durante la ricerca:", error);
     }
