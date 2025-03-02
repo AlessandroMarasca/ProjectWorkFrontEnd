@@ -91,11 +91,10 @@ function getAuthHeaders() {
 
 // Gestione invio form registrazione
 document.getElementById('registrazione').addEventListener('submit', function (event) {
-    event.preventDefault(); // Preveniamo il comportamento di submit predefinito del form
+    event.preventDefault();
 
     console.log("Form di registrazione inviato");
 
-    // Ottieni i valori dai campi del form
     const nomeInput = document.getElementById('nome').value;
     const cognomeInput = document.getElementById('cognome').value;
     const emailInput = document.getElementById('email').value;
@@ -103,37 +102,29 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     const passwordInput = document.getElementById('reg-password').value;
     let ruoloInput = document.getElementById("attivitaCheckbox").checked ? 1 : 0;
     
-    // Controlla se il numero della carta è valido
-    if (numeroCarta === "") {
-        alert("Il numero della carta è obbligatorio.");
-        return;  // Se il numero della carta è vuoto, fermiamo l'esecuzione
-    }
-
-    if (numeroCarta.length !== 16 || isNaN(numeroCarta)) {
+    if (numeroCarta === "" || numeroCarta.length !== 16 || isNaN(numeroCarta)) {
         alert("Il numero della carta deve essere un numero di 16 cifre.");
-        return;  // Se il numero della carta non è valido, fermiamo l'esecuzione
+        return;
     }
 
-    // Crea l'oggetto utente con i dati della registrazione
     const nuovoUtente = {
         nome: nomeInput,
         cognome: cognomeInput,
         email: emailInput,
-        numeroCarta: numeroCarta,  // Assicurati che questo campo esista
+        numeroCarta: numeroCarta,
         password: passwordInput,
         ruolo: ruoloInput
     };
 
     console.log("Nuovo utente:", nuovoUtente);
 
-    // Invia i dati al backend
     fetch('http://localhost:8080/api/utente/aggiungi', {
         method: 'POST',
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(nuovoUtente)  // Invia i dati come JSON
+        body: JSON.stringify(nuovoUtente)
     })
     .then(response => {
         if (!response.ok) {
@@ -144,13 +135,28 @@ document.getElementById('registrazione').addEventListener('submit', function (ev
     .then(data => {
         console.log('Utente registrato:', data);
         alert("Registrazione completata! Ora puoi accedere.");
-        window.location.replace("login.html");
         
+        // Reindirizza al login con i campi precompilati
+        window.location.replace("login.html");
+        localStorage.setItem("emailTemp", emailInput);
+        localStorage.setItem("passwordTemp", passwordInput);
     })
     .catch(error => {
         console.error('Errore:', error);
     });
-})
+});
+window.addEventListener("load", function () {
+    const emailTemp = localStorage.getItem("emailTemp");
+    const passwordTemp = localStorage.getItem("passwordTemp");
+    
+    if (emailTemp && passwordTemp) {
+        document.getElementById("email-login").value = emailTemp;
+        document.getElementById("password-login").value = passwordTemp;
+        
+        localStorage.removeItem("emailTemp");
+        localStorage.removeItem("passwordTemp");
+    }
+});
     
 
 function login(email, password) {
