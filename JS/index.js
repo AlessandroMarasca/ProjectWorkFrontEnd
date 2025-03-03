@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //già c'era
     let myCarousel = new bootstrap.Carousel(document.querySelector("#customCarousel"), {
-        interval: 3000,
+        interval: 2000,
         ride: "carousel"
     });
 });

@@ -148,18 +148,9 @@ form {
 }
 
 /*carosello ristoranti*/
-#ristorantiCarousel {
-    margin-bottom: 50px;
+#customCarousel {
+    margin-bottom: 80px;
     padding-bottom: 30px;
-    background-color: var(--color-secondary);
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-}
-
-#ristorantiCarousel.show {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 
