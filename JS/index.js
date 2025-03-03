@@ -62,6 +62,7 @@ function getAuthHeaders() {
     const token = localStorage.getItem("authToken");
     return token ? { "Authorization": "Bearer " + token } : {};
 }
+
 function logout() {
     const token = localStorage.getItem("authToken");
     if (!token) {

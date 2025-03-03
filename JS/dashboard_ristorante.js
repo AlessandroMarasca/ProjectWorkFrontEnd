@@ -356,12 +356,11 @@ document.getElementById('crea_menu').addEventListener('submit', function (event)
     };
 
     console.log("Nuovo menu:", nuovoMenu);
-    const URL = `http://localhost:8080/api/menu/${ristorante}/nuovo`;
+    const URL = `http://localhost:8080/api/menu/${ristorante}`;
     console.log(URL);
     // Invia i dati al backend
     fetch(URL, {
         method: 'POST',
-        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
             ...getAuthHeaders()
