@@ -122,21 +122,16 @@
                 <div class="chart col-md-12">
                     <canvas id="menuChart" width="400" height="200"></canvas>
                 </div>
-                <div class="container-fluid col-md-8">
-                    <div class="card-image d-flex"
-                        style="margin-top: 5%; flex-direction: column; justify-content: center; align-items:center;">
-                        <img src="../img/carbonara-scomposta-blog-1.webp" width="80%">
-                        <div class="card-body">
-                            <h5 class="card-title">Carbonara scomposta</h5>
-                            <p class="card-text">Ecco qui la migliore delle carbonare, direttamente dalle bio di tinder
-                            </p>
-                        </div>
-                    </div>
+
+                <h2 id="personal" class="text-center mt-5">Attività registrate</h2>
+                <div id="personal_ristoranti" class="container-fluid col-md-8 mt-2 d-flex flex-wrap justify-content-center align-items-center">
+                    
+                      
+                      
+                      
                 </div>
-                <div class="spazio">
-                </div>
-                <br><br>
             </div>
+            <h2 id="creaRistorante" class="gestioneMenu text-center mt-2">Crea ristorante</h2>
             <div id="formRistorante" class="card mb-3 text-center">
                 <div class="card-body">
                     <form id="crea_ristorante">
@@ -202,7 +197,7 @@
             </div>
 
             <br><br><br>
-            <h2 id="gestioneMenu" style="margin-top: 5%;" class="gestioneMenu text-center">Gestione Menu</h2>
+            <h2 id="gestioneMenu" style="margin-top: 5%;" class="gestioneMenu text-center">Gestione menù</h2>
             <div class="card-mb-3 text-center" id="gestione-menu">
                 <div class="container d-flex"
                     style="flex-direction: column; align-content: center;justify-content: center ;background: none;">
@@ -260,21 +255,24 @@
                         </div>
                     </form>
                         <div class="row mt-3 justify-content-center">
-                            <div class="col-md-4">
-                                <label for="listaPiatti"><b>Lista Piatti</b></label>
+                            <div class="col-md-12">
+                                <label for="lista-piatti"><b>Lista Piatti</b></label>
                                 <select id="lista-piatti" class="form-control mb-2">
-                                    <option value="lista"></option>
+                        
                                 </select>
                             </div>
+                        </div>
                     <form id="crea_piatti">
-                        <div class="col-md-4"> <label for="nomePiatto"><b>Nome Piatto</b></label>
+                        
+                    <div class="row mt-3">
+                        <div class="col-md-6"> <label for="nomePiatto"><b>Nome Piatto</b></label>
                             <input type="text" id="nomePiatto" class="form-control mb-2" placeholder="Nome del piatto">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="prezzoPiatto"><b>Prezzo</b></label>
                             <input type="text" id="prezzoPiatto" class="form-control mb-2" placeholder="Prezzo (€)">
                         </div>
-                        </div>
+                    </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label for="descrizionePiatto"><b>Descrizione del piatto</b></label>
@@ -286,10 +284,12 @@
                                 <input type="file" id="fotoPiatto" class="form-control mb-2">
                             </div>
                         </div>
-                        <div class="col-md-12 d-flex justify-content-center align-items-center">
-                            <button type="submit" class="aggiungi-fine btn text-black"><i class="fa-solid fa-plus"
-                                    style="transform: rotate(10deg);"></i>Aggiungi</button>
-                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12 d-flex justify-content-center align-items-center">
+                                <button type="submit" class="aggiungi-fine btn text-black"><i class="fa-solid fa-plus"
+                                        style="transform: rotate(10deg);"></i>Aggiungi</button>
+                            </div>
+                        </div>  
                     </form>
                 </div>
             </div>

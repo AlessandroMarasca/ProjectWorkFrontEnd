@@ -1,6 +1,8 @@
 const listaR = document.getElementById('listaRistoranti');
 // recupero il valore dell'id dal LocalStorage
 const ristoratoreId = localStorage.getItem('id');
+const bloccoRicerca = document.getElementById('gestione-ricerca');
+const risMod = document.getElementById('latoNome');
 
 document.addEventListener("DOMContentLoaded", function () {
     const profilo = document.querySelector(".profile_login"); //profilo
@@ -63,8 +65,50 @@ document.addEventListener("DOMContentLoaded", function () {
                 return `<option value="${r.id}">${r.nome}</option>`;
             }).join('');
             listaR.innerHTML = risto;
+
             if (listaR.length < 1) {
                 listaR.innerHTML = `<option value="nessuno">Nessun ristorante registrato</option>`;
+                console.log("Nessun ristorante presente");
+            }
+
+        })
+        .catch(error => console.error('errore: ', error));
+
+    fetch(`http://localhost:8080/api/utente/${ristoratoreId}/ristoranti`, {
+        method: "GET",
+        headers: {
+            ...getAuthHeaders()
+        }
+    })
+        .then(response => response.json())
+        .then(ristorante => {
+            const ristoCard = ristorante.map(rCard => {
+                return `<div class="card m-4 p-1" style="width: 18rem; background-color:#fffbee ;">
+                            <div class="card-body text-center">
+                                <form id="cardsRisto">
+                                    <h5 class="card-title" id="${rCard.id}">${rCard.nome}</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">${rCard.indirizzo}, ${rCard.citta}(${rCard.provincia})</h6>
+                                    <p class="">${rCard.descrizione}.</p>
+                                    <button type="submit" class="card_btn" id="dettagli_ristorante">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="card_btn" id="elimina_ristorante">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>`;
+            }).join('');
+            document.getElementById('personal_ristoranti').innerHTML = ristoCard;
+
+            if (listaR.length < 1) {
+                listaR.innerHTML = `<p>Nessun ristorante ancora registrato</p>`;
                 console.log("Nessun ristorante presente");
             }
 
@@ -106,41 +150,66 @@ listaR.addEventListener("click", function () {
 });
 
 //fetch per il recupero delle categorie
-document.addEventListener("DOMContentLoaded", function () {
+const listaM = document.getElementById("nomeMenu");
+const listaC = document.getElementById("menuCategory");
 
-    const listaM = document.getElementById("nomeMenu");
-    const listaC = document.getElementById("menuCategory");
+listaM.addEventListener("click", function () {
+    const menuId = listaM.value;
+    console.log("Menù selezionato: " + menuId);
 
-    listaR.addEventListener("click", function () {
-        const ristoId = listaM.value;
-        console.log("Ristorante selezionato: " + ristoId);
-
-        if (ristoId === 'nessuno') {
-            console.log("valore" + ristoId);
+    fetch(`http://localhost:8080/api/menu/${menuId}/categorie`, {
+        method: "GET",
+        headers: {
+            ...getAuthHeaders()
         }
-
-        fetch(`http://localhost:8080/api/menu/${ristoId}/categorie`, {
-            method: "GET",
-            headers: {
-                ...getAuthHeaders()
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Errore nel recupero delle categorie");
+            }
+            return response.json();
+        })
+        .then(categorie => {
+            if (!categorie.length) {
+                listaC.innerHTML = `<option value="nessuno">Nessuna categoria registrata</option>`;
+                console.log("Nessuna categoria registrata");
+            } else {
+                listaC.innerHTML = categorie.map(c => `<option value="${c.id}">${c.nome}</option>`).join('');
             }
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Errore nel recupero delle categorie");
-                }
-                return response.json();
-            })
-            .then(menu => {
-                if (!menu.length) {
-                    listaC.innerHTML = `<option value="nessuno">Nessuna categoria registrata</option>`;
-                    console.log("Nessuna categoria registrata");
-                } else {
-                    listaC.innerHTML = menu.map(m => `<option value="${m.id}">${m.nome}</option>`).join('');
-                }
-            })
-            .catch(error => console.error("Errore:", error));
-    });
+        .catch(error => console.error("Errore:", error));
+});
+
+//evento per recuperare la lista dei piatti di una specifica categoria
+listaP = document.getElementById("lista-piatti");
+
+listaC.addEventListener('click', function () {
+    const categoriaId = listaC.value;
+    console.log("Categoria selezionata: " + categoriaId);
+
+    fetch(`http://localhost:8080/api/categoria/${categoriaId}/piatti`, {
+        method: "GET",
+        headers: {
+            ...getAuthHeaders()
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Errore nel recupero della lista dei piatti");
+            }
+            return response.json();
+        })
+        .then(piatti => {
+            if (piatti.length == 0) {
+                listaP.innerHTML = `<option value="nessuno"> Nessun piatto registrato</option>`;
+                console.log("Nessun piatto registrato");
+            } else {
+                listaP.innerHTML = piatti.map(p =>
+                    `<option value="${p.id}">${p.nome}&ensp;€&nbsp;${p.costo}</option>`
+                ).join('');
+            }
+        })
+        .catch(error => console.error("Errore:", error));
 });
 
 //aggiunta
@@ -360,7 +429,7 @@ document.getElementById('crea_categoria').addEventListener('submit', function (e
         });
 });
 
-document.getElementById('crea_piatti').addEventListener('submit', function(e) {
+document.getElementById('crea_piatti').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const nomePiattoInput = document.getElementById('nomePiatto').value;
@@ -373,35 +442,37 @@ document.getElementById('crea_piatti').addEventListener('submit', function(e) {
         return;
     }
     console.log(nomePiattoInput, prezzoPiattoInput, descrizionePiattoInput, fileFoto);
-    const formDataPiatto = new FormData();
-    formDataPiatto.append("files", fileFoto);
-    formDataPiatto.append("nome", nomePiattoInput);
-    formDataPiatto.append("costo", prezzoPiattoInput);
-    formDataPiatto.append("descrizione", descrizionePiattoInput);
+    const formData = new FormData();
+    formData.append("foto_piatto", fileFoto);
+    formData.append("nome", nomePiattoInput);
+    formData.append("costo", prezzoPiattoInput);
+    formData.append("descrizione", descrizionePiattoInput);
 
-    console.log(formDataPiatto);
+    console.log(formData);
     const categoria = document.getElementById('menuCategory').value;
-    const URL = `http://localhost:8080/api/piatto/2`;
+    const URL = `http://localhost:8080/api/piatto/${categoria}`;
     console.log(URL);
-    
+
     fetch(URL, {
         method: 'POST',
         headers: {
             ...getAuthHeaders()
         },
-        body: formDataPiatto
+        body: formData
     })
-        .then (response => {
-            if(!response.ok) {
-                throw new Error ("Caricamento fallito");
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Caricamento fallito");
             }
             return response.json();
         })
         .then(data => {
-            console.log("Piatto aggiunto: ", formDataPiatto);
+            console.log("Piatto aggiunto: ", formData);
             alert("Piatto registrato!");
         })
         .catch(error => {
             console.error("Error: ", error);
         });
 });
+
+

@@ -92,6 +92,11 @@
             border-radius: 20px;
         }
 
+        #gestione-ricerca{
+            background-image: linear-gradient(to bottom, #c6efd1a1, #C6EFD1), url(../img/86b0980ef543191114a946d7d4f1c90a.jpg);
+            border-radius: 20px;
+        }
+
         nav {
             background: #ffeaae;
             /* Sfondo nero con trasparenza */
@@ -315,3 +320,31 @@
             border: none;
             box-shadow: rgb(255, 116, 108, 0.4)1px 1px 1px 1px, rgb(255, 116, 108, 0.3)1px 1px 1px 1px, rgb(255, 116, 108, 0.2)1px 1px 1px 1px, rgb(255, 116, 108, 0.1)1px 1px 1px 1px, rgb(255, 116, 108, 0.05)1px 1px 1px 1px;
         }
+
+        .card_btn{
+            background-color: #fffbee;
+            border: none;
+        }
+
+        .card_btn:link {
+            color: black;
+            text-decoration: none;
+          }
+          
+          /* visited link */
+        .card_btn:visited {
+            color: black;
+            text-decoration: none;
+          }
+          
+          /* mouse over link */
+        .card_btn:hover {
+            color: #FF746C;
+            text-decoration: none;
+          }
+          
+          /* selected link */
+        .card_btn:active {
+            color: black;
+            text-decoration: none;
+          }
