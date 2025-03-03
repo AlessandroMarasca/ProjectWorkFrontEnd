@@ -93,18 +93,35 @@
             <div class="search-container">
                 <p class="single-line" id="text">Di cosa hai voglia oggi?</p>
                 <div class="input-group" id="searchbar">
-                    <input type="text" class="form-control" placeholder="Ristorante, cibo...">
+                    <form id="barraForm">
+
+                   
+                    <input type="text" id="cerca_ristoranti" class="form-control" placeholder="Ristorante, cibo...">
                     <button class="btn custom-btn" type="submit" id="search-btn"><svg xmlns="http://www.w3.org/2000/svg"
                             width="25" height="25" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
                             <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018" />
                             <path
                                 d="M13 6.5a6.47 6.47 0 0 1-1.258 3.844q.06.044.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11" />
                         </svg></button>
+                    </form>
                 </div>
             </div>
         </div>
 
         <!--CAROSELLO-->
+        <div id="ristorantiCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" id="ristorantiCarouselInner"></div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#ristorantiCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#ristorantiCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+        
         <div id="customCarousel" class="carousel slide" data-ride="carousel">
             <p id="text1">I vostri preferiti!</p>
             <div class="carousel-inner">
@@ -116,7 +133,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Koi Sushi</h5>
                                     <p class="card-text">Cucina Giapponese</p>
-                                    <a href="#" class="btn custom-btn">Gnam!</a>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +143,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Il paradiso del tartufo</h5>
                                     <p class="card-text">Cucina italiana</p>
-                                    <a href="#" class="btn custom-btn">Gnam!</a>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +153,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Hot Pot</h5>
                                     <p class="card-text">Cucina cinese</p>
-                                    <a href="#" class="btn custom-btn">Gnam!</a>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
                                 </div>
                             </div>
                         </div>
@@ -146,58 +163,13 @@
                                 <div class="card-body">
                                     <h5 class="card-title">La tana dei sapori</h5>
                                     <p class="card-text">Ristorante Pizzeria</p>
-                                    <a href="#" class="btn custom-btn">Gnam!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item" data-interval="3000">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="card custom-card">
-                                <img src="/img/sushi5.jpg" class="card-img-top" alt="Image 5">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card Title 5</h5>
-                                    <p class="card-text">Another customizable card with a description.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card custom-card">
-                                <img src="/img/sushi6.jpg" class="card-img-top" alt="Image 6">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card Title 6</h5>
-                                    <p class="card-text">Another customizable card with a description.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card custom-card">
-                                <img src="/img/sushi7.jpg" class="card-img-top" alt="Image 7">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card Title 7</h5>
-                                    <p class="card-text">Another customizable card with a description.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card custom-card">
-                                <img src="/img/sushi8.jpg" class="card-img-top" alt="Image 8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card Title 8</h5>
-                                    <p class="card-text">Another customizable card with a description.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
 
