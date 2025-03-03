@@ -5,6 +5,10 @@ body {
     color: #ffeaae;
     margin: 0;
     padding: 0;
+    
+     width: 100vw; /* Assicura che il body copra tutta la viewport */
+    overflow-x: hidden; /* Evita eventuali scrollbar orizzontali indesiderate */
+    
 }
 .modak-regular {
     font-family: "Modak", serif;
@@ -20,11 +24,14 @@ body {
     font-style: normal;
 }
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: #ffeaae;
-    /* Sfondo nero con trasparenza */
-    transition: background 0.3s ease-in-out;
-    box-shadow: var(--bs-box-shadow) !important;
-    padding-right: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s ease-in-out; /* Effetto di transizione */
+    z-index: 1000;
 }
 
 .restaurant {
@@ -118,8 +125,27 @@ details ul li {
 
 .footer {
     background-color: #ffeaae;
-    padding: 20px;
+    padding: 20px 0; /* Rimuove padding laterale */
+    text-align: center;
+    border-top: 3px solid #ff746c;
+    margin: 0; /* Elimina margini */
+    width: 100%; /* Assicura che occupi l'intera larghezza */
+    box-sizing: border-box; /* Impedisce che padding influenzi la larghezza */
+    position: relative; /* Mantiene il footer in posizione senza influenzare il layout */
 }
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+.container-footer {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 #desc {
     text-align: start;
 }
