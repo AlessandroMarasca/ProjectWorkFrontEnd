@@ -66,7 +66,7 @@ nav {
 /*SEARCHBAR*/
 
 .search-container {
-    width: 40%;
+    width: 50%;
     margin-top: 100px;
     margin-bottom: 200px;
     height: 30px;
@@ -97,8 +97,33 @@ nav {
     font-size: 30px;
 }
 
-#searchbar {
+.search-container {
+    width: 40%;
+    margin: 100px auto 200px auto;
+    height: 300px;
+    background-color: #ff746c;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.157)), url('/img/sushi.png');
+    background-size: cover;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
     box-shadow: var(--bs-box-shadow) !important;
+}
+
+#searchbar {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    box-shadow: var(--bs-box-shadow) !important;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #search-btn {
@@ -121,6 +146,7 @@ nav {
     background-color: #ffeaae;
 
 }
+
 /*carosello ristoranti*/
 #ristorantiCarousel {
     margin-bottom: 50px;
