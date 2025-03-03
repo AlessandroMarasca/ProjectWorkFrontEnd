@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const ruolo = localStorage.getItem("ruolo"); //per prendere il ruolo
     const log = document.querySelector(".logout");
     const ristoratore = document.querySelector(".restaurant");
-    
-    
+
+
 
     //per far vedere il carrello solo se si è loggati
     if (ruolo === "RISTORATORE") {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carrello.style.display = "block";
         profilo.style.display = "block";
     }
-    else if (ruolo === "USER"){
+    else if (ruolo === "USER") {
         carrello.style.display = "block";
         profilo.style.display = "block";
         ristoratore.style.display = "none";
@@ -24,20 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
         profilo.style.display = "none";
         carrello.style.display = "none";
     }
-    
-    log.addEventListener("click", function (event){
+
+    log.addEventListener("click", function (event) {
         const ruolo = localStorage.getItem("ruolo");
-        if(ruolo === null){
+        if (ruolo === null) {
             window.location.href = "Login.html";
         }
-         else {
+        else {
             logout();
             window.location.href = "Login.html";
         }
     });
-    profilo.addEventListener("click", function (event){
+    profilo.addEventListener("click", function (event) {
         const ruolo = localStorage.getItem("ruolo");
-        if(ruolo === null){
+        if (ruolo === null) {
             window.location.href = "login.html";
         }
         else if (ruolo === "RISTORATORE") {
@@ -80,24 +80,24 @@ function logout() {
             'Authorization': 'Bearer ' + token
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            console.warn('Logout fallito, ma rimuovo comunque il token');
-        }
-        return response.text(); // Usa text() invece di json() per evitare errori di parsing
-    })
-    .then(() => {
-        console.log('Logout effettuato, rimuovo token');
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("ruolo");
-        window.location.replace("login.html"); 
-    })
-    .catch(error => {
-        console.error('Errore durante il logout:', error);
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("ruolo");
-        window.location.replace("login.html");
-    });
+        .then(response => {
+            if (!response.ok) {
+                console.warn('Logout fallito, ma rimuovo comunque il token');
+            }
+            return response.text(); // Usa text() invece di json() per evitare errori di parsing
+        })
+        .then(() => {
+            console.log('Logout effettuato, rimuovo token');
+            localStorage.removeItem("authToken");
+            localStorage.removeItem("ruolo");
+            window.location.replace("login.html");
+        })
+        .catch(error => {
+            console.error('Errore durante il logout:', error);
+            localStorage.removeItem("authToken");
+            localStorage.removeItem("ruolo");
+            window.location.replace("login.html");
+        });
 }
 
 async function cercaRistoranti(query) {
@@ -136,7 +136,7 @@ async function cercaRistoranti(query) {
                     <div class="carousel-item ${activeClass}">
                         <div class="d-flex justify-content-center">
                             <div class="card custom-card" style="width: 18rem;">
-                                <img src="${imgSrc}" class="card-img-top restaurant-image" alt="${ristorante.nome}">
+                                <img src="../img/vdg.jpg" class="card-img-top restaurant-image" alt="${ristorante.nome}">
                                 <div class="card-body">
                                     <h5 class="card-title">${ristorante.nome}</h5>
                                     <p class="card-text">${ristorante.descrizione}</p>
@@ -157,7 +157,7 @@ async function cercaRistoranti(query) {
 
 function aggiornaCarosello(ristoranti) {
     const carosello = document.getElementById("ristorantiCarousel");
-    
+
     // Svuota il carosello prima di aggiornare i risultati
     carosello.innerHTML = "";
 
@@ -186,12 +186,12 @@ function aggiornaCarosello(ristoranti) {
     carosello.style.display = "block";
 }
 
-    const barraRicerca = document.getElementById("cerca_ristoranti");
-    const inviaRicerca = document.getElementById("barraForm");
-    const caroselloRistoranti = document.getElementById("ristorantiCarousel");
+const barraRicerca = document.getElementById("cerca_ristoranti");
+const inviaRicerca = document.getElementById("barraForm");
+const caroselloRistoranti = document.getElementById("ristorantiCarousel");
 
-    
-    // Evento per la barra di ricerca
+
+// Evento per la barra di ricerca
 document.getElementById("barraForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -203,4 +203,4 @@ document.getElementById("barraForm").addEventListener("submit", function (event)
         alert("Inserire parametri nella ricerca");
     }
 });
-    
+
