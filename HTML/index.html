@@ -109,25 +109,13 @@
         </div>
 
         <!--CAROSELLO-->
-        <div id="ristorantiCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner" id="ristorantiCarouselInner"></div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#ristorantiCarousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#ristorantiCarousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-        <div id="customCarousel" class="carousel slide" data-ride="carousel">
+        <div id="customCarousel" class="carousel slide" data-bs-ride="carousel">
             <p id="text1">I vostri preferiti!</p>
+
             <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="3000">
+                <!-- Primo gruppo -->
+                <div class="carousel-item active" data-bs-interval="2000">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="card custom-card">
@@ -171,9 +159,54 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Secondo gruppo -->
+                <div class="carousel-item" data-bs-interval="2000">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/cinese.jpg" class="card-img-top" alt="Image 5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Shanghai</h5>
+                                    <p class="card-text">Cucina tipica Cinese</p>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/indiano.jpg" class="card-img-top" alt="Image 6">
+                                <div class="card-body">
+                                    <h5 class="card-title">Eli ristorante indiano</h5>
+                                    <p class="card-text">Ristorante indiano</p>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/assassina.jpg" class="card-img-top" alt="Image 7">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fantasie</h5>
+                                    <p class="card-text">Trattoria</p>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card custom-card">
+                                <img src="/img/stellato.jpg" class="card-img-top" alt="Image 8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ristorante Stellato</h5>
+                                    <p class="card-text">Cucina gourmet</p>
+                                    <a href="" class="btn custom-btn">Gnam!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
 
         <!--FOOTER-->
         <footer class="footer row">
