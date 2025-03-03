@@ -136,7 +136,7 @@ async function cercaRistoranti(query) {
                     <div class="carousel-item ${activeClass}">
                         <div class="d-flex justify-content-center">
                             <div class="card custom-card" style="width: 18rem;">
-                                <img src="${imgSrc}" class="card-img-top restaurant-image" alt="${ristorante.nome}">
+                                <img src="../img/vdg.jpg" class="card-img-top restaurant-image" alt="${ristorante.nome}">
                                 <div class="card-body">
                                     <h5 class="card-title">${ristorante.nome}</h5>
                                     <p class="card-text">${ristorante.descrizione}</p>
